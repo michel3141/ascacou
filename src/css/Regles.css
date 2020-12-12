@@ -1,0 +1,10 @@
+div.Regles {
+  height:100%;
+  width:500px;
+  padding: 7px;
+}
+div.Regles table {
+  margin: auto;
+  text-align: center;
+  border-spacing: 10px;
+}
