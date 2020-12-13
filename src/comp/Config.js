@@ -18,11 +18,16 @@ export default class Config extends Component {
       lbl: "Montre les cases bloquées",
       enable: true,
     },
+    { state: 'show_forbidden',
+      lbl: "Montre les coups interdits",
+      enable: true,
+    },
   ];
   state = {
     deal_method : this.props.prms.deal_method,
     allow_multiple_cards : this.props.prms.allow_multiple_cards,
     show_blocked : this.props.prms.show_blocked,
+    show_forbidden : this.props.prms.show_forbidden,
   }
 
   onSelect(state_key, value) {

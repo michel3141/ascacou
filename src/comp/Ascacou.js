@@ -13,6 +13,7 @@ export default class Ascacou extends Component {
           allow_multiple_cards
           deal_method
           show_blocked
+          show_forbidden
     */
     super(props);
 
@@ -36,7 +37,7 @@ export default class Ascacou extends Component {
   }
 
   play (move) {
-    if (this.props.ascacou.play(move)) this.forceUpdate();
+    this.props.ascacou.play(move, this.forceUpdate.bind(this));
   }
 
   undo () {
@@ -70,7 +71,11 @@ export default class Ascacou extends Component {
             <Player id="1" name="Joueur 1" cards={a.cards} player={a.player}/>
           </Grid>
           <Grid item xs>
-            <Board onMove={this.play} squares={a.squares} showBlocked={this.props.prms.show_blocked}/>
+            <Board 
+              onMove={this.play} squares={a.squares} 
+            showBlocked={this.props.prms.show_blocked}
+            showForbidden={this.props.prms.show_forbidden}
+            />
           </Grid>
           <Grid item xs>
             <Player id="2" name="Joueur 2" cards={a.cards} player={a.player}/>

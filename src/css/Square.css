@@ -1,7 +1,7 @@
 .Square {
   background-size: cover;
-width: 150px;
-height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 .Square.xy-1x1.c-0 {background-image:url('img/case-0-0.png');}
@@ -104,3 +104,54 @@ height: 150px;
 .Square.xy-5x3.c-3 {background-image:url('img/case-3-22.png');}
 .Square.xy-5x4.c-3 {background-image:url('img/case-3-23.png');}
 .Square.xy-5x5.c-3 {background-image:url('img/case-3-24.png');}
+.Square.xy-1x1.c-1x {background-image:url('img/case-1x-0.png');}
+.Square.xy-1x2.c-1x {background-image:url('img/case-1x-1.png');}
+.Square.xy-1x3.c-1x {background-image:url('img/case-1x-2.png');}
+.Square.xy-1x4.c-1x {background-image:url('img/case-1x-3.png');}
+.Square.xy-1x5.c-1x {background-image:url('img/case-1x-4.png');}
+.Square.xy-2x1.c-1x {background-image:url('img/case-1x-5.png');}
+.Square.xy-2x2.c-1x {background-image:url('img/case-1x-6.png');}
+.Square.xy-2x3.c-1x {background-image:url('img/case-1x-7.png');}
+.Square.xy-2x4.c-1x {background-image:url('img/case-1x-8.png');}
+.Square.xy-2x5.c-1x {background-image:url('img/case-1x-9.png');}
+.Square.xy-3x1.c-1x {background-image:url('img/case-1x-10.png');}
+.Square.xy-3x2.c-1x {background-image:url('img/case-1x-11.png');}
+.Square.xy-3x3.c-1x {background-image:url('img/case-1x-12.png');}
+.Square.xy-3x4.c-1x {background-image:url('img/case-1x-13.png');}
+.Square.xy-3x5.c-1x {background-image:url('img/case-1x-14.png');}
+.Square.xy-4x1.c-1x {background-image:url('img/case-1x-15.png');}
+.Square.xy-4x2.c-1x {background-image:url('img/case-1x-16.png');}
+.Square.xy-4x3.c-1x {background-image:url('img/case-1x-17.png');}
+.Square.xy-4x4.c-1x {background-image:url('img/case-1x-18.png');}
+.Square.xy-4x5.c-1x {background-image:url('img/case-1x-19.png');}
+.Square.xy-5x1.c-1x {background-image:url('img/case-1x-20.png');}
+.Square.xy-5x2.c-1x {background-image:url('img/case-1x-21.png');}
+.Square.xy-5x3.c-1x {background-image:url('img/case-1x-22.png');}
+.Square.xy-5x4.c-1x {background-image:url('img/case-1x-23.png');}
+.Square.xy-5x5.c-1x {background-image:url('img/case-1x-24.png');}
+.Square.xy-1x1.c-2x {background-image:url('img/case-2x-0.png');}
+.Square.xy-1x2.c-2x {background-image:url('img/case-2x-1.png');}
+.Square.xy-1x3.c-2x {background-image:url('img/case-2x-2.png');}
+.Square.xy-1x4.c-2x {background-image:url('img/case-2x-3.png');}
+.Square.xy-1x5.c-2x {background-image:url('img/case-2x-4.png');}
+.Square.xy-2x1.c-2x {background-image:url('img/case-2x-5.png');}
+.Square.xy-2x2.c-2x {background-image:url('img/case-2x-6.png');}
+.Square.xy-2x3.c-2x {background-image:url('img/case-2x-7.png');}
+.Square.xy-2x4.c-2x {background-image:url('img/case-2x-8.png');}
+.Square.xy-2x5.c-2x {background-image:url('img/case-2x-9.png');}
+.Square.xy-3x1.c-2x {background-image:url('img/case-2x-10.png');}
+.Square.xy-3x2.c-2x {background-image:url('img/case-2x-11.png');}
+.Square.xy-3x3.c-2x {background-image:url('img/case-2x-12.png');}
+.Square.xy-3x4.c-2x {background-image:url('img/case-2x-13.png');}
+.Square.xy-3x5.c-2x {background-image:url('img/case-2x-14.png');}
+.Square.xy-4x1.c-2x {background-image:url('img/case-2x-15.png');}
+.Square.xy-4x2.c-2x {background-image:url('img/case-2x-16.png');}
+.Square.xy-4x3.c-2x {background-image:url('img/case-2x-17.png');}
+.Square.xy-4x4.c-2x {background-image:url('img/case-2x-18.png');}
+.Square.xy-4x5.c-2x {background-image:url('img/case-2x-19.png');}
+.Square.xy-5x1.c-2x {background-image:url('img/case-2x-20.png');}
+.Square.xy-5x2.c-2x {background-image:url('img/case-2x-21.png');}
+.Square.xy-5x3.c-2x {background-image:url('img/case-2x-22.png');}
+.Square.xy-5x4.c-2x {background-image:url('img/case-2x-23.png');}
+.Square.xy-5x5.c-2x {background-image:url('img/case-2x-24.png');}
+

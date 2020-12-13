@@ -31,6 +31,8 @@ export default class Square extends Component {
     const s = this.props.square;
     const content = s.content;
     let color = content;
+    // showForbidden est traité à l'arrache
+    // dans lib/Ascacou avec le cb()
     if (this.props.showBlocked 
         && s.playable().length == 0 ) color = content || 3;
     let className = 'Square';

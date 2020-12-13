@@ -3,9 +3,9 @@ import Square from './Square';
 import React, { Component} from "react";
 export default class Board extends Component {
 
- static defaultProps = {
-onMove: function(){alert("onMove n'est pas défini")},
- }
+  static defaultProps = {
+    onMove: function(){alert("onMove n'est pas défini")},
+  }
   constructor (props) {
     super(props);
     /*
@@ -14,7 +14,7 @@ onMove: function(){alert("onMove n'est pas défini")},
 */
     this.move = this.move.bind(this);
   }
-  
+
   move (coord, content) {
     // et ça remonte au jeu
     this.props.onMove(coord + ':' + content);
@@ -32,12 +32,13 @@ onMove: function(){alert("onMove n'est pas défini")},
     let line = [];
     while (square) {
       line.push(<td key={square.coord}>
-          <Square 
+        <Square 
           showBlocked={this.props.showBlocked}
+          showForbidden={this.props.showForbidden}
           square={square}
           onSelect={this.move.bind(this, square.coord)}
-          />
-          </td>);
+        />
+      </td>);
       if (square.nl()) {
         squares.push(<tr  key={square.coord} >{line}</tr>)
         line = [];
@@ -53,8 +54,8 @@ onMove: function(){alert("onMove n'est pas défini")},
           </tbody>
         </table>
       </div>
-        )
-          
+    )
+
   }
 
 }

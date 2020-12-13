@@ -14,6 +14,7 @@ import Menu from './Menu';
 class App extends Component{
   state = { 
     show_blocked: true,
+    show_forbidden: true,
     allow_multiple_cards: this.props.allow_multiple_cards,
     deal_method: this.props.deal_method,
     show_new_game: true
@@ -77,6 +78,7 @@ class App extends Component{
              ascacou={this.ascacou}
              prms={{
                 show_blocked: this.state.show_blocked,
+                show_forbidden: this.state.show_forbidden,
             }}
        /> }
       </div>

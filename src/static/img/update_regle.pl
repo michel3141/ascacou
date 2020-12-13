@@ -1,4 +1,5 @@
 #!/bin/bash
+CSS="../../css/img"
 
 map () {
     FILE=$1
@@ -15,7 +16,6 @@ map () {
     montage -verbose -geometry +0+0 -tile 1x2 $CSS/titre.png tmp.png $FILE
     mogrify -verbose -resize ${WIDTH}x $FILE
 }
-CSS="../css/img"
 convert -verbose -resize 45x54   $CSS/motif-0-1122.png 100000000000002D000000360BEA7FAC9C4847CD.jpg
 convert -verbose -resize 140x168 $CSS/motif-0-1112.png 100000000000008C000000A8E110F53E54B6FFD9.png
 convert -verbose -resize 140x168 $CSS/motif-0-1112.png 100000000000002D00000036A3FE065D9632E68D.jpg
