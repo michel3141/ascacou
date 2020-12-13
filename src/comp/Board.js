@@ -47,7 +47,7 @@ export default class Board extends Component {
     }
     return (
       <div className="Board" align="center">
-        <img className="titre" src='img/titre.png'/>
+        {/*<img className="titre" src='img/titre.png'/>*/}
         <table>
           <tbody>
             {squares}

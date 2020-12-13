@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import '/css/Regles.css';
+const pjs = require('/../package.json')
 
 export default class Regles extends Component {
   render = () => (
@@ -15,8 +16,12 @@ export default class Regles extends Component {
 <h1 style={{textAlign:'center'}}>Association de Carrés<br/> et<br/> de Couleurs</h1>
 <p style={{textAlign:'center'}}><img src="img/100000000000013C00000176017FE24A41E0F645.jpg" style={{width:"8.387cm",height:"9.895cm"}} /></p>
 
-<p style={{textAlign:'center'}}>Un jeu de Marc Buonomo</p>
-<p style={{textAlign:'center'}}>marcbuonomo26@gmail.com</p>
+
+        <p style={{textAlign:'center'}}>Jeu créé par Marc Buonomo<br/>
+marcbuonomo26@gmail.com</p>
+        <p style={{textAlign:'center'}}>Site version {pjs.version} par <a href="https://github.com/michel3141">{pjs.author}</a></p>
+          
+<hr/>
 <h2 id="contenu">Contenu<a href="#top">#</a></h2>
 
 <ul>
@@ -38,7 +43,7 @@ export default class Regles extends Component {
 <p>Dès qu'une carte motif est reproduite sur le plateau, elle est mise de côté par le joueur qui la possède et ce joueur marque un point.</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
-<tr class="odd">
+<tr className="odd">
 <td><img src="img/1000000000000071000000875A7E52B12142BB18.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
 <td><p>Carte reproduite</p>
 <p><img src="img/100000000000002D00000036A3FE065D9632E68D.jpg" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>
@@ -50,12 +55,12 @@ export default class Regles extends Component {
 <p>Plusieurs cartes motif (4 au maximum) peuvent être reproduite en même temps, avec un seul pion joué. Elles sont alors toutes mises de côté.</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
-<tr class="odd">
+<tr className="odd">
 <td><img src="img/100000000000007100000087DFB228A471609B16.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
 <td><p>En jouant un pion noir entre les deux pions blancs, on reproduit les cartes :</p>
 <p><img src="img/100000000000008C000000A87317F4896CA6D119.png" style={{width:"1.199cm",height:"1.439cm"}} />  <img src="img/100000000000008C000000A8E110F53E54B6FFD9.png" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>
 </tr>
-<tr class="even">
+<tr className="even">
 <td><img src="img/100000000000007100000087CEB676665D7F11B8.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
 <td><p>On ne peut pas jouer un pion blanc entre les deux pions blancs sinon la carte</p>
 <p><img src="img/100000000000002D000000360BEA7FAC9C4847CD.jpg" style={{width:"1.199cm",height:"1.439cm"}} /></p>
@@ -67,7 +72,7 @@ export default class Regles extends Component {
 <p>Une carte motif ne pouvant être reproduite qu'une seule fois sur le plateau, certaines positions du plateau peuvent donc devenir interdites</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
-<tr class="odd">
+<tr className="odd">
 <td><img src="img/100000000000007100000087AAFEA097B5664748.jpg" style={{width: "3cm",height:"3.59cm"}} /></td>
 <td><p>Cartes déjà reproduites</p>
 <p><img src="img/100000000000008C000000A85906570A090FB8B7.png" style={{width:"1.199cm",height:"1.439cm"}} />   <img src="img/100000000000008C000000A8E110F53E54B6FFD9.png" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>

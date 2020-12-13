@@ -7,6 +7,7 @@ import {
   ListItem,
   FormControlLabel,
 } from '@material-ui/core';
+import '/css/Config.css'
 
 export default class Config extends Component {
   switches = [
@@ -45,13 +46,7 @@ export default class Config extends Component {
     const dm = this.props.appClass.deal_methods;
     return (
       <div className="Config">
-<h2 style={{textAlign:'center'}}>Association de Carrés<br/> et<br/> de Couleurs</h2>
-<p style={{textAlign:'center'}}><img src="img/100000000000013C00000176017FE24A41E0F645.jpg" style={{width:"50%"}} /></p>
-
-<p style={{textAlign:'center'}}>Jeu créé par Marc Buonomo<br/>
-Site créé par MicheL Buonomo<br/>
-version {process.env.VERSION} par {process.env.AUTHOR}</p>
-<hr/>
+<p style={{textAlign:'center'}}><img src="img/icon_128.png" /></p>
         { this.switches.map((s) => ( s.enable &&
         <div key={s.state}>
           <FormControlLabel

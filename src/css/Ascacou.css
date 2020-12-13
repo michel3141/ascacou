@@ -1,4 +1,7 @@
 .Ascacou .MuiToolbar-root {
-  background-color: rgba(0, 54, 200, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   color: white;
+}
+.Ascacou .MuiToolbar-root h2{
+  margin-left: 30%;
 }

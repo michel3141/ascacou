@@ -1,13 +1,9 @@
 import React, { Component} from "react";
-import {
-  AppBar,
-} from '@material-ui/core';
 
 import Game from '/lib/Ascacou';
 import "/css/App.css";
 
 import Ascacou from './Ascacou';
-import Config from './Config';
 import Menu from './Menu';
 
 
@@ -17,7 +13,6 @@ class App extends Component{
     show_forbidden: true,
     allow_multiple_cards: this.props.allow_multiple_cards,
     deal_method: this.props.deal_method,
-    show_new_game: true
     };
 
   ascacou = new Game(this.state);
@@ -43,44 +38,15 @@ class App extends Component{
   render() {
     return (
       <div className="App" >
-        <AppBar position="static">
-          <Menu
-            actions={[ 
-                {
-                  lbl: "Nouvelle partie",
-                  cmd: "new",
-                  enable: false,
-                  },
-                {
-                  lbl: "Arrêter",
-                  cmd: "end",
-                  enable: true,
-                  },
-            ]}
-            onAction={this.onAction}
-            titre="Ascacou"
-            drawer={
-              {
-                lbl: "Nouvelle Partie",
-                action: <Config 
-                    prms={this.state}
-                    onApply={this.new_game}
-                    onCancel={()=>this.setState({show_new_game: false})}
-                    appClass={Game}
-               />,
-                visible: this.state.show_new_game,
-              }
-            }
-            onToggleDrawer={(v) => this.setState({show_new_game: v})}
-          />
-        </AppBar>
         { this.ascacou && <Ascacou 
+             state={this.state}
              ascacou={this.ascacou}
              prms={{
                 show_blocked: this.state.show_blocked,
                 show_forbidden: this.state.show_forbidden,
             }}
        /> }
+        <div className="Square hidden" />
       </div>
     );
   }

@@ -1,8 +1,19 @@
-div.Regles {
-  height:100%;
-  width:500px;
+div.Regles .MuiPaper-root {
   padding: 7px;
+  height:100%; /* <= bien ici pour l'image de fond */
 }
+
+div.Regles {
+  width:500px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('/static/img/fond.png');
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+}
+
 div.Regles table {
   margin: auto;
   text-align: center;

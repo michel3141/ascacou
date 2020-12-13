@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import {
   Toolbar,
-  Button,
+  IconButton,
   Typography,
   Drawer,
 } from '@material-ui/core';
@@ -15,41 +15,59 @@ export default class Menu extends Component {
   }
 
   render() {
-    const drawer = this.props.drawer;
+    const drawers = this.props.drawers || [];
     return (
-        <Toolbar>
+      <Toolbar color='transparent'>
         { /*
-          <IconButton edge="start"  color="inherit" aria-label="menu">
+          <IconIconButton edge="start"  color="inherit" aria-label="menu">
             <MenuIcon 
-          </IconButton>
+          </IconIconButton>
           */}
-          <Typography variant="h6" >
-          {this.props.titre || ''}
-          </Typography>
-          { this.props.actions.map((a) => a.enable && 
-            <Button 
-              key={a.cmd}
-              onClick={this.props.onAction.bind(this, a.cmd)} 
-              color="inherit"
-            >{a.lbl}</Button>
-              )
-          }
-          {  drawer && <Button onClick={this.showDrawer} color="inherit">{drawer.lbl}</Button>}
-          {  drawer && <Drawer anchor="right" open={drawer.visible} onClose={this.hideDrawer}>
-            {drawer.action}
-          </Drawer>
-          }
-        </Toolbar>
+        { this.props.actions.map((a) => a.enable && 
+          <IconButton 
+            key={a.cmd}
+            onClick={this.props.onAction.bind(this, a.cmd)} 
+            color="inherit"
+            title={a.title}
+          >{a.lbl}</IconButton>
         )
+        }
+        <Typography variant="h2" >
+          {this.props.titre || ''}
+        </Typography>
+
+
+        {  drawers.map( (d,i) => d.enable &&
+              <IconButton 
+                key ={i}
+                style={i==0 ? {marginLeft:'auto'} : {}}
+                onClick={e=>this.showDrawer(e,d)} 
+                color="inherit" 
+                title={d.title}>
+                {d.lbl}
+              </IconButton>
+        )
+        }
+
+
+        {  drawers.map( (d,i) => d.enable &&
+            <Drawer key={i} anchor="right" open={d.visible} onClose={e=>this.hideDrawer(e,d)} >
+              {d.action}
+            </Drawer>
+        )
+        }
+
+      </Toolbar>
+    )
   }
 
-    hideDrawer(e) {
-      this.props.onToggleDrawer && 
-      this.props.onToggleDrawer(false);
-    }
-    showDrawer(e) {
-      this.props.onToggleDrawer && 
-      this.props.onToggleDrawer(true);
-    }
+  hideDrawer(e,d) {
+    d.onToggle &&
+      d.onToggle(false);
+  }
+  showDrawer(e,d) {
+    d.onToggle &&
+      d.onToggle(true);
+  }
 
 }
