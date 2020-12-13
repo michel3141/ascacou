@@ -39,13 +39,15 @@ class App extends Component{
     return (
       <div className="App" >
         { this.ascacou && <Ascacou 
-             state={this.state}
-             ascacou={this.ascacou}
-             prms={{
-                show_blocked: this.state.show_blocked,
-                show_forbidden: this.state.show_forbidden,
-            }}
-       /> }
+          state={this.state}
+          ascacou={this.ascacou}
+          newGame={this.new_game}
+          updateConfig={s=>this.setState(s)}
+          prms={{
+            show_blocked: this.state.show_blocked,
+            show_forbidden: this.state.show_forbidden,
+          }}
+        /> }
         <div className="Square hidden" />
       </div>
     );

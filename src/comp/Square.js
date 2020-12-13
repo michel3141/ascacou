@@ -12,14 +12,15 @@ export default class Square extends Component {
 
   onMouseDown = (e) => {
     e.preventDefault(); // click
-    this.timeout = setTimeout(()=>this.props.onSelect(2),1000);
+    this.props.onSelect('');
+    //this.timeout = setTimeout(()=>this.props.onSelect(2),1000);
   }
   onMouseUp = (e) => {
     e.preventDefault(); //  on ne sait jamais
-    if (this.timeout) {
-      this.props.onSelect(1);
-      clearTimeout(this.timeout);
-    }
+    //if (this.timeout) {
+    //  this.props.onSelect(1);
+    //  clearTimeout(this.timeout);
+    //}
     this.timeout = null;
   }
   onMouseLeave = (e) => {

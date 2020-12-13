@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <App 
-      allow_multiple_card={false}
+      allow_multiple_cards={false}
       deal_method='random'
     />
   </MuiThemeProvider>,

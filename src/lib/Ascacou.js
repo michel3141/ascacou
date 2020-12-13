@@ -51,7 +51,7 @@ export default class Ascacou {
         },
       },
       bnw    : {
-        label : "Jaunes et Bleus",
+        label : "Noirs et Blancs",
         order : 2,
         deal : function(){
           return (
@@ -149,26 +149,26 @@ export default class Ascacou {
     return this._squares[coord];
   }
 
-  play(move, cb) {
+  play(move) {
     const [coord, content] = move.split(':');
     const square = this.get_square(coord);
     if (square.content != 0) {
-      return false;
+      return null;
     }
     if (square.play(content)) {
       this.last.push(square);
       this.player = 3 - this.player;
-      cb()
       return true;
     } else {
-
-      if (this.prms.show_forbidden) {
-        square.content = content + 'x';
-        cb();
-        setTimeout(()=>{square.content = 0; cb()}, 750);
-      }
+      square.content = content + 'x';
       return false
     }
+  }
+
+  clear(move) {
+    const [coord, content] = move.split(':');
+    const square = this.get_square(coord);
+    square.content = 0;
   }
 
   undo (){
