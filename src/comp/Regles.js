@@ -14,7 +14,7 @@ export default class Regles extends Component {
 <li><a href="#variantes">Variantes</a></li>
 </ul>
 <h1 style={{textAlign:'center'}}>Association de Carrés<br/> et<br/> de Couleurs</h1>
-<p style={{textAlign:'center'}}><img src="img/100000000000013C00000176017FE24A41E0F645.jpg" style={{width:"8.387cm",height:"9.895cm"}} /></p>
+<p style={{textAlign:'center'}}><img src="img/100000000000013C00000176017FE24A41E0F645.jpg" style={{width:"6.387cm",height:"7.535cm"}} /></p>
 
 
         <p style={{textAlign:'center'}}>Jeu créé par Marc Buonomo<br/>

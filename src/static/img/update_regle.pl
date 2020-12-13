@@ -13,7 +13,8 @@ map () {
        i=$(expr $i + 1)
     done
     montage -verbose -geometry +0+0 -tile 5x5 $IMG tmp.png
-    montage -verbose -geometry +0+0 -tile 1x2 $CSS/titre.png tmp.png $FILE
+    convert -resize 250x $CSS/titre.png tmp2.png
+    montage -verbose -geometry +0+0 -tile 1x2 tmp2.png tmp.png $FILE
     mogrify -verbose -resize ${WIDTH}x $FILE
 }
 convert -verbose -resize 45x54   $CSS/motif-0-1122.png 100000000000002D000000360BEA7FAC9C4847CD.jpg
@@ -30,4 +31,4 @@ cp -v $CSS/icon* .
 #
 #
 #
-rm tmp.png
+rm tmp.png tmp2.png

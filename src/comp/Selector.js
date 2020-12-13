@@ -19,17 +19,19 @@ export default class Card extends Component {
       >
         <Grid item xs>
           <div className={select1}
-              onClick={()=>this.props.onClick(1)}
+              onMouseDown={()=>this.props.onClick(1)}
           >
             <img src="img/noirs.png"
+              onMouseDown={e=>e.preventDefault()}
             />
           </div>
         </Grid>
         <Grid item xs>
           <div className={select2}
-              onClick={()=>this.props.onClick(2)}
+              onMouseDown={()=>this.props.onClick(2)}
           >
             <img src="img/blancs.png"
+              onMouseDown={e=>e.preventDefault()}
             />
           </div>
         </Grid>

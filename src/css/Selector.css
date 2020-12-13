@@ -3,6 +3,7 @@
 }
 .Selector div{
   text-align: center;
+  position: relative;
 }
 
 .Selector div.Selected{
@@ -12,5 +13,7 @@
 .Selector img {
   margin: 10px;
   width: 120px;
-  box-shadow: 0 0 8px 8px white inset;
+  border-radius:35%;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.8);
+/*  filter: blur(1px);*/
 }
