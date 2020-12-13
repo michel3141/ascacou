@@ -1,8 +1,8 @@
 {
-  "name": "app",
+  "name": "Ascacou",
   "version": "1.0.0",
   "author": "MicheL",
-  "description": "",
+  "description": "Association de Carrés et de Couleurs",
   "keywords": [],
   "license": "ISC",
   "scripts": {
