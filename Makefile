@@ -18,8 +18,8 @@ build:
 clean:
 		rm -rf .cache dist .parcel-cache/
 
-https:
-	morbo -l 'https://*:3000?cert=script/Magic.crt&key=script/Magic.key' script/app
+server http https:
+	npx parcel serve -p 3000 $(TARGET)
 
 install:
 	rsync -Cav$(yes) --del dist/ u50644085@home258443028.1and1-data.host:$(WWW)
