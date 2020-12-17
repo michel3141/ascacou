@@ -5,15 +5,13 @@ $out .= "noirblanc:
 \tconvert noir.png -resize 160x160 1.png
 \tconvert blanc.png -resize 160x160 2.png
 \tconvert vert.png -resize 160x160 3.png
-\tconvert titre.png -resize 350x motif-top-0.png
-\tconvert titre.png -resize 350x -gamma 0.5 motif-top-1.png
 
 clean:
 \trm -rf case-0* case-1* case-2* case-3* motif-0-* motif-1-* icon*
 \n
 
 cleanall: clean
-\trm -rf 1.png 2.png 3.png motif-top-* Makefile
+\trm -rf 1.png 2.png 3.png Makefile
 \n";
 
 @all = ();
@@ -68,11 +66,9 @@ for $active (0..1) {
     $c2 = "case-$motif[1]-$i2.png";
     $c3 = "case-$motif[2]-$i3.png";
     $c4 = "case-$motif[3]-$i4.png";
-    $out .= "motif-$active-$motif.png: motif-top-$active.png $c1 $c2 $c3 $c4\n";
-    $out .= "\tmontage -geometry 175x175+0+0 -tile 2x2 $c1 $c2 $c3 $c4 tmp.png\n";
-    $out .= "\tmontage -geometry +0+0 -tile 1x2 motif-top-$active.png tmp.png \$\@\n";
-    $out .= "\tmogrify -resize 75x \$\@\n";
-    $out .= "\t\@rm tmp.png\n\n";
+    $out .= "motif-$active-$motif.png: $c1 $c2 $c3 $c4\n";
+    $out .= "\tmontage -geometry 175x175+0+0 -tile 2x2 $c1 $c2 $c3 $c4 \$\@\n";
+    $out .= "\tmogrify -resize 85x \$\@\n\n";
 
     push @all, "motif-$active-$motif.png";
   }
