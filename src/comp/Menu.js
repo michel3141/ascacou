@@ -13,6 +13,14 @@ export default class Menu extends Component {
     this.hideDrawer = this.hideDrawer.bind(this);
     this.showDrawer = this.showDrawer.bind(this);
   }
+  handleButtonPress = (action) => {
+    if (!action) return
+    this.buttonPressTimer = setTimeout(() => this.props.onAction(action), 1500);
+  }
+
+  handleButtonRelease = () => {
+    clearTimeout(this.buttonPressTimer);
+  }
 
   render() {
     const drawers = this.props.drawers || [];
@@ -27,6 +35,11 @@ export default class Menu extends Component {
           <IconButton 
             key={a.cmd}
             onClick={this.props.onAction.bind(this, a.cmd)} 
+            onTouchStart={this.handleButtonPress.bind(this, a.long)}
+          onTouchEnd={this.handleButtonRelease}
+          onMouseDown={this.handleButtonPress.bind(this, a.long)}
+          onMouseUp={this.handleButtonRelease}
+          onMouseLeave={this.handleButtonRelease}
             color="inherit"
             title={a.title}
           >{a.lbl}</IconButton>
