@@ -31,12 +31,13 @@ export default class Ascacou extends Component {
         title: "Recommencer au début",
         lbl: <SkipPreviousIcon/>,
         cmd: "restart",
-        enable: true,
+        enable: false,
       },
       {
         lbl: <ReplayIcon/>,
         title: "Annuler le coup",
         cmd: "undo",
+        long: "restart",
         enable: true,
       },
     ];
