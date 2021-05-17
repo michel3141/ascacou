@@ -24,9 +24,11 @@ div.Regles table {
 .Regles .Carte {
   width: 70px;
   margin: 5px;
+  border-radius: 0 0 0 20px;
 }
 
 .Regles .Plateau {
   width: 200px;
   margin: 5px;
+  border-radius: 0 0 0 20px;
 }
