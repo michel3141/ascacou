@@ -46,9 +46,9 @@ marcbuonomo26@gmail.com</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
 <tr className="odd">
-<td><img src="img/1000000000000071000000875A7E52B12142BB18.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
+<td><img className="Plateau" src="img/1000000000000071000000875A7E52B12142BB18.jpg" /></td>
 <td><p>Carte reproduite</p>
-<p><img src="img/100000000000002D00000036A3FE065D9632E68D.jpg" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>
+<p><img className="Carte" src="img/100000000000002D00000036A3FE065D9632E68D.jpg" /></p></td>
 </tr>
 </tbody>
 </table>
@@ -58,14 +58,15 @@ marcbuonomo26@gmail.com</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
 <tr className="odd">
-<td><img src="img/100000000000007100000087DFB228A471609B16.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
+<td><img className="Plateau" src="img/100000000000007100000087DFB228A471609B16.jpg" /></td>
 <td><p>En jouant un pion noir entre les deux pions blancs, on reproduit les cartes :</p>
-<p><img src="img/100000000000008C000000A87317F4896CA6D119.png" style={{width:"1.199cm",height:"1.439cm"}} />  <img src="img/100000000000008C000000A8E110F53E54B6FFD9.png" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>
+<p><img className="Carte" src="img/100000000000008C000000A87317F4896CA6D119.png" /> 
+  <img className="Carte" src="img/100000000000008C000000A8E110F53E54B6FFD9.png"/></p></td>
 </tr>
 <tr className="even">
-<td><img src="img/100000000000007100000087CEB676665D7F11B8.jpg" style={{width:"3cm",height:"3.59cm"}} /></td>
+<td><img className="Plateau" src="img/100000000000007100000087CEB676665D7F11B8.jpg" /></td>
 <td><p>On ne peut pas jouer un pion blanc entre les deux pions blancs sinon la carte</p>
-<p><img src="img/100000000000002D000000360BEA7FAC9C4847CD.jpg" style={{width:"1.199cm",height:"1.439cm"}} /></p>
+<p><img className="Carte" src="img/100000000000002D000000360BEA7FAC9C4847CD.jpg"/></p>
 <p>serait présente deux fois sur le plateau</p></td>
 </tr>
 </tbody>
@@ -75,9 +76,9 @@ marcbuonomo26@gmail.com</p>
 <table style={{textAlign:'center', width: '100%'}}>
 <tbody>
 <tr className="odd">
-<td><img src="img/100000000000007100000087AAFEA097B5664748.jpg" style={{width: "3cm",height:"3.59cm"}} /></td>
+<td><img className="Plateau" src="img/100000000000007100000087AAFEA097B5664748.jpg" /></td>
 <td><p>Cartes déjà reproduites</p>
-<p><img src="img/100000000000008C000000A85906570A090FB8B7.png" style={{width:"1.199cm",height:"1.439cm"}} />   <img src="img/100000000000008C000000A8E110F53E54B6FFD9.png" style={{width:"1.199cm",height:"1.439cm"}} /></p></td>
+<p><img className="Carte" src="img/100000000000008C000000A85906570A090FB8B7.png" />   <img className="Carte" src="img/100000000000008C000000A8E110F53E54B6FFD9.png" /></p></td>
 </tr>
 </tbody>
 </table>

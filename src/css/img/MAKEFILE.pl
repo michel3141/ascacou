@@ -5,15 +5,13 @@ $out .= "noirblanc:
 \tconvert noir.png -resize 160x160 1.png
 \tconvert blanc.png -resize 160x160 2.png
 \tconvert vert.png -resize 160x160 3.png
-\tconvert titre.png -resize 350x motif-top-0.png
-\tconvert titre.png -resize 350x -gamma 0.5 motif-top-1.png
 
 clean:
 \trm -rf case-0* case-1* case-2* case-3* motif-0-* motif-1-* icon*
 \n
 
 cleanall: clean
-\trm -rf 1.png 2.png 3.png motif-top-* Makefile
+\trm -rf 1.png 2.png 3.png Makefile
 \n";
 
 @all = ();
@@ -68,11 +66,9 @@ for $active (0..1) {
     $c2 = "case-$motif[1]-$i2.png";
     $c3 = "case-$motif[2]-$i3.png";
     $c4 = "case-$motif[3]-$i4.png";
-    $out .= "motif-$active-$motif.png: motif-top-$active.png $c1 $c2 $c3 $c4\n";
-    $out .= "\tmontage -geometry 175x175+0+0 -tile 2x2 $c1 $c2 $c3 $c4 tmp.png\n";
-    $out .= "\tmontage -geometry +0+0 -tile 1x2 motif-top-$active.png tmp.png \$\@\n";
-    $out .= "\tmogrify -resize 75x \$\@\n";
-    $out .= "\t\@rm tmp.png\n\n";
+    $out .= "motif-$active-$motif.png: $c1 $c2 $c3 $c4\n";
+    $out .= "\tmontage -geometry 175x175+0+0 -tile 2x2 $c1 $c2 $c3 $c4 \$\@\n";
+    $out .= "\tmogrify -resize 85x \$\@\n\n";
 
     push @all, "motif-$active-$motif.png";
   }
@@ -86,6 +82,39 @@ for $size (qw/48 64 128 192 256/) {
 $out .= "\tln -sf icon_48.png \$\@\n";
 $out .= "\t\@rm tmp.png\n\n";
 push @all, "icon.png";
+
+my %car = (
+  S => "0121 0200 0121 0002 0121 ",
+  C => "0212 0100 0200 0100 0212 ",
+  A => "0121 0202 0121 0202 0101 ",
+  O => "0121 0202 0101 0202 0121 ",
+  U => "0202 0101 0202 0101 0212 ",
+);
+%car = (
+  S => "0333 0300 0333 0003 0333 ",
+  C => "0333 0300 0300 0300 0333 ",
+  A => "0333 0303 0333 0303 0303 ",
+  O => "0333 0303 0303 0303 0333 ",
+  U => "0303 0303 0303 0303 0333 ",
+);
+%car = (
+  S => "0011 0100 0010 0001 0110 ",
+  C => "0022 0200 0200 0200 0022 ",
+  A => "0010 0101 0111 0101 0101 ",
+  O => "0010 0101 0101 0101 0010 ",
+  U => "0202 0202 0202 0202 0020 ",
+);
+for my $car (keys %car) {
+  $a=-1;$iconlist = join " ", map {$a++;$_ ne ' '?"case-$_-$a.png":''} split //,$car{$car};
+  $a=-1;$iconlist = join " ", map {$a++;$_ ne ' '?"$_.png":''} split //,$car{$car};
+  $out .= "$car.png: $iconlist\n";
+  $out .= "\tmontage -geometry +20+20 -background none -tile 4x5 $iconlist tmp.png\n";
+  my $size = 148;
+  $out .= "\tconvert -resize x${size} tmp.png \$\@\n";
+  $out .= "\t\@rm tmp.png\n\n";
+  push @all, "$car.png";
+}
+#montage -geometry +0+0 -tile 7x1 -gravity south -background none icon_192.png S.png C.png A.png C.png O.png U.png toto.png
 
 open MAKEFILE, '>Makefile';
 print MAKEFILE "all: @all\n$out"
