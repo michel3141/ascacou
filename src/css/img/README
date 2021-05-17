@@ -1,0 +1,4 @@
+make noiretblanc
+make all
+cd src/img
+./update_regle
