@@ -1,9 +1,9 @@
 .Card {
   background-size: cover;
-  padding: 5px;
-  margin : 10px;
+  margin : 5px;
   border: solid black 1px;
   display: inline-block;
+  border-radius: 0 0 0 20px;
 }
 
 .Card.m-1111 {background-image:url('img/motif-0-1111.png');}
