@@ -8,7 +8,7 @@ div.Config {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url('/static/img/fond.png');
+  background-image: url('img/fond.png');
   background-color: rgba(255, 255, 255, 0.6);
   background-blend-mode: lighten;
 }

@@ -3,22 +3,30 @@ WWW ?= ~/www/appli/ascacou2
 yes ?= n
 
 #TARGET=$$(find $$(sed s/^/src\\// src/build ) -type f)
-TARGET=src/index.html
+TARGET=public/index.html
 BUILD_OPT=--public-url ./
+SERVE_OPT=--lazy
 
 all: clean build
 	@echo $(TARGET)
 
-fast-build:
-	npx parcel build $(BUILD_OPT) $(TARGET)
+fast-build: static
+	npx parcel build --no-scope-hoist --no-optimize $(BUILD_OPT) $(TARGET)
 
-build: 
-	npx parcel build --experimental-scope-hoisting $(BUILD_OPT) $(TARGET)
+build: clean static 
+	npx parcel build $(BUILD_OPT) $(TARGET)
 
 clean:
 		rm -rf .cache dist .parcel-cache/
 
-server http https:
+pretty:
+	npx prettier --write 'src/**/*.js*'
+
+static:
+	mkdir -p dist
+	rsync -av src/static/ dist
+
+server http https: static
 	npx parcel serve -p 3000 $(TARGET)
 
 install:

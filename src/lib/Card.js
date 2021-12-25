@@ -6,7 +6,7 @@ export default class Card {
   }
 
   clone() {
-    const card=Card.load(this.dump());
+    const card = Card.load(this.dump());
     card.done = this.done;
     return card;
   }

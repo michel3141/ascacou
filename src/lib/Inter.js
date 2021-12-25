@@ -1,5 +1,5 @@
 export default class Inter {
-  constructor(squares, cards, prms={}) { 
+  constructor(squares, cards, prms = {}) {
     this.squares = squares;
     this.prms = prms;
     this.card = null;
@@ -8,13 +8,13 @@ export default class Inter {
       square.add_inter(this);
     }
 
-    this.get_card = function(value) {
+    this.get_card = function (value) {
       return cards[value];
-    }
+    };
   }
 
   get value() {
-    let value = '';
+    let value = "";
     for (const square of this.squares) {
       value += square.content;
     }
@@ -22,7 +22,7 @@ export default class Inter {
   }
 
   get pattern() {
-    let pattern = '';
+    let pattern = "";
     for (const square of this.squares) {
       pattern += square.pattern;
     }
@@ -32,11 +32,11 @@ export default class Inter {
   update() {
     if (this.card != null) {
       this.card.done = false;
-      this.card = null
+      this.card = null;
     }
     this.card = this.get_card(this.value);
     if (this.card != null) {
-      if (this.prms.allow_multiple_cards || ! this.card.done) {
+      if (this.prms.allow_multiple_cards || !this.card.done) {
         this.card.done = true;
       } else {
         this.card = null;
@@ -46,4 +46,3 @@ export default class Inter {
     return true;
   }
 }
-

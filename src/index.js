@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import App from '/comp/App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, createTheme } from "@mui/material";
+import App from "/src/comp/App";
 /*
 https://mariosfakiolas.com/blog/my-react-components-render-twice-and-drive-me-crazy/
 ReactDOM.render(
@@ -11,22 +11,21 @@ ReactDOM.render(
   document.getElementById('root')
 );
 */
-const theme = createMuiTheme({
+
+const theme = createTheme({
   palette: {
     primary: {
-      main: '#888888'
+      main: "#888888",
     },
     secondary: {
-      main: '#000000'
-    }
-  }
+      main: "#000000",
+    },
+  },
 });
+
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <App 
-      allow_multiple_cards={false}
-      deal_method='random'
-    />
-  </MuiThemeProvider>,
-  document.getElementById('root')
+  <ThemeProvider theme={theme}>
+    <App allow_multiple_cards={false} deal_method="random" />
+  </ThemeProvider>,
+  document.getElementById("root")
 );

@@ -1,16 +1,18 @@
 export default class Square {
-  constructor(coord = '', next=null, new_row = 1) {
+  constructor(coord = "", next = null, new_row = 1) {
     this.new_row = new_row;
     this.next = next; // accès en lecture
-    this._content = 0; 
-    this.coord = coord;  // accès en lecture
+    this._content = 0;
+    this.coord = coord; // accès en lecture
     this.inters = [];
   }
 
-  // short-cut 
-  nl() {return this.new_row;}
+  // short-cut
+  nl() {
+    return this.new_row;
+  }
   set content(content) {
-    this._content = content
+    this._content = content;
   }
   get content() {
     return this._content;
@@ -24,7 +26,7 @@ export default class Square {
     } else {
       this.content = save;
       this.update();
-      return false
+      return false;
     }
   }
 
@@ -64,11 +66,10 @@ export default class Square {
 
   update() {
     for (const inter of this.inters) {
-      if (! inter.update()) {
+      if (!inter.update()) {
         return false;
       }
     }
     return true;
   }
 }
-

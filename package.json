@@ -10,20 +10,17 @@
     "start": "parcel src/index.html",
     "build-prod": "parcel build src/index.html"
   },
-  "staticFiles": {
-    "staticPath": "src/static"
-  },
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "@types/react": "^17.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "babel-preset-env": "",
-    "babel-preset-react": "",
-    "parcel-bundler": "",
-    "parcel-plugin-static-files-copy": ""
+    "@parcel/packager-raw-url": "^2.0.1",
+    "@parcel/transformer-webmanifest": "^2.0.1",
+    "parcel": "^2.0.1",
+    "prettier": "^2.5.1"
   }
 }

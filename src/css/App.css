@@ -4,7 +4,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url('/static/img/fond.png')
+  background-image: url('img/fond.png')
 }
 .App {
 }

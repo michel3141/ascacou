@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import {Grid,AppBar} from '@material-ui/core';
-import Game from '/lib/Ascacou';
-import Player from './Player';
-import Board from './Board';
-import Selector from './Selector';
-import Menu from './Menu';
-import Regles from './Regles';
-import Config from './Config';
-import '/css/Ascacou.css';
+import { Grid, AppBar } from "@mui/material";
+import Game from "/src/lib/Ascacou";
+import Player from "./Player";
+import Board from "./Board";
+import Selector from "./Selector";
+import Menu from "./Menu";
+import Regles from "./Regles";
+import Config from "./Config";
+import "/src/css/Ascacou.css";
 
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import HelpIcon from '@material-ui/icons/Help';
-import ReplayIcon from '@material-ui/icons/Replay';
-import MenuIcon from '@material-ui/icons/Menu';
+import {
+  SkipPrevious,
+  Help,
+  Replay,
+  Menu as MenuIcn,
+} from "@mui/icons-material";
 
 export default class Ascacou extends Component {
   constructor(props) {
@@ -25,16 +27,16 @@ export default class Ascacou extends Component {
           */
     super(props);
 
-    this.play=this.play.bind(this);
+    this.play = this.play.bind(this);
     this.actions = [
       {
         title: "Recommencer au début",
-        lbl: <SkipPreviousIcon/>,
+        lbl: <SkipPrevious />,
         cmd: "restart",
         enable: false,
       },
       {
-        lbl: <ReplayIcon/>,
+        lbl: <Replay />,
         title: "Annuler le coup",
         cmd: "undo",
         long: "restart",
@@ -46,13 +48,13 @@ export default class Ascacou extends Component {
       show_regles: false,
       show_new_game: true,
       currentColor: 1,
-    }
+    };
   }
 
-  play (move) {
+  play(move) {
     move += this.state.currentColor;
     const moved = this.props.ascacou.play(move);
-    if (moved === null) return
+    if (moved === null) return;
     if (moved) {
       this.forceUpdate();
     } else {
@@ -60,7 +62,7 @@ export default class Ascacou extends Component {
         this.forceUpdate();
         setTimeout(() => {
           this.props.ascacou.clear(move);
-          this.forceUpdate()
+          this.forceUpdate();
         }, 750);
       } else {
         this.props.ascacou.clear(move);
@@ -68,93 +70,109 @@ export default class Ascacou extends Component {
     }
   }
 
-  undo () {
+  undo() {
     if (this.props.ascacou.undo()) this.forceUpdate();
   }
-  restart () {
+  restart() {
     while (this.props.ascacou.undo()) this.forceUpdate();
   }
 
   onAction = (cmd) => {
-    if (cmd == 'undo') this.undo();
-    if (cmd == 'restart') this.restart();
-  }
+    if (cmd == "undo") this.undo();
+    if (cmd == "restart") this.restart();
+  };
 
   onNewGame = (prms) => {
-    this.setState({show_new_game: false});
+    this.setState({ show_new_game: false });
     this.props.newGame(prms);
-  }
+  };
 
   render() {
     const game = this.props.ascacou;
-    return (<div className="Ascacou">
-      <AppBar position="static" color='transparent'>
-        <Menu
-          actions={this.actions}
-          onAction={this.onAction}
-          drawers={[
-            {
-              lbl:<HelpIcon/>,
-                title:"Règles", 
-                action:<Regles/>, 
-                visible: this.state.show_regles, 
+    return (
+      <div className="Ascacou">
+        <AppBar position="static" color="transparent">
+          <Menu
+            actions={this.actions}
+            onAction={this.onAction}
+            drawers={[
+              {
+                lbl: <Help />,
+                title: "Règles",
+                action: <Regles />,
+                visible: this.state.show_regles,
                 enable: true,
-                onToggle: (v)=>this.setState({show_regles: v})
-            },
+                onToggle: (v) => this.setState({ show_regles: v }),
+              },
               {
                 title: "Nouvelle partie",
-                lbl: <MenuIcon/>,
-                action: <Config 
-                  prms={this.props.state}
-                  onApply={this.onNewGame}
-                  updateConfig={this.props.updateConfig}
-                  appClass={Game}
-                />,
+                lbl: <MenuIcn />,
+                action: (
+                  <Config
+                    prms={this.props.state}
+                    onApply={this.onNewGame}
+                    updateConfig={this.props.updateConfig}
+                    appClass={Game}
+                  />
+                ),
                 visible: this.state.show_new_game,
                 enable: true,
-                onToggle: v => this.setState({show_new_game: v})
-              }
-          ]}
-          titre=<img src="img/titre-t.png" onMouseDown={(e)=>e.preventDefault()}/>
-        />
-      </AppBar>
-      <Grid 
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="flex-start"
-      >
-        <Grid item xs>
-          <Player id="1" name="Joueur 1" cards={game.cards} player={game.player}/>
-        </Grid>
-        <Grid item xs>
-          <Grid 
-            container
-            direction="column"
-            alignItems="center"
-            justify="space-evenly"
-          >
-            <Grid item xs>
-              <Board 
-                onMove={this.play} squares={game.squares} 
-                showBlocked={this.props.prms.show_blocked}
-                showForbidden={this.props.prms.show_forbidden}
-              />
-            </Grid>
-            <Grid item xs>
-              <Selector 
-                onClick={currentColor=>this.setState({currentColor})}
-                current={this.state.currentColor}
-              />
+                onToggle: (v) => this.setState({ show_new_game: v }),
+              },
+            ]}
+            titre=<img
+              src="img/titre-t.png"
+              onMouseDown={(e) => e.preventDefault()}
+            />
+          />
+        </AppBar>
+        <Grid
+          container
+          direction="row"
+          justify="space-evenly"
+          alignItems="flex-start"
+        >
+          <Grid item xs>
+            <Player
+              id="1"
+              name="Joueur 1"
+              cards={game.cards}
+              player={game.player}
+            />
+          </Grid>
+          <Grid item xs>
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justify="space-evenly"
+            >
+              <Grid item xs>
+                <Board
+                  onMove={this.play}
+                  squares={game.squares}
+                  showBlocked={this.props.prms.show_blocked}
+                  showForbidden={this.props.prms.show_forbidden}
+                />
+              </Grid>
+              <Grid item xs>
+                <Selector
+                  onClick={(currentColor) => this.setState({ currentColor })}
+                  current={this.state.currentColor}
+                />
+              </Grid>
             </Grid>
           </Grid>
+          <Grid item xs>
+            <Player
+              id="2"
+              name="Joueur 2"
+              cards={game.cards}
+              player={game.player}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <Player id="2" name="Joueur 2" cards={game.cards} player={game.player}/>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
     );
   }
-
 }

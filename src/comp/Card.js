@@ -1,8 +1,8 @@
-import React, { Component} from "react";
-import '/css/Card.css';
+import React, { Component } from "react";
+import "/src/css/Card.css";
 
 export default class Card extends Component {
-  constructor (props) {
+  constructor(props) {
     /*
        card
        */
@@ -12,8 +12,8 @@ export default class Card extends Component {
   render() {
     const c = this.props.card;
     let className = "Card";
-    className += " m-"+c.value;
+    className += " m-" + c.value;
     if (c.done) className += " done";
-    return <div className={className}/>;
+    return <div className={className} />;
   }
 }
