@@ -15,10 +15,10 @@ ReactDOM.render(
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#888888",
+      main: "#000000",
     },
     secondary: {
-      main: "#000000",
+      main: "#888888",
     },
   },
 });

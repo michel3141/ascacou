@@ -18,3 +18,7 @@ div.Config table {
   text-align: center;
   border-spacing: 10px;
 }
+
+div.Config .MuiListItem-root.Mui-selected {
+  background-color: rgba(0, 0, 0, 0.28);
+}
