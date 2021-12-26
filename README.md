@@ -1,12 +1,16 @@
 # ascacou
 
-`npm i`
-`make server`
+```
+npm i
+make server
+```
 
 ou
 
-`npm i`
-`make build`
+```
+npm i
+make build
+```
 
 
 ## But
