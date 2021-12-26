@@ -1,28 +1,9 @@
-https://createapp.dev/parcel
+# ascacou
 
-https://parceljs.org/hmr.html#safe-write
-set backupcopy=yes
+`npm i
+make build`
 
-pour faire du tree shaking pour react
-https://material-ui.com/guides/minimizing-bundle-size/#option-2
-https://github.com/ant-design/ant-design/issues/8716#issuecomment-354644009
+ou
 
-vim-syntax
-https://github.com/MaxMEllon/vim-jsx-pretty
-(voir https://github.com/junegunn/vim-plug pour la config de Plug)
-
-mojo vim
-https://www.vim.org/scripts/script.php?script_id=3168
-ou 
-https://github.com/yko/mojo.vim
-
-.env
-https://parceljs.org/env.html
-le fichier .env à côté de package.json contient des variables d'environnement
-accessibles par process.env.XXX
-
-######
-pour commencer :
-npm install
-npm install --save react react-dom @material-ui/core
-npm install --save-dev parcel-bundler babel-preset-env babel-preset-react
+`npm i
+make server`
