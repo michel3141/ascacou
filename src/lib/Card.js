@@ -35,6 +35,28 @@ export default class Card {
     return this.value + ":" + this.player;
   }
 
+  fen() {
+    const translation = {
+          "1111": 0,
+          "1112": 1,
+          "1121": 2,
+          "1122": 3,
+          "1211": 4,
+          "1212": 5,
+          "1221": 6,
+          "1222": 7,
+          "2111": 8,
+          "2112": 9,
+          "2121": 10,
+          "2122": 11,
+          "2211": 12,
+          "2212": 13,
+          "2221": 14,
+          "2222": 15,
+    }
+    return translation[this.value]
+  }
+
   static load(dump) {
     const [value, player] = dump.split(":");
     const card = new Card(value);

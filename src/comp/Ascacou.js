@@ -172,6 +172,7 @@ export default class Ascacou extends Component {
             />
           </Grid>
         </Grid>
+        <div className="Fen"> {game.fen()}</div>
       </div>
     );
   }

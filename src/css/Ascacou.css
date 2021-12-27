@@ -5,3 +5,10 @@
 .Ascacou .MuiToolbar-root h2{
   margin-left: auto;
 }
+
+.Ascacou .Fen {
+  /*display: none;*/
+  width: 100%;
+  text-align: right;
+  background-color: Beige;
+}

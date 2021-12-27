@@ -107,6 +107,49 @@ export default class Ascacou {
     return dump;
   }
 
+  fen() {
+    const fen = []
+    let square = this.get_square()
+    let empty = 0
+    let line = ''
+    while (square) {
+      const content = square.content
+      if (content == 0) {
+        empty += 1
+      } else {
+        if (empty>0) {
+          line += empty
+          empty = 0
+        }
+
+        if (content == 1) {
+          line += "b"
+        } else if (content == 2) {
+          line += "w"
+        } else {
+          line += content
+        }
+      }
+      if (square.new_row ) {
+        if (empty>0) {
+          line += empty
+          empty = 0
+        }
+        fen.push(line)
+        line = ''
+      }
+      square = square.next
+    }
+    const cards = []
+    for (const card of this.cards) {
+      if (card.player == this.player) {
+        cards.push(card.fen())
+      }
+    }
+    fen.push(cards.join(','))
+    return fen.join('/')
+  }
+
   load_cards(dump) {
     // die "On ne change pas les cartes après le début\n" if
     for (const card_dump of dump.split(" ")) {

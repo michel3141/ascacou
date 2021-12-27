@@ -4,7 +4,7 @@ yes ?= n
 
 #TARGET=$$(find $$(sed s/^/src\\// src/build ) -type f)
 TARGET=public/index.html
-BUILD_OPT=--public-url ./
+BUILD_OPT=--public-url ./ --no-source-maps
 SERVE_OPT=--lazy
 
 all: clean build
