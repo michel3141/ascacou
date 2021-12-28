@@ -140,14 +140,15 @@ export default class Ascacou {
       }
       square = square.next
     }
+    const board = fen.join('/')
     const cards = []
     for (const card of this.cards) {
       if (card.player == this.player) {
         cards.push(card.fen())
       }
     }
-    fen.push(cards.join(','))
-    return fen.join('/')
+    const my_cards = cards.join('')
+    return [board, my_cards].join(' ')
   }
 
   load_cards(dump) {
