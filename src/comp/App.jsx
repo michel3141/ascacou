@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Game from "/src/lib/Ascacou";
-import "/src/css/App.css";
+import Game from "/lib/Ascacou";
+import "/css/App.css";
 
 import Ascacou from "./Ascacou";
 import Menu from "./Menu";

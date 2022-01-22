@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "/src/css/Regles.css";
+import "/css/Regles.css";
 import { PublishRounded } from "@mui/icons-material";
 
-const pjs = require("/src/../package.json");
+import pjs from "/../package.json";
 
 export default class Regles extends Component {
   render = () => (

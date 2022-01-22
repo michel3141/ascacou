@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid } from "@mui/material";
-import "/src/css/Selector.css";
+import "/css/Selector.css";
 
 export default class Card extends Component {
   constructor(props) {

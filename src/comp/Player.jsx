@@ -1,4 +1,4 @@
-import "/src/css/Player.css";
+import "/css/Player.css";
 import Card from "./Card";
 import React, { Component } from "react";
 

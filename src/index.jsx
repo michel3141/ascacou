@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
-import App from "/src/comp/App";
+import App from "/comp/App";
 /*
 https://mariosfakiolas.com/blog/my-react-components-render-twice-and-drive-me-crazy/
 ReactDOM.render(

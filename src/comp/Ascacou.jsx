@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Grid, AppBar } from "@mui/material";
-import Game from "/src/lib/Ascacou";
+import Game from "/lib/Ascacou";
 import Player from "./Player";
 import Board from "./Board";
 import Selector from "./Selector";
 import Menu from "./Menu";
 import Regles from "./Regles";
 import Config from "./Config";
-import "/src/css/Ascacou.css";
+import "/css/Ascacou.css";
 
 import {
   SkipPrevious,
@@ -120,10 +120,10 @@ export default class Ascacou extends Component {
                 onToggle: (v) => this.setState({ show_new_game: v }),
               },
             ]}
-            titre=<img
+            titre={<img
               src="img/titre-t.png"
               onMouseDown={(e) => e.preventDefault()}
-            />
+            />}
           />
         </AppBar>
         <Grid

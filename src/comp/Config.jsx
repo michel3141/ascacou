@@ -9,7 +9,7 @@ import {
   FormControlLabel,
   Divider,
 } from "@mui/material";
-import "/src/css/Config.css";
+import "/css/Config.css";
 
 export default class Config extends Component {
   current = [

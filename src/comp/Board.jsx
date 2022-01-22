@@ -1,4 +1,4 @@
-import "/src/css/Board.css";
+import "/css/Board.css";
 import Square from "./Square";
 import React, { Component } from "react";
 export default class Board extends Component {
