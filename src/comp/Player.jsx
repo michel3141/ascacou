@@ -9,17 +9,17 @@ export default function ({ id, name, player, cards }) {
       <fieldset className={mon_tour ? 'mon-tour' : 'pas-mon-tour'}>
         <legend>[{name}]</legend>
         {cards
-            .filter(c => c.player == id && !c.done)
-            .map(c => (
-              <Card key={c.value} card={c} />
-            ))}
+          .filter(c => c.player == id && !c.done)
+          .map(c => (
+            <Card key={c.value} card={c} />
+          ))}
       </fieldset>
       <fieldset>
         {cards
-            .filter(c => c.player == id && c.done)
-            .map(c => (
-              <Card key={c.value} card={c} />
-            ))}
+          .filter(c => c.player == id && c.done)
+          .map(c => (
+            <Card key={c.value} card={c} />
+          ))}
       </fieldset>
     </div>
   )

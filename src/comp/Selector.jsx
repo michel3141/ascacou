@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid } from '@mui/material'
 import '/css/Selector.css'
 
-export default function({current, onClick}) {
+export default function ({ current, onClick }) {
   const select1 = current == 1 ? 'Selected' : ''
   const select2 = current == 2 ? 'Selected' : ''
   return (

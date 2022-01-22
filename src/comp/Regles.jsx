@@ -4,7 +4,7 @@ import { PublishRounded } from '@mui/icons-material'
 
 import pjs from '/../package.json'
 
-export default function() {
+export default function () {
   return (
     <div className='Regles'>
       <ul id='top'>
