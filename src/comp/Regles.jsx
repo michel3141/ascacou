@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '/css/Regles.css'
 import { PublishRounded } from '@mui/icons-material'
 
 import pjs from '/../package.json'
 
-export default class Regles extends Component {
-  render = () => (
+export default function() {
+  return (
     <div className='Regles'>
       <ul id='top'>
         <li>

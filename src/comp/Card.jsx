@@ -1,19 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '/css/Card.css'
 
-export default class Card extends Component {
-  constructor(props) {
-    /*
-       card
-       */
-    super(props)
-  }
-
-  render() {
-    const c = this.props.card
+export default function({card}) {
     let className = 'Card'
-    className += ' m-' + c.value
-    if (c.done) className += ' done'
+    className += ' m-' + card.value
+    if (card.done) className += ' done'
     return <div className={className} />
-  }
 }
