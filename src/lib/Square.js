@@ -1,75 +1,75 @@
 export default class Square {
-  constructor(coord = "", next = null, new_row = 1) {
-    this.new_row = new_row;
-    this.next = next; // accès en lecture
-    this._content = 0;
-    this.coord = coord; // accès en lecture
-    this.inters = [];
+  constructor(coord = '', next = null, new_row = 1) {
+    this.new_row = new_row
+    this.next = next // accès en lecture
+    this._content = 0
+    this.coord = coord // accès en lecture
+    this.inters = []
   }
 
   // short-cut
   nl() {
-    return this.new_row;
+    return this.new_row
   }
   set content(content) {
-    this._content = content;
+    this._content = content
   }
   get content() {
-    return this._content;
+    return this._content
   }
 
   play(content) {
-    const save = this.content;
-    this.content = content;
+    const save = this.content
+    this.content = content
     if (this.update()) {
-      return true;
+      return true
     } else {
-      this.content = save;
-      this.update();
-      return false;
+      this.content = save
+      this.update()
+      return false
     }
   }
 
   pattern() {
-    let pattern;
-    if (this.content != "0") {
-      pattern = this.content;
+    let pattern
+    if (this.content != '0') {
+      pattern = this.content
     } else {
-      pattern = this.playable().join("");
-      if (pattern == "") {
-        pattern = "X";
+      pattern = this.playable().join('')
+      if (pattern == '') {
+        pattern = 'X'
       } else {
-        pattern = "[" + pattern + "]";
+        pattern = '[' + pattern + ']'
       }
     }
-    return pattern;
+    return pattern
   }
 
   playable() {
-    const list = [];
+    const list = []
     if (this.content == 0) {
       if (this.play(1)) {
-        list.push(1);
-        this.play(0);
+        list.push(1)
+        this.play(0)
       }
       if (this.play(2)) {
-        list.push(2);
-        this.play(0);
+        list.push(2)
+        this.play(0)
       }
     }
-    return list;
+    return list
   }
 
   add_inter(inter) {
-    this.inters.push(inter);
+    this.inters.push(inter)
   }
 
   update() {
     for (const inter of this.inters) {
       if (!inter.update()) {
-        return false;
+        return false
       }
     }
-    return true;
+    return true
   }
 }

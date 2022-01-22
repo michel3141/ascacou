@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { Grid, AppBar } from "@mui/material";
-import Game from "/lib/Ascacou";
-import Player from "./Player";
-import Board from "./Board";
-import Selector from "./Selector";
-import Menu from "./Menu";
-import Regles from "./Regles";
-import Config from "./Config";
-import "/css/Ascacou.css";
+import React, { Component } from 'react'
+import { Grid, AppBar } from '@mui/material'
+import Game from '/lib/Ascacou'
+import Player from './Player'
+import Board from './Board'
+import Selector from './Selector'
+import Menu from './Menu'
+import Regles from './Regles'
+import Config from './Config'
+import '/css/Ascacou.css'
 
 import {
   SkipPrevious,
   Help,
   Replay,
   Menu as MenuIcn,
-} from "@mui/icons-material";
+} from '@mui/icons-material'
 
 export default class Ascacou extends Component {
   constructor(props) {
@@ -25,87 +25,87 @@ export default class Ascacou extends Component {
           show_blocked
           show_forbidden
           */
-    super(props);
+    super(props)
 
-    this.play = this.play.bind(this);
+    this.play = this.play.bind(this)
     this.actions = [
       {
-        title: "Recommencer au début",
+        title: 'Recommencer au début',
         lbl: <SkipPrevious />,
-        cmd: "restart",
+        cmd: 'restart',
         enable: false,
       },
       {
         lbl: <Replay />,
-        title: "Annuler le coup",
-        cmd: "undo",
-        long: "restart",
+        title: 'Annuler le coup',
+        cmd: 'undo',
+        long: 'restart',
         enable: true,
       },
-    ];
+    ]
 
     this.state = {
       show_regles: false,
       show_new_game: true,
       currentColor: 1,
-    };
+    }
   }
 
   play(move) {
-    move += this.state.currentColor;
-    const moved = this.props.ascacou.play(move);
-    if (moved === null) return;
+    move += this.state.currentColor
+    const moved = this.props.ascacou.play(move)
+    if (moved === null) return
     if (moved) {
-      this.forceUpdate();
+      this.forceUpdate()
     } else {
       if (this.props.prms.show_forbidden) {
-        this.forceUpdate();
+        this.forceUpdate()
         setTimeout(() => {
-          this.props.ascacou.clear(move);
-          this.forceUpdate();
-        }, 750);
+          this.props.ascacou.clear(move)
+          this.forceUpdate()
+        }, 750)
       } else {
-        this.props.ascacou.clear(move);
+        this.props.ascacou.clear(move)
       }
     }
   }
 
   undo() {
-    if (this.props.ascacou.undo()) this.forceUpdate();
+    if (this.props.ascacou.undo()) this.forceUpdate()
   }
   restart() {
-    while (this.props.ascacou.undo()) this.forceUpdate();
+    while (this.props.ascacou.undo()) this.forceUpdate()
   }
 
-  onAction = (cmd) => {
-    if (cmd == "undo") this.undo();
-    if (cmd == "restart") this.restart();
-  };
+  onAction = cmd => {
+    if (cmd == 'undo') this.undo()
+    if (cmd == 'restart') this.restart()
+  }
 
-  onNewGame = (prms) => {
-    this.setState({ show_new_game: false });
-    this.props.newGame(prms);
-  };
+  onNewGame = prms => {
+    this.setState({ show_new_game: false })
+    this.props.newGame(prms)
+  }
 
   render() {
-    const game = this.props.ascacou;
+    const game = this.props.ascacou
     return (
-      <div className="Ascacou">
-        <AppBar position="static" color="transparent">
+      <div className='Ascacou'>
+        <AppBar position='static' color='transparent'>
           <Menu
             actions={this.actions}
             onAction={this.onAction}
             drawers={[
               {
                 lbl: <Help />,
-                title: "Règles",
+                title: 'Règles',
                 action: <Regles />,
                 visible: this.state.show_regles,
                 enable: true,
-                onToggle: (v) => this.setState({ show_regles: v }),
+                onToggle: v => this.setState({ show_regles: v }),
               },
               {
-                title: "Nouvelle partie",
+                title: 'Nouvelle partie',
                 lbl: <MenuIcn />,
                 action: (
                   <Config
@@ -117,25 +117,27 @@ export default class Ascacou extends Component {
                 ),
                 visible: this.state.show_new_game,
                 enable: true,
-                onToggle: (v) => this.setState({ show_new_game: v }),
+                onToggle: v => this.setState({ show_new_game: v }),
               },
             ]}
-            titre={<img
-              src="img/titre-t.png"
-              onMouseDown={(e) => e.preventDefault()}
-            />}
+            titre={
+              <img
+                src='img/titre-t.png'
+                onMouseDown={e => e.preventDefault()}
+              />
+            }
           />
         </AppBar>
         <Grid
           container
-          direction="row"
-          justify="space-evenly"
-          alignItems="flex-start"
+          direction='row'
+          justify='space-evenly'
+          alignItems='flex-start'
         >
           <Grid item xs>
             <Player
-              id="1"
-              name="Joueur 1"
+              id='1'
+              name='Joueur 1'
               cards={game.cards}
               player={game.player}
             />
@@ -143,9 +145,9 @@ export default class Ascacou extends Component {
           <Grid item xs>
             <Grid
               container
-              direction="column"
-              alignItems="center"
-              justify="space-evenly"
+              direction='column'
+              alignItems='center'
+              justify='space-evenly'
             >
               <Grid item xs>
                 <Board
@@ -157,7 +159,7 @@ export default class Ascacou extends Component {
               </Grid>
               <Grid item xs>
                 <Selector
-                  onClick={(currentColor) => this.setState({ currentColor })}
+                  onClick={currentColor => this.setState({ currentColor })}
                   current={this.state.currentColor}
                 />
               </Grid>
@@ -165,15 +167,15 @@ export default class Ascacou extends Component {
           </Grid>
           <Grid item xs>
             <Player
-              id="2"
-              name="Joueur 2"
+              id='2'
+              name='Joueur 2'
               cards={game.cards}
               player={game.player}
             />
           </Grid>
         </Grid>
-        <div className="Fen"> {game.fen()}</div>
+        <div className='Fen'> {game.fen()}</div>
       </div>
-    );
+    )
   }
 }
