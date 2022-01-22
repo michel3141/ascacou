@@ -1,58 +1,58 @@
-import React, { Component } from "react";
-import "/src/css/Regles.css";
-import { PublishRounded } from "@mui/icons-material";
+import React, { Component } from 'react'
+import '/css/Regles.css'
+import { PublishRounded } from '@mui/icons-material'
 
-const pjs = require("/src/../package.json");
+import pjs from '/../package.json'
 
 export default class Regles extends Component {
   render = () => (
-    <div className="Regles">
-      <ul id="top">
+    <div className='Regles'>
+      <ul id='top'>
         <li>
-          <a href="#contenu">Contenu</a>
+          <a href='#contenu'>Contenu</a>
         </li>
         <li>
-          <a href="#but">But</a>
+          <a href='#but'>But</a>
         </li>
         <li>
-          <a href="#préparation">Préparation</a>
+          <a href='#préparation'>Préparation</a>
         </li>
         <li>
-          <a href="#tour-de-jeu">Tour de jeu</a>
+          <a href='#tour-de-jeu'>Tour de jeu</a>
         </li>
         <li>
-          <a href="#blocage">Blocage</a>
+          <a href='#blocage'>Blocage</a>
         </li>
         <li>
-          <a href="#variantes">Variantes</a>
+          <a href='#variantes'>Variantes</a>
         </li>
       </ul>
-      <h1 style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: 'center' }}>
         Association de Carrés
         <br /> et
         <br /> de Couleurs
       </h1>
-      <p style={{ textAlign: "center" }}>
+      <p style={{ textAlign: 'center' }}>
         <img
-          src="img/100000000000013C00000176017FE24A41E0F645.jpg"
-          style={{ width: "6.387cm", height: "7.535cm" }}
+          src='img/100000000000013C00000176017FE24A41E0F645.jpg'
+          style={{ width: '6.387cm', height: '7.535cm' }}
         />
       </p>
 
-      <p style={{ textAlign: "center" }}>
+      <p style={{ textAlign: 'center' }}>
         Jeu créé par Marc Buonomo
         <br />
         marcbuonomo26@gmail.com
       </p>
-      <p style={{ textAlign: "center" }}>
-        Site version {pjs.version} par{" "}
-        <a href="https://github.com/michel3141">{pjs.author}</a>
+      <p style={{ textAlign: 'center' }}>
+        Site version {pjs.version} par{' '}
+        <a href='https://github.com/michel3141'>{pjs.author}</a>
       </p>
 
       <hr />
-      <h2 id="contenu">
+      <h2 id='contenu'>
         Contenu
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
@@ -63,9 +63,9 @@ export default class Regles extends Component {
         <li>30 pions (15 noirs et 15 blancs)</li>
         <li>5 pions neutres (vert).</li>
       </ul>
-      <h2 id="but">
+      <h2 id='but'>
         But
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
@@ -77,9 +77,9 @@ export default class Regles extends Component {
         Le gagnant est celui qui a reproduit le plus de cartes motif de son jeu.
       </p>
       <p>La partie se termine quand aucun pion ne peut être posé.</p>
-      <h2 id="préparation">
+      <h2 id='préparation'>
         Préparation
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
@@ -96,9 +96,9 @@ export default class Regles extends Component {
         Les joueurs n’ont pas de couleur attribuée. Celui qui commence est tiré
         au sort.
       </p>
-      <h2 id="tour-de-jeu">
+      <h2 id='tour-de-jeu'>
         Tour de jeu
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
@@ -111,21 +111,21 @@ export default class Regles extends Component {
         Dès qu'une carte motif est reproduite sur le plateau, elle est mise de
         côté par le joueur qui la possède et ce joueur marque un point.
       </p>
-      <table style={{ textAlign: "center", width: "100%" }}>
+      <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
-          <tr className="odd">
+          <tr className='odd'>
             <td>
               <img
-                className="Plateau"
-                src="img/1000000000000071000000875A7E52B12142BB18.jpg"
+                className='Plateau'
+                src='img/1000000000000071000000875A7E52B12142BB18.jpg'
               />
             </td>
             <td>
               <p>Carte reproduite</p>
               <p>
                 <img
-                  className="Carte"
-                  src="img/100000000000002D00000036A3FE065D9632E68D.jpg"
+                  className='Carte'
+                  src='img/100000000000002D00000036A3FE065D9632E68D.jpg'
                 />
               </p>
             </td>
@@ -145,13 +145,13 @@ export default class Regles extends Component {
         Plusieurs cartes motif (4 au maximum) peuvent être reproduite en même
         temps, avec un seul pion joué. Elles sont alors toutes mises de côté.
       </p>
-      <table style={{ textAlign: "center", width: "100%" }}>
+      <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
-          <tr className="odd">
+          <tr className='odd'>
             <td>
               <img
-                className="Plateau"
-                src="img/100000000000007100000087DFB228A471609B16.jpg"
+                className='Plateau'
+                src='img/100000000000007100000087DFB228A471609B16.jpg'
               />
             </td>
             <td>
@@ -161,21 +161,21 @@ export default class Regles extends Component {
               </p>
               <p>
                 <img
-                  className="Carte"
-                  src="img/100000000000008C000000A87317F4896CA6D119.png"
+                  className='Carte'
+                  src='img/100000000000008C000000A87317F4896CA6D119.png'
                 />
                 <img
-                  className="Carte"
-                  src="img/100000000000008C000000A8E110F53E54B6FFD9.png"
+                  className='Carte'
+                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
                 />
               </p>
             </td>
           </tr>
-          <tr className="even">
+          <tr className='even'>
             <td>
               <img
-                className="Plateau"
-                src="img/100000000000007100000087CEB676665D7F11B8.jpg"
+                className='Plateau'
+                src='img/100000000000007100000087CEB676665D7F11B8.jpg'
               />
             </td>
             <td>
@@ -185,8 +185,8 @@ export default class Regles extends Component {
               </p>
               <p>
                 <img
-                  className="Carte"
-                  src="img/100000000000002D000000360BEA7FAC9C4847CD.jpg"
+                  className='Carte'
+                  src='img/100000000000002D000000360BEA7FAC9C4847CD.jpg'
                 />
               </p>
               <p>serait présente deux fois sur le plateau</p>
@@ -194,9 +194,9 @@ export default class Regles extends Component {
           </tr>
         </tbody>
       </table>
-      <h2 id="blocage">
+      <h2 id='blocage'>
         Blocage
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
@@ -204,25 +204,25 @@ export default class Regles extends Component {
         Une carte motif ne pouvant être reproduite qu'une seule fois sur le
         plateau, certaines positions du plateau peuvent donc devenir interdites
       </p>
-      <table style={{ textAlign: "center", width: "100%" }}>
+      <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
-          <tr className="odd">
+          <tr className='odd'>
             <td>
               <img
-                className="Plateau"
-                src="img/100000000000007100000087AAFEA097B5664748.jpg"
+                className='Plateau'
+                src='img/100000000000007100000087AAFEA097B5664748.jpg'
               />
             </td>
             <td>
               <p>Cartes déjà reproduites</p>
               <p>
                 <img
-                  className="Carte"
-                  src="img/100000000000008C000000A85906570A090FB8B7.png"
-                />{" "}
+                  className='Carte'
+                  src='img/100000000000008C000000A85906570A090FB8B7.png'
+                />{' '}
                 <img
-                  className="Carte"
-                  src="img/100000000000008C000000A8E110F53E54B6FFD9.png"
+                  className='Carte'
+                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
                 />
               </p>
             </td>
@@ -234,19 +234,19 @@ export default class Regles extends Component {
         On utilise les pions neutres pour signifier qu’une position est devenue
         interdite.
       </p>
-      <h2 id="variantes">
+      <h2 id='variantes'>
         Variantes
-        <a href="#top">
+        <a href='#top'>
           <PublishRounded />
         </a>
       </h2>
-      <h2 id="sans-blocage">Sans blocage</h2>
+      <h2 id='sans-blocage'>Sans blocage</h2>
       <p>
         À son tour, un joueur choisit et pose un pion de couleur sur le plateau,
         sans contrainte. Si une carte est reproduite plusieurs fois sur le
         plateau, elle ne comptera qu'un seul point.
       </p>
-      <h2 id="pion-imposé">Pion imposé</h2>
+      <h2 id='pion-imposé'>Pion imposé</h2>
       <p>
         Le joueur tiré au sort pour commencer la partie doit également tirer au
         sort un pion noir ou blanc.
@@ -256,11 +256,11 @@ export default class Regles extends Component {
         qui sera joué par son adversaire.
       </p>
 
-      <p style={{ textAlign: "right" }}>
-        <a href="regles.pdf" target="_blank">
+      <p style={{ textAlign: 'right' }}>
+        <a href='regles.pdf' target='_blank'>
           Télécharger la règles
         </a>
       </p>
     </div>
-  );
+  )
 }
