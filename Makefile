@@ -17,7 +17,7 @@ build: mount
 	npx vite build $(BUILD_OPT) $(TARGET)
 
 pretty:
-	npx prettier --write 'src/**/*.js*'
+	npx prettier --write --print-width 100 --jsx-single-quote --single-quote 'src/**/*.js*' # --single-attribute-per-line
 
 clean:
 	rm -rf .cache dist .parcel-cache/ /tmp/parcel-dist /tmp/parcel-cache

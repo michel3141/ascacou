@@ -1,9 +1,8 @@
 import React from 'react'
 import '/css/Card.css'
+import mkClasses from '/lib/mkClasses'
 
-export default function ({ card }) {
-  let className = 'Card'
-  className += ' m-' + card.value
-  if (card.done) className += ' done'
-  return <div className={className} />
+export default function ({ value, done }) {
+  const className = mkClasses('Card', `m-${value}`, { done })
+  return <div {...{ className }} />
 }

@@ -1,26 +1,28 @@
-import '/css/Player.css'
-import Card from './Card'
 import React from 'react'
+import '/css/Player.css'
+import mkClasses from '/lib/mkClasses'
+import Card from './Card'
 
-export default function ({ id, name, player, cards }) {
-  const mon_tour = player == id
+export default ({ id, name, player, cards }) => {
+  const myCards = cards.filter(c => c.player == id)
+  const className = mkClasses({
+    'mon-tour': player == id,
+    'pas-mon-tour': player != id,
+  })
   return (
     <div className='Player'>
-      <fieldset className={mon_tour ? 'mon-tour' : 'pas-mon-tour'}>
+      <fieldset {...{ className }}>
         <legend>[{name}]</legend>
-        {cards
-          .filter(c => c.player == id && !c.done)
-          .map(c => (
-            <Card key={c.value} card={c} />
-          ))}
+        <Cards cards={myCards} />
       </fieldset>
       <fieldset>
-        {cards
-          .filter(c => c.player == id && c.done)
-          .map(c => (
-            <Card key={c.value} card={c} />
-          ))}
+        <Cards cards={myCards} done />
       </fieldset>
     </div>
   )
 }
+
+const Cards = ({ cards, done = false }) =>
+  cards
+    .filter(card => done == card.done)
+    .map(card => <Card key={card.value} {...card} />)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Game from '/lib/Ascacou'
 import '/css/App.css'
-import Solver from 'ascacou-solver-wasm'
+// import Solver from 'ascacou-solver-wasm'
 
 import Ascacou from './Ascacou'
 

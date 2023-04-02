@@ -2,28 +2,39 @@ import React, { Component } from 'react'
 import { Grid } from '@mui/material'
 import '/css/Selector.css'
 
-export default function ({ current, onClick }) {
-  const select1 = current == 1 ? 'Selected' : ''
-  const select2 = current == 2 ? 'Selected' : ''
-  return (
-    <div className='Selector'>
-      <Grid
-        container
-        direction='row'
-        justify='space-evenly'
-        alignItems='flex-start'
-      >
-        <Grid item xs>
-          <div className={select1} onMouseDown={() => onClick(1)}>
-            <img src='img/noirs.png' onMouseDown={e => e.preventDefault()} />
-          </div>
-        </Grid>
-        <Grid item xs>
-          <div className={select2} onMouseDown={() => onClick(2)}>
-            <img src='img/blancs.png' onMouseDown={e => e.preventDefault()} />
-          </div>
-        </Grid>
+export default props => (
+  <Grided>
+    <Option {...props} value={1} />
+    <Option {...props} value={2} />
+  </Grided>
+)
+
+const Grided = ({ children }) => (
+  <Grid
+    className='Selector'
+    container
+    direction='row'
+    justify='space-evenly'
+    alignItems='flex-start'
+  >
+    {children.map((child, id) => (
+      <Grid item xs key={id}>
+        {child}
       </Grid>
+    ))}
+  </Grid>
+)
+
+import mkClasses from '/lib/mkClasses'
+const Option = ({ value, current, onClick }) => {
+  const className = mkClasses({ Selected: value === current })
+  const src = {
+    1: 'img/noirs.png',
+    2: 'img/blancs.png',
+  }[value]
+  return (
+    <div {...{ className }} onMouseDown={() => onClick(value)}>
+      <img {...{ src }} onMouseDown={e => e.preventDefault() /* no-drag */} />
     </div>
   )
 }
