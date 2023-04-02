@@ -5,7 +5,6 @@ import '/css/App.css'
 import Solver from 'ascacou-solver-wasm'
 
 import Ascacou from './Ascacou'
-import Menu from './Menu'
 
 class App extends Component {
   state = {
