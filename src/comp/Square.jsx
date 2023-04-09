@@ -11,7 +11,7 @@ const Square = ({ square, onSelect, showBlocked }) => {
   const { coord } = square
   // showForbidden est traité à l'arrache
   // dans lib/Ascacou avec le cb()
-  if (showBlocked && square.playable().length == 0) content = content || 3
+  if (showBlocked && square.playable().length === 0) content = content || 3
   const className = `Square xy-${coord} c-${content}`
   return <div {...{ className, onMouseDown }} onTouchStart={onMouseDown}></div>
 }

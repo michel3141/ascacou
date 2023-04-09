@@ -3,11 +3,11 @@ import '/css/Player.css'
 import mkClasses from '/lib/mkClasses'
 import Card from './Card'
 
-export default ({ id, name, player, cards }) => {
-  const myCards = cards.filter(c => c.player == id)
+export default function Player({ id, name, player, cards }) {
+  const myCards = cards.filter(c => c.player === id)
   const className = mkClasses({
-    'mon-tour': player == id,
-    'pas-mon-tour': player != id,
+    'mon-tour': player === id,
+    'pas-mon-tour': player !== id,
   })
   return (
     <div className='Player'>
@@ -24,5 +24,5 @@ export default ({ id, name, player, cards }) => {
 
 const Cards = ({ cards, done = false }) =>
   cards
-    .filter(card => done == card.done)
+    .filter(card => done === card.done)
     .map(card => <Card key={card.value} {...card} />)

@@ -25,6 +25,7 @@ export default class Config extends Component {
       enable: true,
     },
   ]
+
   switches = [
     {
       state: 'allow_multiple_cards',
@@ -38,6 +39,7 @@ export default class Config extends Component {
       enable: true,
     },
   ]
+
   state = {
     deal_method: this.props.prms.deal_method,
     allow_multiple_cards: this.props.prms.allow_multiple_cards,
@@ -50,16 +52,18 @@ export default class Config extends Component {
   }
 
   updateSwitches = (switches, value) => {
-    switches.map(s => {
-      if (s.state == 'show_blocked' || s.state == 'show_forbidden') {
+    switches.forEach(s => {
+      if (s.state === 'show_blocked' || s.state === 'show_forbidden') {
         s.enable = !value
       }
     })
   }
+
   onSwitch(state_key, e) {
     const value = e.target.checked
     this.setState({ [state_key]: value })
   }
+
   onSwitchCurrent(state_key, e) {
     const value = e.target.checked
     this.props.updateConfig({ [state_key]: value })
@@ -132,7 +136,7 @@ export default class Config extends Component {
                   key={k}
                   button
                   onClick={this.onSelect.bind(this, 'deal_method', k)}
-                  selected={this.state.deal_method == k}
+                  selected={this.state.deal_method === k}
                 >
                   {dm[k].label}
                 </ListItem>
@@ -141,7 +145,7 @@ export default class Config extends Component {
           </fieldset>
 
           {this.props
-            .onCancel /*plus utilsé - Attention certainement un pb d'affichage*/ && (
+            .onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
             <Grid item>
               <Button color='secondary' onClick={this.props.onCancel}>
                 Annuler

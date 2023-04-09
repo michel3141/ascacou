@@ -17,8 +17,8 @@ class App extends Component {
   ascacou = new Game(this.state)
 
   onAction = cmd => {
-    if (cmd == 'new') this.new_game()
-    if (cmd == 'end') this.end_game()
+    if (cmd === 'new') this.new_game()
+    if (cmd === 'end') this.end_game()
   }
 
   new_game = prms => {
@@ -27,6 +27,7 @@ class App extends Component {
     this.setState(prms)
     this.forceUpdate()
   }
+
   end_game() {
     this.ascacou = null
     this.forceUpdate()

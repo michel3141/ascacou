@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Grid } from '@mui/material'
 import '/css/Selector.css'
 
-export default props => (
-  <Grided>
-    <Option {...props} value={1} />
-    <Option {...props} value={2} />
-  </Grided>
-)
+import mkClasses from '/lib/mkClasses'
+
+export default function Selector(props) {
+  return (
+    <Grided>
+      <Option {...props} value={1} />
+      <Option {...props} value={2} />
+    </Grided>
+  )
+}
 
 const Grided = ({ children }) => (
   <Grid
@@ -24,8 +28,6 @@ const Grided = ({ children }) => (
     ))}
   </Grid>
 )
-
-import mkClasses from '/lib/mkClasses'
 const Option = ({ value, current, onClick }) => {
   const className = mkClasses({ Selected: value === current })
   const src = {

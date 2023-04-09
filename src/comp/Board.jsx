@@ -7,6 +7,7 @@ export default class Board extends Component {
       alert("onMove n'est pas défini")
     },
   }
+
   constructor(props) {
     super(props)
     /*
@@ -20,11 +21,12 @@ export default class Board extends Component {
     // et ça remonte au jeu
     this.props.onMove(coord + ':' + content)
   }
+
   render() {
     const s = this.props.squares
     let square
     for (const sq of s) {
-      if (sq.coord == '1x1') {
+      if (sq.coord === '1x1') {
         square = sq
         break
       }
@@ -49,8 +51,9 @@ export default class Board extends Component {
       square = square.next
     }
     return (
-      <div className='Board' align='center'>
-        {/*<img className="titre" src='img/titre.png'/>*/}
+      // align='center'
+      <div className='Board'>
+        {/* <img className="titre" src='img/titre.png'/> */}
         <table>
           <tbody>{squares}</tbody>
         </table>

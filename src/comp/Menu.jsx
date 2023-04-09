@@ -7,6 +7,7 @@ export default class Menu extends Component {
     this.hideDrawer = this.hideDrawer.bind(this)
     this.showDrawer = this.showDrawer.bind(this)
   }
+
   handleButtonPress = action => {
     if (!action) return
     this.buttonPressTimer = setTimeout(() => this.props.onAction(action), 1500)
@@ -22,7 +23,7 @@ export default class Menu extends Component {
       <Toolbar color='transparent'>
         {/*
           <IconIconButton edge="start"  color="inherit" aria-label="menu">
-            <MenuIcon 
+            <MenuIcon
           </IconIconButton>
           */}
         {this.props.actions.map(
@@ -50,7 +51,7 @@ export default class Menu extends Component {
             d.enable && (
               <IconButton
                 key={i}
-                style={i == 0 ? { marginLeft: 'auto' } : {}}
+                style={i === 0 ? { marginLeft: 'auto' } : {}}
                 onClick={e => this.showDrawer(e, d)}
                 color='inherit'
                 title={d.title}
@@ -80,6 +81,7 @@ export default class Menu extends Component {
   hideDrawer(e, d) {
     d.onToggle && d.onToggle(false)
   }
+
   showDrawer(e, d) {
     d.onToggle && d.onToggle(true)
   }

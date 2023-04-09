@@ -48,6 +48,7 @@ const Ascacou = ({
   const [currentColor, setCurrentColor] = useState(1)
 
   const [z, Z] = useState(0)
+  window.unused = z
   const forceUpdate = () => Z(p => p + 1) // TODO ceci est un hack
 
   const play = move => {
@@ -74,8 +75,8 @@ const Ascacou = ({
   }
 
   const onAction = cmd => {
-    if (cmd == 'undo') undo()
-    if (cmd == 'restart') restart()
+    if (cmd === 'undo') undo()
+    if (cmd === 'restart') restart()
   }
 
   const onNewGame = prms => {
