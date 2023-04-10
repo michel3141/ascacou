@@ -1,63 +1,39 @@
-import '/css/Board.css'
+import React from 'react'
 import Square from './Square'
-import React, { Component } from 'react'
-export default class Board extends Component {
-  static defaultProps = {
-    onMove: function () {
-      alert("onMove n'est pas défini")
-    },
-  }
+import '/css/Board.css'
 
-  constructor(props) {
-    super(props)
-    /*
-# squares //list
-# onMove
-*/
-    this.move = this.move.bind(this)
-  }
-
-  move(coord, content) {
-    // et ça remonte au jeu
-    this.props.onMove(coord + ':' + content)
-  }
-
-  render() {
-    const s = this.props.squares
-    let square
-    for (const sq of s) {
-      if (sq.coord === '1x1') {
-        square = sq
-        break
-      }
-    }
-    const squares = []
-    let line = []
-    while (square) {
-      line.push(
-        <td key={square.coord}>
-          <Square
-            showBlocked={this.props.showBlocked}
-            showForbidden={this.props.showForbidden}
-            square={square}
-            onSelect={this.move.bind(this, square.coord)}
-          />
-        </td>
-      )
-      if (square.nl()) {
-        squares.push(<tr key={square.coord}>{line}</tr>)
-        line = []
-      }
-      square = square.next
-    }
-    return (
-      // align='center'
-      <div className='Board'>
-        {/* <img className="titre" src='img/titre.png'/> */}
-        <table>
-          <tbody>{squares}</tbody>
-        </table>
-      </div>
+const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
+  // et ça remonte au jeu
+  const move = (coord, content) => onMove(coord + ':' + content)
+  let square = squares.find(square => square === '1x1')
+  const Squares = []
+  let line = []
+  while (square) {
+    line.push(
+      <td key={square.coord}>
+        <Square
+          showBlocked={showBlocked}
+          showForbidden={showForbidden}
+          square={square}
+          onSelect={() => move(square.coord)}
+        />
+      </td>
     )
+    if (square.nl()) {
+      Squares.push(<tr key={square.coord}>{line}</tr>)
+      line = []
+    }
+    square = square.next
   }
+  return (
+    // align='center'
+    <div className='Board'>
+      {/* <img className="titre" src='img/titre.png'/> */}
+      <table>
+        <tbody>{Squares}</tbody>
+      </table>
+    </div>
+  )
 }
+
+export default Board
