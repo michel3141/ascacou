@@ -5,17 +5,18 @@ import '/css/Board.css'
 const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
   // et ça remonte au jeu
   const move = (coord, content) => onMove(coord + ':' + content)
-  let square = squares.find(square => square === '1x1')
+  let square = squares.find(square => square.coord === '1x1')
   const Squares = []
   let line = []
   while (square) {
+    const { coord } = square
     line.push(
       <td key={square.coord}>
         <Square
           showBlocked={showBlocked}
           showForbidden={showForbidden}
           square={square}
-          onSelect={() => move(square.coord)}
+          onSelect={() => move(coord)}
         />
       </td>
     )
@@ -25,6 +26,7 @@ const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
     }
     square = square.next
   }
+
   return (
     // align='center'
     <div className='Board'>
