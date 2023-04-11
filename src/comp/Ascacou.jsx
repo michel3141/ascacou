@@ -52,8 +52,12 @@ const Ascacou = ({
   const forceUpdate = () => Z(p => p + 1) // TODO ceci est un hack
 
   const play = move => {
-    console.log('MOVE', move)
-    move += currentColor
+    /*
+     * move = {
+     * coord,
+     * }
+     */
+    move = { ...move, content: currentColor }
     const moved = ascacou.play(move)
     if (moved === null) return
     if (moved) {

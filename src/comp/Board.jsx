@@ -4,7 +4,6 @@ import '/css/Board.css'
 
 const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
   // et ça remonte au jeu
-  const move = (coord, content) => onMove(coord + ':' + content)
   let square = squares.find(square => square.coord === '1x1')
   const Squares = []
   let line = []
@@ -16,7 +15,7 @@ const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
           showBlocked={showBlocked}
           showForbidden={showForbidden}
           square={square}
-          onSelect={() => move(coord)}
+          onSelect={() => onMove({ coord })}
         />
       </td>
     )

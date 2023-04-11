@@ -201,7 +201,7 @@ export default class Ascacou {
   }
 
   play(move) {
-    const [coord, content] = move.split(':')
+    const { coord, content } = move
     const square = this.get_square(coord)
     if (square.content != 0) {
       return null
@@ -217,7 +217,7 @@ export default class Ascacou {
   }
 
   clear(move) {
-    const [coord, content] = move.split(':')
+    const { coord, content } = move
     const square = this.get_square(coord)
     square.content = 0
   }
