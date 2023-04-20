@@ -93,8 +93,11 @@ const Ascacou = ({
     <div className='Ascacou'>
       <AppBar position='static' color='transparent'>
         <Menu
-          actions={actions}
-          onAction={onAction}
+          actions={actions.map(action => ({
+            ...action,
+            cmd: () => onAction(action.cmd),
+            long: () => onAction(action.long),
+          }))}
           drawers={[
             {
               title: 'Règles',
