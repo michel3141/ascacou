@@ -35,8 +35,8 @@ const actions = [
 const Ascacou = ({
   ascacou,
   newGame,
-  updateConfig,
-  prms /*
+  setPrefs,
+  prefs /*
           allow_multiple_cards,
           deal_method,
           show_blocked,
@@ -63,7 +63,7 @@ const Ascacou = ({
     if (moved) {
       forceUpdate()
     } else {
-      if (prms.show_forbidden) {
+      if (prefs.show_forbidden) {
         forceUpdate()
         setTimeout(() => {
           ascacou.clear(move)
@@ -74,19 +74,23 @@ const Ascacou = ({
       }
     }
   }
-  const undo = () => ascacou.undo() && forceUpdate()
-  const restart = () => {
-    while (ascacou.undo()) forceUpdate()
-  }
 
   const onAction = cmd => {
-    if (cmd === 'undo') undo()
-    if (cmd === 'restart') restart()
+    const noop = () => undefined
+    switch (cmd) {
+      case 'undo':
+        ascacou.undo()
+        break
+      case 'restart':
+        while (ascacou.undo()) noop()
+        break
+    }
+    forceUpdate()
   }
 
-  const onNewGame = prms => {
+  const onNewGame = prefs => {
     setShowNewGame(false)
-    newGame(prms)
+    newGame(prefs)
   }
 
   return (
@@ -112,9 +116,8 @@ const Ascacou = ({
               lbl: <MenuIcn />,
               action: (
                 <Config
-                  prms={prms}
+                  {...{ prefs, setPrefs }}
                   onApply={onNewGame}
-                  updateConfig={updateConfig}
                   appClass={Game}
                 />
               ),
@@ -153,8 +156,8 @@ const Ascacou = ({
               <Board
                 onMove={play}
                 squares={ascacou.squares}
-                showBlocked={prms.show_blocked}
-                showForbidden={prms.show_forbidden}
+                showBlocked={prefs.show_blocked}
+                showForbidden={prefs.show_forbidden}
               />
             </Grid>
             <Grid item xs>

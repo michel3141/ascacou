@@ -41,10 +41,10 @@ export default class Config extends Component {
   ]
 
   state = {
-    deal_method: this.props.prms.deal_method,
-    allow_multiple_cards: this.props.prms.allow_multiple_cards,
-    show_blocked: this.props.prms.show_blocked,
-    show_forbidden: this.props.prms.show_forbidden,
+    deal_method: this.props.prefs.deal_method,
+    allow_multiple_cards: this.props.prefs.allow_multiple_cards,
+    show_blocked: this.props.prefs.show_blocked,
+    show_forbidden: this.props.prefs.show_forbidden,
   }
 
   onSelect(state_key, value) {
@@ -66,7 +66,7 @@ export default class Config extends Component {
 
   onSwitchCurrent(state_key, e) {
     const value = e.target.checked
-    this.props.updateConfig({ [state_key]: value })
+    this.props.setPrefs({ ...this.props.prefs, [state_key]: value })
   }
 
   onApply = () => {
@@ -76,7 +76,7 @@ export default class Config extends Component {
   render = () => {
     const dm = this.props.appClass.deal_methods
     this.updateSwitches(this.switches, this.state.allow_multiple_cards)
-    this.updateSwitches(this.current, this.props.prms.allow_multiple_cards)
+    this.updateSwitches(this.current, this.props.prefs.allow_multiple_cards)
     return (
       <div className='Config'>
         <Grid
@@ -97,7 +97,7 @@ export default class Config extends Component {
                   value='start'
                   control={
                     <Switch
-                      checked={this.props.prms[s.state]}
+                      checked={this.props.prefs[s.state]}
                       onClick={this.onSwitchCurrent.bind(this, s.state)}
                     />
                   }
@@ -109,25 +109,22 @@ export default class Config extends Component {
           })}
           <Divider width='80%' />
           <Typography variant='h4'>Nouvelle partie</Typography>
-          {this.switches.map(s => {
-            const disabled = s.enable ? {} : { disabled: 'disabled' }
-            return (
-              <div key={s.state}>
-                <FormControlLabel
-                  {...disabled}
-                  value='start'
-                  control={
-                    <Switch
-                      checked={this.state[s.state]}
-                      onClick={this.onSwitch.bind(this, s.state)}
-                    />
-                  }
-                  label={s.lbl}
-                  labelPlacement='start'
-                />
-              </div>
-            )
-          })}
+          {this.switches.map(s => (
+            <div key={s.state}>
+              <FormControlLabel
+                disabled={!s.enable}
+                value='start'
+                control={
+                  <Switch
+                    checked={this.state[s.state]}
+                    onClick={this.onSwitch.bind(this, s.state)}
+                  />
+                }
+                label={s.lbl}
+                labelPlacement='start'
+              />
+            </div>
+          ))}
           <fieldset>
             <label>Type de distribution</label>
             <List>
