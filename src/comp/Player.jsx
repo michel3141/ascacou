@@ -23,6 +23,4 @@ export default function Player({ id, name, player, cards }) {
 }
 
 const Cards = ({ cards, done = false }) =>
-  cards
-    .filter(card => done === card.done)
-    .map(card => <Card key={card.value} {...card} />)
+  cards.filter(card => done === card.done).map(card => <Card key={card.value} {...card} />)

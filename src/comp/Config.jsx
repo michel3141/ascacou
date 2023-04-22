@@ -79,12 +79,7 @@ export default class Config extends Component {
     this.updateSwitches(this.current, this.props.prefs.allow_multiple_cards)
     return (
       <div className='Config'>
-        <Grid
-          container
-          direction='column'
-          justify='space-evenly'
-          alignItems='center'
-        >
+        <Grid container direction='column' justify='space-evenly' alignItems='center'>
           <p style={{ textAlign: 'center' }}>
             <img src='img/icon_128.png' />
           </p>
@@ -141,8 +136,7 @@ export default class Config extends Component {
             </List>
           </fieldset>
 
-          {this.props
-            .onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
+          {this.props.onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
             <Grid item>
               <Button color='secondary' onClick={this.props.onCancel}>
                 Annuler

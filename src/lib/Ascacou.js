@@ -67,32 +67,23 @@ export default class Ascacou {
     bnw: {
       label: 'Noirs et Blancs',
       order: 2,
-      deal: function () {
-        return (
-          '1111:1 1112:1 1121:1 1211:1 2111:1 1122:1 1212:1 1221:1' +
-          ' 2222:2 2221:2 2212:2 2122:2 1222:2 2211:2 2121:2 2112:2'
-        )
-      },
+      deal: () =>
+        '1111:1 1112:1 1121:1 1211:1 2111:1 1122:1 1212:1 1221:1' +
+        ' 2222:2 2221:2 2212:2 2122:2 1222:2 2211:2 2121:2 2112:2',
     },
     extrem: {
       label: 'Extrêmes et Médianes',
       order: 3,
-      deal: function () {
-        return (
-          '1111:1 2222:1 1112:1 1121:1 1211:1 2221:1 2212:1 2122:1' +
-          ' 1122:2 1212:2 2112:2 1221:2 2121:2 2211:2 2111:2 1222:2'
-        )
-      },
+      deal: () =>
+        '1111:1 2222:1 1112:1 1121:1 1211:1 2221:1 2212:1 2122:1' +
+        ' 1122:2 1212:2 2112:2 1221:2 2121:2 2211:2 2111:2 1222:2',
     },
     symetric: {
       label: 'Symétrique',
       order: 4,
-      deal: function () {
-        return (
-          '1111:1 1112:1 1121:1 2122:1 1222:1 1122:1 1212:1 1221:1' +
-          ' 2222:2 2221:2 2212:2 1211:2 2111:2 2211:2 2121:2 2112:2'
-        )
-      },
+      deal: () =>
+        '1111:1 1112:1 1121:1 2122:1 1222:1 1122:1 1212:1 1221:1' +
+        ' 2222:2 2221:2 2212:2 1211:2 2111:2 2211:2 2121:2 2112:2',
     },
   }
 
@@ -141,12 +132,10 @@ export default class Ascacou {
       square = square.next
     }
     const board = fen.join('/')
-    const cards = []
-    for (const card of this.cards) {
-      if (card.player == this.player) {
-        cards.push(card.fen())
-      }
-    }
+    const cards = this.cards
+      .filter(card => card.player == this.player)
+      .map(card => card.fen())
+      .sort()
     const my_cards = cards.join('')
     return [board, my_cards].join(' ')
   }

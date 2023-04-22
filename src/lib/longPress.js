@@ -1,9 +1,5 @@
 import { useMemo, useRef, useCallback } from 'react'
-const useLongPress = ({
-  onClick = () => null,
-  onLongPress = () => null,
-  ms = 500,
-} = {}) => {
+const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500 } = {}) => {
   const timerRef = useRef(false)
   const eventRef = useRef({})
 

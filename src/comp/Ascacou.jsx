@@ -9,12 +9,7 @@ import Regles from './Regles'
 import Config from './Config'
 import '/css/Ascacou.css'
 
-import {
-  SkipPrevious,
-  Help,
-  Replay,
-  Menu as MenuIcn,
-} from '@mui/icons-material'
+import { SkipPrevious, Help, Replay, Menu as MenuIcn } from '@mui/icons-material'
 
 const actions = [
   {
@@ -114,44 +109,21 @@ const Ascacou = ({
             {
               title: 'Nouvelle partie',
               lbl: <MenuIcn />,
-              action: (
-                <Config
-                  {...{ prefs, setPrefs }}
-                  onApply={onNewGame}
-                  appClass={Game}
-                />
-              ),
+              action: <Config {...{ prefs, setPrefs }} onApply={onNewGame} appClass={Game} />,
               visible: showNewGame,
               enable: true,
               onToggle: v => setShowNewGame(v),
             },
           ]}
-          titre={
-            <img src='img/titre-t.png' onMouseDown={e => e.preventDefault()} />
-          }
+          titre={<img src='img/titre-t.png' onMouseDown={e => e.preventDefault()} />}
         />
       </AppBar>
-      <Grid
-        container
-        direction='row'
-        justify='space-evenly'
-        alignItems='flex-start'
-      >
+      <Grid container direction='row' justify='space-evenly' alignItems='flex-start'>
         <Grid item xs>
-          <Player
-            id={1}
-            name='Joueur 1'
-            cards={ascacou.cards}
-            player={ascacou.player}
-          />
+          <Player id={1} name='Joueur 1' cards={ascacou.cards} player={ascacou.player} />
         </Grid>
         <Grid item xs>
-          <Grid
-            container
-            direction='column'
-            alignItems='center'
-            justify='space-evenly'
-          >
+          <Grid container direction='column' alignItems='center' justify='space-evenly'>
             <Grid item xs>
               <Board
                 onMove={play}
@@ -166,12 +138,7 @@ const Ascacou = ({
           </Grid>
         </Grid>
         <Grid item xs>
-          <Player
-            id={2}
-            name='Joueur 2'
-            cards={ascacou.cards}
-            player={ascacou.player}
-          />
+          <Player id={2} name='Joueur 2' cards={ascacou.cards} player={ascacou.player} />
         </Grid>
       </Grid>
       <div className='Fen'> {ascacou.fen()}</div>

@@ -25,12 +25,7 @@ export default function Menu({ drawers = [], actions, titre }) {
       {actions.map(
         a =>
           a.enable && (
-            <IconButton
-              {...a.mouseEvents}
-              key={a.cmd}
-              color='inherit'
-              title={a.title}
-            >
+            <IconButton {...a.mouseEvents} key={a.cmd} color='inherit' title={a.title}>
               {a.lbl}
             </IconButton>
           )
@@ -55,12 +50,7 @@ export default function Menu({ drawers = [], actions, titre }) {
       {drawers.map(
         (d, i) =>
           d.enable && (
-            <Drawer
-              key={i}
-              anchor='right'
-              open={d.visible}
-              onClose={e => hideDrawer(e, d)}
-            >
+            <Drawer key={i} anchor='right' open={d.visible} onClose={e => hideDrawer(e, d)}>
               {d.action}
             </Drawer>
           )
