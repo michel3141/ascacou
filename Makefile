@@ -14,23 +14,23 @@ fast-build: mount
 	#npx parcel build --no-scope-hoist --no-optimize $(BUILD_OPT) $(TARGET)
 
 build: mount
-	npx vite build $(BUILD_OPT) $(TARGET)
+	yarn vite build $(BUILD_OPT) $(TARGET)
 
 pretty:
-	npx prettier --write --print-width 100 --jsx-single-quote --single-quote 'src/**/*.js*' # --single-attribute-per-line
+	yarn prettier --write --print-width 100 --jsx-single-quote --single-quote 'src/**/*.js*' # --single-attribute-per-line
 
 clean:
 	rm -rf .cache dist .parcel-cache/ /tmp/parcel-dist /tmp/parcel-cache
 
 https:
-	npx vite --https $(SERVE_OPT) $(TARGET)
+	yarn vite --https $(SERVE_OPT) $(TARGET)
 
 install: clean build
 	rsync -Cav$(yes) --del dist/ u50644085@home258443028.1and1-data.host:$(WWW)
 	@test -n "$(yes)" && echo -e "utiliser : \n  make install WWW='$(WWW)' yes=\npour faire vraiment l'install dans : $(WWW)" || true
 
 serve: mount
-	npx vite $(SERVE_OPT) $(TARGET)
+	yarn vite $(SERVE_OPT) $(TARGET)
 
 mount:
 	#mkdir -p src
