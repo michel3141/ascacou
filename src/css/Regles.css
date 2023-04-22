@@ -1,3 +1,7 @@
+div.Regles {
+  font-family: 'arial';
+}
+
 div.Regles .MuiPaper-root {
   padding: 7px;
   height:100%; /* <= bien ici pour l'image de fond */
@@ -30,5 +34,5 @@ div.Regles table {
 .Regles .Plateau {
   width: 200px;
   margin: 5px;
-  border-radius: 0 0 0 20px;
+  border-radius: 0 0 5px 5px;
 }

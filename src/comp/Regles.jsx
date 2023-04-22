@@ -89,8 +89,8 @@ export default function Regles() {
       </p>
       <p>
         Les cartes doivent être visibles de tous, et toutes orientées de la même
-        façon que le plateau grâce à l&aposinscription Ascacou, afin
-        d&aposéviter d&aposavoir deux cartes identiques.
+        façon que le plateau grâce à l&apos;inscription Ascacou, afin
+        d&apos;éviter d&apos;avoir deux cartes identiques.
       </p>
       <p>
         Les joueurs n’ont pas de couleur attribuée. Celui qui commence est tiré
@@ -105,10 +105,10 @@ export default function Regles() {
       <p>
         À son tour, le joueur choisit et pose un pion de couleur sur le plateau.
         La seule contrainte est qu’une carte motif ne peut être présente
-        qu&aposune seule fois sur le plateau.
+        qu&apos;une seule fois sur le plateau.
       </p>
       <p>
-        Dès qu&aposune carte motif est reproduite sur le plateau, elle est mise
+        Dès qu&apos;une carte motif est reproduite sur le plateau, elle est mise
         de côté par le joueur qui la possède et ce joueur marque un point.
       </p>
       <table style={{ textAlign: 'center', width: '100%' }}>
@@ -138,7 +138,7 @@ export default function Regles() {
       </p>
       <p>
         Les cartes déjà reproduites sur le plateau, et mises de côté, restent
-        visibles, et permettent ainsi de vérifier qu&aposelles ne seront pas
+        visibles, et permettent ainsi de vérifier qu&apos;elles ne seront pas
         reproduites une nouvelle fois.
       </p>
       <p>
@@ -201,7 +201,7 @@ export default function Regles() {
         </a>
       </h2>
       <p>
-        Une carte motif ne pouvant être reproduite qu&aposune seule fois sur le
+        Une carte motif ne pouvant être reproduite qu&apos;une seule fois sur le
         plateau, certaines positions du plateau peuvent donc devenir interdites
       </p>
       <table style={{ textAlign: 'center', width: '100%' }}>
@@ -244,7 +244,7 @@ export default function Regles() {
       <p>
         À son tour, un joueur choisit et pose un pion de couleur sur le plateau,
         sans contrainte. Si une carte est reproduite plusieurs fois sur le
-        plateau, elle ne comptera qu&aposun seul point.
+        plateau, elle ne comptera qu&apos;un seul point.
       </p>
       <h2 id='pion-imposé'>Pion imposé</h2>
       <p>

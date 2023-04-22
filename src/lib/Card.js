@@ -60,7 +60,7 @@ export default class Card {
   static load(dump) {
     const [value, player] = dump.split(':')
     const card = new Card(value)
-    card.player = player
+    card.player = parseInt(player, 10)
     return card
   }
 }

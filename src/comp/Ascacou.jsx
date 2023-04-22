@@ -139,7 +139,7 @@ const Ascacou = ({
       >
         <Grid item xs>
           <Player
-            id='1'
+            id={1}
             name='Joueur 1'
             cards={ascacou.cards}
             player={ascacou.player}
@@ -167,7 +167,7 @@ const Ascacou = ({
         </Grid>
         <Grid item xs>
           <Player
-            id='2'
+            id={2}
             name='Joueur 2'
             cards={ascacou.cards}
             player={ascacou.player}
