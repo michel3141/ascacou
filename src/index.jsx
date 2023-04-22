@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { ThemeProvider, createTheme } from '@mui/material'
 import App from '/comp/App'
 /*
@@ -23,9 +23,11 @@ const theme = createTheme({
   },
 })
 
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <App allow_multiple_cards={false} deal_method='random' />
-  </ThemeProvider>,
-  document.getElementById('root')
+const root = createRoot(document.getElementById('root'))
+root.render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <App allow_multiple_cards={false} deal_method='random' />
+    </ThemeProvider>
+  </StrictMode>
 )

@@ -22,8 +22,8 @@ pretty:
 clean:
 	rm -rf .cache dist .parcel-cache/ /tmp/parcel-dist /tmp/parcel-cache
 
-https:
-	yarn vite --https $(SERVE_OPT) $(TARGET)
+https: #TODO 	yarn vite --https $(SERVE_OPT) $(TARGET)
+	yarn vite $(SERVE_OPT) $(TARGET)
 
 install: clean build
 	rsync -Cav$(yes) --del dist/ u50644085@home258443028.1and1-data.host:$(WWW)
