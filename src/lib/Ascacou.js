@@ -21,16 +21,18 @@ export default class Ascacou {
   get cards() {
     return Object.values(this._cards)
   }
+
   get squares() {
     return Object.values(this._squares)
   }
+
   static deal_methods = {
     random: {
       label: 'Aléatoire',
       order: 1,
       deal: function () {
         function shuffle(a) {
-          var j, x, i
+          let j, x, i
           for (i = a.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1))
             x = a[i]
@@ -105,7 +107,7 @@ export default class Ascacou {
     let line = ''
     while (square) {
       const content = square.content
-      if (content == 0) {
+      if (content === 0) {
         empty += 1
       } else {
         if (empty > 0) {
@@ -113,9 +115,9 @@ export default class Ascacou {
           empty = 0
         }
 
-        if (content == 1) {
+        if (content === 1) {
           line += 'b'
-        } else if (content == 2) {
+        } else if (content === 2) {
           line += 'w'
         } else {
           line += content
@@ -133,7 +135,7 @@ export default class Ascacou {
     }
     const board = fen.join('/')
     const cards = this.cards
-      .filter(card => card.player == this.player)
+      .filter(card => card.player === this.player)
       .map(card => card.fen())
       .sort()
     const my_cards = cards.join('')
@@ -154,7 +156,7 @@ export default class Ascacou {
     for (const line of [5, 4, 3, 2, 1]) {
       for (const row of [5, 4, 3, 2, 1]) {
         const coord = `${line}x${row}`
-        const square = new Square(coord, next, row == 5)
+        const square = new Square(coord, next, row === 5)
         this._squares[coord] = square
         next = square
       }
@@ -184,6 +186,7 @@ export default class Ascacou {
     }
     return this
   }
+
   get_square(coord = '1x1') {
     // return unless $coord =~ /^[1-5]x[1-5]$/;
     return this._squares[coord]
@@ -192,7 +195,7 @@ export default class Ascacou {
   play(move) {
     const { coord, content } = move
     const square = this.get_square(coord)
-    if (square.content != 0) {
+    if (square.content !== 0) {
       return null
     }
     if (square.play(content)) {
@@ -206,7 +209,7 @@ export default class Ascacou {
   }
 
   clear(move) {
-    const { coord, content } = move
+    const { coord } = move
     const square = this.get_square(coord)
     square.content = 0
   }

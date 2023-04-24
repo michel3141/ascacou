@@ -11,9 +11,11 @@ export default class Square {
   nl() {
     return this.new_row
   }
+
   set content(content) {
     this._content = content
   }
+
   get content() {
     return this._content
   }
@@ -32,11 +34,11 @@ export default class Square {
 
   pattern() {
     let pattern
-    if (this.content != '0') {
+    if (this.content !== 0) {
       pattern = this.content
     } else {
       pattern = this.playable().join('')
-      if (pattern == '') {
+      if (pattern === '') {
         pattern = 'X'
       } else {
         pattern = '[' + pattern + ']'
@@ -47,7 +49,7 @@ export default class Square {
 
   playable() {
     const list = []
-    if (this.content == 0) {
+    if (this.content === 0) {
       if (this.play(1)) {
         list.push(1)
         this.play(0)
