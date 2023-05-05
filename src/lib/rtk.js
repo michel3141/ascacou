@@ -56,7 +56,15 @@ const rtk = (name, getInitialState, persisted) => {
       }, {}),
 
     createReducer: (actionsMap, actionMatchers, defaultCaseReducer) =>
-      createReducer(initialState, actionsMap, actionMatchers, defaultCaseReducer),
+      createReducer(initialState, builder => {
+        for (const action in actionsMap) {
+          builder.addCase(action, actionsMap[action])
+        }
+        for (const actionMatcher in actionMatchers) {
+          builder.addMatcher(actionMatcher, actionMatchers[actionMatcher])
+        }
+        builder.addDefaultCase(defaultCaseReducer)
+      }),
 
     createSelectors: (selectorsMap = {}) => {
       const stateSelectors = Object.keys(initialState).reduce(
@@ -97,8 +105,10 @@ const filter = (state, action) =>
 
 const toggle =
   key =>
-  (state, { payload }) =>
-    typeof payload === 'boolean' ? { ...state, [key]: payload } : { ...state, [key]: !state[key] }
+  (state, { booleanOrUndefined }) =>
+    typeof booleanOrUndefined === 'boolean'
+      ? { ...state, [key]: booleanOrUndefined }
+      : { ...state, [key]: !state[key] }
 
 const update = key => (state, action) =>
   key ? filter(state, { [key]: action.payload }) : filter(state, action)

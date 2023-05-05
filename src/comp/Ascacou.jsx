@@ -9,6 +9,8 @@ import Regles from './Regles'
 import Config from './Config'
 import '/css/Ascacou.css'
 
+import { useCurrentConfigSlice } from '/app/slices'
+
 import { SkipPrevious, Help, Replay, Menu as MenuIcn } from '@mui/icons-material'
 
 const actions = [
@@ -27,20 +29,13 @@ const actions = [
   },
 ]
 
-const Ascacou = ({
-  ascacou,
-  newGame,
-  setPrefs,
-  prefs /*
-          allow_multiple_cards,
-          deal_method,
-          show_blocked,
-          show_forbidden,
-          */,
-}) => {
+const Ascacou = ({ ascacou, newGame }) => {
   const [showRegles, setShowRegles] = useState(false)
   const [showNewGame, setShowNewGame] = useState(true)
   const [currentColor, setCurrentColor] = useState(1)
+
+  const { useShowForbidden } = useCurrentConfigSlice()
+  const showForbidden = useShowForbidden()
 
   const [z, Z] = useState(0)
   window.unused = z
@@ -58,7 +53,8 @@ const Ascacou = ({
     if (moved) {
       forceUpdate()
     } else {
-      if (prefs.show_forbidden) {
+      if (showForbidden) {
+        // ça va certainement ailleurs
         forceUpdate()
         setTimeout(() => {
           ascacou.clear(move)
@@ -109,7 +105,7 @@ const Ascacou = ({
             {
               title: 'Nouvelle partie',
               lbl: <MenuIcn />,
-              action: <Config {...{ prefs, setPrefs }} onApply={onNewGame} appClass={Game} />,
+              action: <Config onApply={onNewGame} appClass={Game} />,
               visible: showNewGame,
               enable: true,
               onToggle: v => setShowNewGame(v),
@@ -125,12 +121,7 @@ const Ascacou = ({
         <Grid item xs>
           <Grid container direction='column' alignItems='center' justify='space-evenly'>
             <Grid item xs>
-              <Board
-                onMove={play}
-                squares={ascacou.squares}
-                showBlocked={prefs.show_blocked}
-                showForbidden={prefs.show_forbidden}
-              />
+              <Board onMove={play} squares={ascacou.squares} />
             </Grid>
             <Grid item xs>
               <Selector onClick={setCurrentColor} current={currentColor} />

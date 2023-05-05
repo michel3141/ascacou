@@ -2,7 +2,7 @@ import React from 'react'
 import Square from './Square'
 import '/css/Board.css'
 
-const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
+const Board = ({ squares, onMove }) => {
   // et ça remonte au jeu
   let square = squares.find(square => square.coord === '1x1')
   const Squares = []
@@ -11,12 +11,7 @@ const Board = ({ squares, onMove, showBlocked, showForbidden }) => {
     const { coord } = square
     line.push(
       <td key={square.coord}>
-        <Square
-          showBlocked={showBlocked}
-          showForbidden={showForbidden}
-          square={square}
-          onSelect={() => onMove({ coord })}
-        />
+        <Square square={square} onSelect={() => onMove({ coord })} />
       </td>
     )
     if (square.nl()) {

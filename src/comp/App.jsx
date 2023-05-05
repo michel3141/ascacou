@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useCurrentConfigSlice } from '/app/slices'
 
 import Game from '/lib/Ascacou'
 import '/css/App.css'
@@ -13,17 +14,27 @@ export default function App(props) {
     allow_multiple_cards,
     deal_method,
     */
-  const [prefs, setPrefs] = useState({
-    ...props,
-    show_blocked: true,
-    show_forbidden: true,
-  })
-  const [ascacou, setAscacou] = useState(() => new Game(prefs))
+  const { updateValue } = useCurrentConfigSlice()
+  useEffect(() => {
+    updateValue({
+      ...props,
+      show_blocked: true,
+      show_forbidden: true,
+    })
+  }, [props])
+  const [ascacou, setAscacou] = useState(
+    () =>
+      new Game({
+        ...props,
+        show_blocked: true,
+        show_forbidden: true,
+      })
+  )
 
   const newGame = newPrefs => {
     // show_new_game ??
     // n'a rien n'à faire ici
-    setPrefs({ show_new_game: false, ...newPrefs })
+    updateValue({ show_new_game: false, ...newPrefs })
     setAscacou(new Game(newPrefs))
   }
 
@@ -31,7 +42,7 @@ export default function App(props) {
 
   return (
     <div className='App'>
-      {ascacou && <Ascacou {...{ ascacou, setPrefs, newGame, prefs }} />}
+      {ascacou && <Ascacou {...{ ascacou, newGame }} />}
       <div className='Square hidden' />
     </div>
   )

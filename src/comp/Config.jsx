@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import { useCurrentConfigSlice } from '/app/slices'
+
 import {
   Grid,
   Button,
@@ -11,21 +14,7 @@ import {
 } from '@mui/material'
 import '/css/Config.css'
 
-export default class Config extends Component {
-  current = [
-    {
-      state: 'allow_multiple_cards',
-      lbl: 'Autorise les motifs multiples',
-      enable: false,
-    },
-    { state: 'show_blocked', lbl: 'Montre les cases bloquées', enable: true },
-    {
-      state: 'show_forbidden',
-      lbl: 'Montre les coups interdits',
-      enable: true,
-    },
-  ]
-
+class ConfigClass extends Component {
   switches = [
     {
       state: 'allow_multiple_cards',
@@ -76,33 +65,10 @@ export default class Config extends Component {
   render = () => {
     const dm = this.props.appClass.deal_methods
     this.updateSwitches(this.switches, this.state.allow_multiple_cards)
-    this.updateSwitches(this.current, this.props.prefs.allow_multiple_cards)
     return (
       <div className='Config'>
         <Grid container direction='column' justify='space-evenly' alignItems='center'>
-          <p style={{ textAlign: 'center' }}>
-            <img src='img/icon_128.png' />
-          </p>
           <Typography variant='h4'>Partie en cours</Typography>
-          {this.current.map(s => {
-            return (
-              <div key={s.state}>
-                <FormControlLabel
-                  disabled={!s.enable}
-                  value='start'
-                  control={
-                    <Switch
-                      checked={this.props.prefs[s.state]}
-                      onClick={this.onSwitchCurrent.bind(this, s.state)}
-                    />
-                  }
-                  label={s.lbl}
-                  labelPlacement='start'
-                />
-              </div>
-            )
-          })}
-          <Divider width='80%' />
           <Typography variant='h4'>Nouvelle partie</Typography>
           {this.switches.map(s => (
             <div key={s.state}>
@@ -152,4 +118,89 @@ export default class Config extends Component {
       </div>
     )
   }
+}
+
+export default function Config({ onApply }) {
+  const { useCurrentConfig, updateValue } = useCurrentConfigSlice()
+  const currentConfig = useCurrentConfig()
+
+  return (
+    <div className='Config'>
+      <Grid container direction='column' justify='space-evenly' alignItems='center'>
+        <p style={{ textAlign: 'center' }}>
+          <img src='img/icon_128.png' />
+        </p>
+        <Typography variant='h4'>Partie en cours</Typography>
+        {Object.entries(currentConfig)
+          .filter(([key, item]) => item.visible)
+          .map(([key, item]) => {
+            const { enable, value, lbl, type } = item
+            return (
+              <div key={key}>
+                <FormControlLabel
+                  disabled={!enable}
+                  value='start'
+                  control={
+                    (type === 'boolean' && (
+                      <Switch checked={value} onClick={() => updateValue({ [key]: !value })} />
+                    )) ||
+                    (type === 'enum' && <div>TODO Select</div>)
+                  }
+                  label={lbl}
+                  labelPlacement='start'
+                />
+              </div>
+            )
+          })}
+        <Divider width='80%' />
+        <Typography variant='h4'>Nouvelle partie</Typography>
+        {`
+          {this.switches.map(s => (
+            <div key={s.state}>
+              <FormControlLabel
+                disabled={!s.enable}
+                value='start'
+                control={
+                  <Switch
+                    checked={this.state[s.state]}
+                    onClick={this.onSwitch.bind(this, s.state)}
+                  />
+                }
+                label={s.lbl}
+                labelPlacement='start'
+              />
+            </div>
+          ))}
+          <fieldset>
+            <label>Type de distribution</label>
+            <List>
+              {Object.keys(dm).map(k => (
+                <ListItem
+                  key={k}
+                  button
+                  onClick={this.onSelect.bind(this, 'deal_method', k)}
+                  selected={this.state.deal_method === k}
+                >
+                  {dm[k].label}
+                </ListItem>
+              ))}
+            </List>
+          </fieldset>
+
+          {this.props.onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
+            <Grid item>
+              <Button color='secondary' onClick={this.props.onCancel}>
+                Annuler
+              </Button>
+            </Grid>
+          )}
+          `}
+        <Grid item>
+          <Button variant='contained' color='primary' onClick={onApply}>
+            Commencer
+          </Button>
+        </Grid>
+      </Grid>
+    </div>
+  )
 }
