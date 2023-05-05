@@ -7,8 +7,14 @@ import mkClasses from '/lib/mkClasses'
 export default function Selector(props) {
   return (
     <Grided>
-      <Option {...props} value={1} />
-      <Option {...props} value={2} />
+      <Option
+        {...props}
+        value={1}
+      />
+      <Option
+        {...props}
+        value={2}
+      />
     </Grided>
   )
 }
@@ -22,7 +28,11 @@ const Grided = ({ children }) => (
     alignItems='flex-start'
   >
     {children.map((child, id) => (
-      <Grid item xs key={id}>
+      <Grid
+        item
+        xs
+        key={id}
+      >
         {child}
       </Grid>
     ))}
@@ -35,8 +45,14 @@ const Option = ({ value, current, onClick }) => {
     2: 'img/blancs.png',
   }[value]
   return (
-    <div {...{ className }} onMouseDown={() => onClick(value)}>
-      <img {...{ src }} onMouseDown={e => e.preventDefault() /* no-drag */} />
+    <div
+      {...{ className }}
+      onMouseDown={() => onClick(value)}
+    >
+      <img
+        {...{ src }}
+        onMouseDown={e => e.preventDefault() /* no-drag */}
+      />
     </div>
   )
 }

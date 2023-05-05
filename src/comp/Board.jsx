@@ -11,7 +11,10 @@ const Board = ({ squares, onMove }) => {
     const { coord } = square
     line.push(
       <td key={square.coord}>
-        <Square square={square} onSelect={() => onMove({ coord })} />
+        <Square
+          square={square}
+          onSelect={() => onMove({ coord })}
+        />
       </td>
     )
     if (square.nl()) {

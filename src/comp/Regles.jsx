@@ -108,12 +108,18 @@ export default function Regles() {
         <tbody>
           <tr className='odd'>
             <td>
-              <img className='Plateau' src='img/1000000000000071000000875A7E52B12142BB18.jpg' />
+              <img
+                className='Plateau'
+                src='img/1000000000000071000000875A7E52B12142BB18.jpg'
+              />
             </td>
             <td>
               <p>Carte reproduite</p>
               <p>
-                <img className='Carte' src='img/100000000000002D00000036A3FE065D9632E68D.jpg' />
+                <img
+                  className='Carte'
+                  src='img/100000000000002D00000036A3FE065D9632E68D.jpg'
+                />
               </p>
             </td>
           </tr>
@@ -135,26 +141,41 @@ export default function Regles() {
         <tbody>
           <tr className='odd'>
             <td>
-              <img className='Plateau' src='img/100000000000007100000087DFB228A471609B16.jpg' />
+              <img
+                className='Plateau'
+                src='img/100000000000007100000087DFB228A471609B16.jpg'
+              />
             </td>
             <td>
               <p>
                 En jouant un pion noir entre les deux pions blancs, on reproduit les cartes&nbsp:
               </p>
               <p>
-                <img className='Carte' src='img/100000000000008C000000A87317F4896CA6D119.png' />
-                <img className='Carte' src='img/100000000000008C000000A8E110F53E54B6FFD9.png' />
+                <img
+                  className='Carte'
+                  src='img/100000000000008C000000A87317F4896CA6D119.png'
+                />
+                <img
+                  className='Carte'
+                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
+                />
               </p>
             </td>
           </tr>
           <tr className='even'>
             <td>
-              <img className='Plateau' src='img/100000000000007100000087CEB676665D7F11B8.jpg' />
+              <img
+                className='Plateau'
+                src='img/100000000000007100000087CEB676665D7F11B8.jpg'
+              />
             </td>
             <td>
               <p>On ne peut pas jouer un pion blanc entre les deux pions blancs sinon la carte</p>
               <p>
-                <img className='Carte' src='img/100000000000002D000000360BEA7FAC9C4847CD.jpg' />
+                <img
+                  className='Carte'
+                  src='img/100000000000002D000000360BEA7FAC9C4847CD.jpg'
+                />
               </p>
               <p>serait présente deux fois sur le plateau</p>
             </td>
@@ -175,13 +196,22 @@ export default function Regles() {
         <tbody>
           <tr className='odd'>
             <td>
-              <img className='Plateau' src='img/100000000000007100000087AAFEA097B5664748.jpg' />
+              <img
+                className='Plateau'
+                src='img/100000000000007100000087AAFEA097B5664748.jpg'
+              />
             </td>
             <td>
               <p>Cartes déjà reproduites</p>
               <p>
-                <img className='Carte' src='img/100000000000008C000000A85906570A090FB8B7.png' />{' '}
-                <img className='Carte' src='img/100000000000008C000000A8E110F53E54B6FFD9.png' />
+                <img
+                  className='Carte'
+                  src='img/100000000000008C000000A85906570A090FB8B7.png'
+                />{' '}
+                <img
+                  className='Carte'
+                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
+                />
               </p>
             </td>
           </tr>
@@ -212,7 +242,10 @@ export default function Regles() {
       </p>
 
       <p style={{ textAlign: 'right' }}>
-        <a href='regles.pdf' target='_blank'>
+        <a
+          href='regles.pdf'
+          target='_blank'
+        >
           Télécharger la règles
         </a>
       </p>

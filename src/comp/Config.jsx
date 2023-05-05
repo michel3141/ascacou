@@ -67,7 +67,12 @@ class ConfigClass extends Component {
     this.updateSwitches(this.switches, this.state.allow_multiple_cards)
     return (
       <div className='Config'>
-        <Grid container direction='column' justify='space-evenly' alignItems='center'>
+        <Grid
+          container
+          direction='column'
+          justify='space-evenly'
+          alignItems='center'
+        >
           <Typography variant='h4'>Partie en cours</Typography>
           <Typography variant='h4'>Nouvelle partie</Typography>
           {this.switches.map(s => (
@@ -104,13 +109,20 @@ class ConfigClass extends Component {
 
           {this.props.onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
             <Grid item>
-              <Button color='secondary' onClick={this.props.onCancel}>
+              <Button
+                color='secondary'
+                onClick={this.props.onCancel}
+              >
                 Annuler
               </Button>
             </Grid>
           )}
           <Grid item>
-            <Button variant='contained' color='primary' onClick={this.onApply}>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={this.onApply}
+            >
               Commencer
             </Button>
           </Grid>
@@ -121,37 +133,18 @@ class ConfigClass extends Component {
 }
 
 export default function Config({ onApply }) {
-  const { useCurrentConfig, updateValue } = useCurrentConfigSlice()
-  const currentConfig = useCurrentConfig()
-
   return (
     <div className='Config'>
-      <Grid container direction='column' justify='space-evenly' alignItems='center'>
+      <Grid
+        container
+        direction='column'
+        justify='space-evenly'
+        alignItems='center'
+      >
         <p style={{ textAlign: 'center' }}>
           <img src='img/icon_128.png' />
         </p>
-        <Typography variant='h4'>Partie en cours</Typography>
-        {Object.entries(currentConfig)
-          .filter(([key, item]) => item.visible)
-          .map(([key, item]) => {
-            const { enable, value, lbl, type } = item
-            return (
-              <div key={key}>
-                <FormControlLabel
-                  disabled={!enable}
-                  value='start'
-                  control={
-                    (type === 'boolean' && (
-                      <Switch checked={value} onClick={() => updateValue({ [key]: !value })} />
-                    )) ||
-                    (type === 'enum' && <div>TODO Select</div>)
-                  }
-                  label={lbl}
-                  labelPlacement='start'
-                />
-              </div>
-            )
-          })}
+        <CurrentConfig />
         <Divider width='80%' />
         <Typography variant='h4'>Nouvelle partie</Typography>
         {`
@@ -196,11 +189,54 @@ export default function Config({ onApply }) {
           )}
           `}
         <Grid item>
-          <Button variant='contained' color='primary' onClick={onApply}>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={onApply}
+          >
             Commencer
           </Button>
         </Grid>
       </Grid>
+    </div>
+  )
+}
+
+const CurrentConfig = () => {
+  const { useCurrentConfig } = useCurrentConfigSlice()
+  const currentConfig = useCurrentConfig()
+  return (
+    <>
+      <Typography variant='h4'>Partie en cours</Typography>
+      {Object.entries(currentConfig)
+        .filter(([key, item]) => item.visible)
+        .map(([key, item]) => (
+          <Item {...{ key, item, id: key }} />
+        ))}
+    </>
+  )
+}
+
+const Item = ({ id, item }) => {
+  const { updateValue } = useCurrentConfigSlice()
+  const { enable, value, lbl, type } = item
+  return (
+    <div>
+      <FormControlLabel
+        disabled={!enable}
+        value='start'
+        control={
+          (type === 'boolean' && (
+            <Switch
+              checked={value}
+              onClick={() => updateValue({ [id]: !value })}
+            />
+          )) ||
+          (type === 'enum' && <div>TODO Select</div>)
+        }
+        label={lbl}
+        labelPlacement='start'
+      />
     </div>
   )
 }

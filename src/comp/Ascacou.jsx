@@ -86,7 +86,10 @@ const Ascacou = ({ ascacou, newGame }) => {
 
   return (
     <div className='Ascacou'>
-      <AppBar position='static' color='transparent'>
+      <AppBar
+        position='static'
+        color='transparent'
+      >
         <Menu
           actions={actions.map(action => ({
             ...action,
@@ -105,31 +108,82 @@ const Ascacou = ({ ascacou, newGame }) => {
             {
               title: 'Nouvelle partie',
               lbl: <MenuIcn />,
-              action: <Config onApply={onNewGame} appClass={Game} />,
+              action: (
+                <Config
+                  onApply={onNewGame}
+                  appClass={Game}
+                />
+              ),
               visible: showNewGame,
               enable: true,
               onToggle: v => setShowNewGame(v),
             },
           ]}
-          titre={<img src='img/titre-t.png' onMouseDown={e => e.preventDefault()} />}
+          titre={
+            <img
+              src='img/titre-t.png'
+              onMouseDown={e => e.preventDefault()}
+            />
+          }
         />
       </AppBar>
-      <Grid container direction='row' justify='space-evenly' alignItems='flex-start'>
-        <Grid item xs>
-          <Player id={1} name='Joueur 1' cards={ascacou.cards} player={ascacou.player} />
+      <Grid
+        container
+        direction='row'
+        justify='space-evenly'
+        alignItems='flex-start'
+      >
+        <Grid
+          item
+          xs
+        >
+          <Player
+            id={1}
+            name='Joueur 1'
+            cards={ascacou.cards}
+            player={ascacou.player}
+          />
         </Grid>
-        <Grid item xs>
-          <Grid container direction='column' alignItems='center' justify='space-evenly'>
-            <Grid item xs>
-              <Board onMove={play} squares={ascacou.squares} />
+        <Grid
+          item
+          xs
+        >
+          <Grid
+            container
+            direction='column'
+            alignItems='center'
+            justify='space-evenly'
+          >
+            <Grid
+              item
+              xs
+            >
+              <Board
+                onMove={play}
+                squares={ascacou.squares}
+              />
             </Grid>
-            <Grid item xs>
-              <Selector onClick={setCurrentColor} current={currentColor} />
+            <Grid
+              item
+              xs
+            >
+              <Selector
+                onClick={setCurrentColor}
+                current={currentColor}
+              />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs>
-          <Player id={2} name='Joueur 2' cards={ascacou.cards} player={ascacou.player} />
+        <Grid
+          item
+          xs
+        >
+          <Player
+            id={2}
+            name='Joueur 2'
+            cards={ascacou.cards}
+            player={ascacou.player}
+          />
         </Grid>
       </Grid>
       <div className='Fen'> {ascacou.fen()}</div>

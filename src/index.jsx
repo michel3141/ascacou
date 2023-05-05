@@ -12,7 +12,10 @@ root.render(
   <StrictMode>
     <Provider {...{ store }}>
       <ThemeProvider>
-        <App allow_multiple_cards={false} deal_method='random' />
+        <App
+          allow_multiple_cards={false}
+          deal_method='random'
+        />
       </ThemeProvider>
     </Provider>
   </StrictMode>
