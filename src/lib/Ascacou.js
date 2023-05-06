@@ -28,7 +28,7 @@ export default class Ascacou {
 
   static deal_methods = {
     random: {
-      label: 'Aléatoire',
+      lbl: 'Aléatoire',
       order: 1,
       deal: function () {
         function shuffle(a) {
@@ -67,21 +67,21 @@ export default class Ascacou {
       },
     },
     bnw: {
-      label: 'Noirs et Blancs',
+      lbl: 'Noirs et Blancs',
       order: 2,
       deal: () =>
         '1111:1 1112:1 1121:1 1211:1 2111:1 1122:1 1212:1 1221:1' +
         ' 2222:2 2221:2 2212:2 2122:2 1222:2 2211:2 2121:2 2112:2',
     },
     extrem: {
-      label: 'Extrêmes et Médianes',
+      lbl: 'Extrêmes et Médianes',
       order: 3,
       deal: () =>
         '1111:1 2222:1 1112:1 1121:1 1211:1 2221:1 2212:1 2122:1' +
         ' 1122:2 1212:2 2112:2 1221:2 2121:2 2211:2 2111:2 1222:2',
     },
     symetric: {
-      label: 'Symétrique',
+      lbl: 'Symétrique',
       order: 4,
       deal: () =>
         '1111:1 1112:1 1121:1 2122:1 1222:1 1122:1 1212:1 1221:1' +

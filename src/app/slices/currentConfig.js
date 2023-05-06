@@ -1,5 +1,7 @@
 import rtk, { _ } from '/lib/rtk'
 
+import Ascacou from '/lib/Ascacou'
+
 export const name = 'currentConfig'
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 /*
@@ -18,7 +20,6 @@ export const name = 'currentConfig'
 const initialState = {
   allow_multiple_cards: {
     lbl: 'Autorise les motifs multiples',
-    visible: true,
     enable: false,
     value: true,
     type: 'boolean',
@@ -26,24 +27,21 @@ const initialState = {
   show_blocked: {
     lbl: 'Montre les cases bloquées',
     enable: true,
-    visible: true,
     value: false,
     type: 'boolean',
   },
   show_forbidden: {
     lbl: 'Montre les coups interdits',
-    visible: true,
     enable: true,
     value: false,
     type: 'boolean',
   },
   deal_method: {
     lbl: 'Type de distribution',
-    visible: false,
     enable: false,
     value: 'random',
     type: 'enum',
-    enum: ['random'],
+    values: Ascacou.deal_methods,
   },
 }
 

@@ -1,136 +1,9 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useCurrentConfigSlice } from '/app/slices'
 
-import {
-  Grid,
-  Button,
-  Switch,
-  List,
-  ListItem,
-  Typography,
-  FormControlLabel,
-  Divider,
-} from '@mui/material'
+import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material'
 import '/css/Config.css'
-
-class ConfigClass extends Component {
-  switches = [
-    {
-      state: 'allow_multiple_cards',
-      lbl: 'Autorise les motifs multiples',
-      enable: true,
-    },
-    { state: 'show_blocked', lbl: 'Montre les cases bloquées', enable: true },
-    {
-      state: 'show_forbidden',
-      lbl: 'Montre les coups interdits',
-      enable: true,
-    },
-  ]
-
-  state = {
-    deal_method: this.props.prefs.deal_method,
-    allow_multiple_cards: this.props.prefs.allow_multiple_cards,
-    show_blocked: this.props.prefs.show_blocked,
-    show_forbidden: this.props.prefs.show_forbidden,
-  }
-
-  onSelect(state_key, value) {
-    this.setState({ [state_key]: value })
-  }
-
-  updateSwitches = (switches, value) => {
-    switches.forEach(s => {
-      if (s.state === 'show_blocked' || s.state === 'show_forbidden') {
-        s.enable = !value
-      }
-    })
-  }
-
-  onSwitch(state_key, e) {
-    const value = e.target.checked
-    this.setState({ [state_key]: value })
-  }
-
-  onSwitchCurrent(state_key, e) {
-    const value = e.target.checked
-    this.props.setPrefs({ ...this.props.prefs, [state_key]: value })
-  }
-
-  onApply = () => {
-    this.props.onApply(this.state)
-  }
-
-  render = () => {
-    const dm = this.props.appClass.deal_methods
-    this.updateSwitches(this.switches, this.state.allow_multiple_cards)
-    return (
-      <div className='Config'>
-        <Grid
-          container
-          direction='column'
-          justify='space-evenly'
-          alignItems='center'
-        >
-          <Typography variant='h4'>Partie en cours</Typography>
-          <Typography variant='h4'>Nouvelle partie</Typography>
-          {this.switches.map(s => (
-            <div key={s.state}>
-              <FormControlLabel
-                disabled={!s.enable}
-                value='start'
-                control={
-                  <Switch
-                    checked={this.state[s.state]}
-                    onClick={this.onSwitch.bind(this, s.state)}
-                  />
-                }
-                label={s.lbl}
-                labelPlacement='start'
-              />
-            </div>
-          ))}
-          <fieldset>
-            <label>Type de distribution</label>
-            <List>
-              {Object.keys(dm).map(k => (
-                <ListItem
-                  key={k}
-                  button
-                  onClick={this.onSelect.bind(this, 'deal_method', k)}
-                  selected={this.state.deal_method === k}
-                >
-                  {dm[k].label}
-                </ListItem>
-              ))}
-            </List>
-          </fieldset>
-
-          {this.props.onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
-            <Grid item>
-              <Button
-                color='secondary'
-                onClick={this.props.onCancel}
-              >
-                Annuler
-              </Button>
-            </Grid>
-          )}
-          <Grid item>
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={this.onApply}
-            >
-              Commencer
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
-    )
-  }
-}
 
 export default function Config({ onApply }) {
   return (
@@ -145,98 +18,133 @@ export default function Config({ onApply }) {
           <img src='img/icon_128.png' />
         </p>
         <CurrentConfig />
-        <Divider width='80%' />
-        <Typography variant='h4'>Nouvelle partie</Typography>
-        {`
-          {this.switches.map(s => (
-            <div key={s.state}>
-              <FormControlLabel
-                disabled={!s.enable}
-                value='start'
-                control={
-                  <Switch
-                    checked={this.state[s.state]}
-                    onClick={this.onSwitch.bind(this, s.state)}
-                  />
-                }
-                label={s.lbl}
-                labelPlacement='start'
-              />
-            </div>
-          ))}
-          <fieldset>
-            <label>Type de distribution</label>
-            <List>
-              {Object.keys(dm).map(k => (
-                <ListItem
-                  key={k}
-                  button
-                  onClick={this.onSelect.bind(this, 'deal_method', k)}
-                  selected={this.state.deal_method === k}
-                >
-                  {dm[k].label}
-                </ListItem>
-              ))}
-            </List>
-          </fieldset>
-
-          {this.props.onCancel /* plus utilsé - Attention certainement un pb d'affichage */ && (
-            <Grid item>
-              <Button color='secondary' onClick={this.props.onCancel}>
-                Annuler
-              </Button>
-            </Grid>
-          )}
-          `}
-        <Grid item>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={onApply}
-          >
-            Commencer
-          </Button>
-        </Grid>
+        <Divider />
+        <NewGame {...{ onApply }} />
       </Grid>
     </div>
   )
 }
 
 const CurrentConfig = () => {
-  const { useCurrentConfig } = useCurrentConfigSlice()
+  const { useCurrentConfig, updateValue } = useCurrentConfigSlice()
   const currentConfig = useCurrentConfig()
   return (
     <>
       <Typography variant='h4'>Partie en cours</Typography>
-      {Object.entries(currentConfig)
-        .filter(([key, item]) => item.visible)
-        .map(([key, item]) => (
-          <Item {...{ key, item, id: key }} />
-        ))}
+      {Object.entries(currentConfig).map(([key, item]) => (
+        <Item {...{ key, item, id: key, updateValue }} />
+      ))}
     </>
   )
 }
 
-const Item = ({ id, item }) => {
-  const { updateValue } = useCurrentConfigSlice()
-  const { enable, value, lbl, type } = item
-  return (
-    <div>
-      <FormControlLabel
-        disabled={!enable}
-        value='start'
-        control={
-          (type === 'boolean' && (
-            <Switch
-              checked={value}
-              onClick={() => updateValue({ [id]: !value })}
-            />
-          )) ||
-          (type === 'enum' && <div>TODO Select</div>)
+const NewGame = ({ onApply }) => {
+  const { useCurrentConfig } = useCurrentConfigSlice()
+  const currentConfig = useCurrentConfig()
+
+  const [params, setParams] = useState(currentConfig)
+  const updateValue = (changes = {}) => {
+    const current = Object.entries(params).reduce(
+      (acc, [key, item]) => ({ ...acc, [key]: item.value }),
+      {}
+    )
+    changes = { ...current, ...changes }
+    Object.entries(changes).forEach(([key, value]) => console.log(key, value))
+    Object.entries(changes).forEach(([key, value]) =>
+      setParams(p => {
+        let enable = true
+        if (['show_blocked', 'show_forbidden'].includes(key)) {
+          enable = !changes.allow_multiple_cards
         }
-        label={lbl}
-        labelPlacement='start'
-      />
-    </div>
+        return {
+          ...p,
+          [key]: { ...p[key], enable, value },
+        }
+      })
+    )
+  }
+  useEffect(updateValue, [])
+
+  const submit = () => {
+    const current = Object.entries(params).reduce(
+      (acc, [key, item]) => ({ ...acc, [key]: item.value }),
+      {}
+    )
+    onApply(current)
+  }
+
+  return (
+    <>
+      <Typography variant='h4'>Nouvelle partie</Typography>
+      {Object.entries(params).map(([key, item]) => (
+        <Item {...{ key, item: { ...item }, id: key, updateValue }} />
+      ))}
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={submit}
+      >
+        Commencer
+      </Button>
+    </>
   )
 }
+const Item = ({ id, item, updateValue }) => {
+  const { enable, value, lbl, type, values } = item
+  switch (type) {
+    case 'boolean':
+      return <OnOff {...{ id, value, enable, lbl, updateValue }} />
+    case 'enum':
+      return <Select {...{ id, value, enable, lbl, values, updateValue }} />
+    default:
+      return <div>null</div>
+  }
+}
+const OnOff = ({ id, value, enable, lbl, updateValue }) => (
+  <div>
+    <FormControlLabel
+      disabled={!enable}
+      value='start'
+      control={
+        <Switch
+          checked={value}
+          onClick={() => updateValue({ [id]: !value })}
+        />
+      }
+      label={lbl}
+      labelPlacement='start'
+    />
+  </div>
+)
+
+const Select = ({ id, value, enable, lbl, values, updateValue }) => (
+  <fieldset disabled={!enable}>
+    <legend>{lbl}</legend>
+    <List>
+      {Object.keys(values)
+        .filter(key => enable || key === value)
+        .map(key => (
+          <ListItem
+            key={key}
+            button
+            onClick={() => updateValue({ [id]: key })}
+            selected={key === value}
+          >
+            {values[key].lbl}
+          </ListItem>
+        ))}
+    </List>
+  </fieldset>
+)
+
+const Divider = () => (
+  <hr
+    style={{
+      border: 'none',
+      height: 1,
+      margin: 20,
+      width: '80%',
+      backgroundColor: '#333',
+    }}
+  />
+)
