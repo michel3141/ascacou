@@ -111,7 +111,7 @@ const toggle =
       : { ...state, [key]: !state[key] }
 
 const update = key => (state, action) =>
-  key ? filter(state, { [key]: action.payload }) : filter(state, action)
+  key ? filter(state, _({ [key]: action.payload })) : filter(state, action)
 
 export default rtk
 

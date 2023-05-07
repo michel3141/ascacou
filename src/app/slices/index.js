@@ -28,9 +28,12 @@ export const reducers = Object.entries(slices).reduce(
 )
 
 // !.mkexport
-export const { theme, currentConfig } = slices
+export const { theme, currentConfig, selector } = slices
 
 export const useThemeSlice = () => useSlice(theme)
 export const useCurrentConfigSlice = () => useSlice(currentConfig)
+export const useSelectorSlice = () => useSlice(selector)
+
+window.slices = slices
 
 export default slices

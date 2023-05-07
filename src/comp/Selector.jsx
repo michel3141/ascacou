@@ -2,19 +2,17 @@ import React from 'react'
 import { Grid } from '@mui/material'
 import '/css/Selector.css'
 
+import { selector, useSelectorSlice } from '/app/slices'
+
 import mkClasses from '/lib/mkClasses'
 
-export default function Selector(props) {
+const { BLACK, WHITE } = selector
+
+export default function Selector() {
   return (
     <Grided>
-      <Option
-        {...props}
-        value={1}
-      />
-      <Option
-        {...props}
-        value={2}
-      />
+      <Option color={BLACK} />
+      <Option color={WHITE} />
     </Grided>
   )
 }
@@ -38,16 +36,18 @@ const Grided = ({ children }) => (
     ))}
   </Grid>
 )
-const Option = ({ value, current, onClick }) => {
-  const className = mkClasses({ Selected: value === current })
+const Option = ({ color }) => {
+  const { select, useColor } = useSelectorSlice()
+  const currentColor = useColor()
+  const className = mkClasses({ Selected: color === currentColor })
   const src = {
-    1: 'img/noirs.png',
-    2: 'img/blancs.png',
-  }[value]
+    [BLACK]: 'img/noirs.png',
+    [WHITE]: 'img/blancs.png',
+  }[color]
   return (
     <div
       {...{ className }}
-      onMouseDown={() => onClick(value)}
+      onMouseDown={() => select(color)}
     >
       <img
         {...{ src }}

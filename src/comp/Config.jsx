@@ -49,7 +49,6 @@ const NewGame = ({ onApply }) => {
       {}
     )
     changes = { ...current, ...changes }
-    Object.entries(changes).forEach(([key, value]) => console.log(key, value))
     Object.entries(changes).forEach(([key, value]) =>
       setParams(p => {
         let enable = true

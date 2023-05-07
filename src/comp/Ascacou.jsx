@@ -9,6 +9,8 @@ import Regles from './Regles'
 import Config from './Config'
 import '/css/Ascacou.css'
 
+import { useSelectorSlice } from '/app/slices'
+
 import { useCurrentConfigSlice } from '/app/slices'
 
 import { SkipPrevious, Help, Replay, Menu as MenuIcn } from '@mui/icons-material'
@@ -32,7 +34,6 @@ const actions = [
 const Ascacou = ({ ascacou, newGame }) => {
   const [showRegles, setShowRegles] = useState(false)
   const [showNewGame, setShowNewGame] = useState(true)
-  const [currentColor, setCurrentColor] = useState(1)
 
   const { useShowForbidden } = useCurrentConfigSlice()
   const showForbidden = useShowForbidden()
@@ -41,6 +42,8 @@ const Ascacou = ({ ascacou, newGame }) => {
   window.unused = z
   const forceUpdate = () => Z(p => p + 1) // TODO ceci est un hack
 
+  const { useColor } = useSelectorSlice()
+  const currentColor = useColor()
   const play = move => {
     /*
      * move = {
@@ -167,10 +170,7 @@ const Ascacou = ({ ascacou, newGame }) => {
               item
               xs
             >
-              <Selector
-                onClick={setCurrentColor}
-                current={currentColor}
-              />
+              <Selector />
             </Grid>
           </Grid>
         </Grid>

@@ -13,5 +13,7 @@ const store = configureStore({
   trace: isDevMode,
 })
 
+window.store = store
+
 export { store }
 export default store

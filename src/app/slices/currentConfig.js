@@ -3,43 +3,26 @@ import rtk, { _ } from '/lib/rtk'
 import Ascacou from '/lib/Ascacou'
 
 export const name = 'currentConfig'
-// const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
-/*
-    {
-      state: 'allow_multiple_cards',
-      lbl: 'Autorise les motifs multiples',
-      enable: false,
-    },
-    { state: 'show_blocked', lbl: 'Montre les cases bloquées', enable: true },
-    {
-      state: 'show_forbidden',
-      lbl: 'Montre les coups interdits',
-      enable: true,
-    },
-  */
+
 const initialState = {
   allow_multiple_cards: {
     lbl: 'Autorise les motifs multiples',
     enable: false,
-    value: true,
     type: 'boolean',
   },
   show_blocked: {
     lbl: 'Montre les cases bloquées',
     enable: true,
-    value: false,
     type: 'boolean',
   },
   show_forbidden: {
     lbl: 'Montre les coups interdits',
     enable: true,
-    value: false,
     type: 'boolean',
   },
   deal_method: {
     lbl: 'Type de distribution',
     enable: false,
-    value: 'random',
     type: 'enum',
     values: Ascacou.deal_methods,
   },
@@ -49,7 +32,6 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   updateValue: _,
-  updateItem: _,
 })
 export const selectors = createSelectors({
   show_blocked: state => state.currentConfig.show_blocked.value,
@@ -62,13 +44,9 @@ export default createReducer({
     for (const [key, value] of Object.entries(payload)) {
       if (key in state) {
         state[key].value = value
+        // attention different de rtk.update :
+        // statekey] = value
       }
-    }
-  },
-  [actions.updateItem]: (state, { payload }) => {
-    const { key, item } = payload
-    if (key in state) {
-      state[key] = { ...item, value: state[key].value }
     }
   },
 })
