@@ -1,0 +1,44 @@
+#!/bin/bash
+(
+echo "import { useSlice } from '/lib/react-redux';"
+echo
+
+modules=""
+#for module in $(ls ./*/index.js ./*.js 2> /dev/null )
+for module in $((find -name '*.js'| grep -v "^\.\/index.js$"; find ../../features/* -name '*Slice.js'; find ../../features/*/*Slice -name index.js)|sed s/".js$"//)
+do
+	name=$(echo $module | sed s/"Slice.*"// | sed s/".*\/"//)
+	if echo $name | grep -qe "\."
+	then
+		echo -n
+	else
+		echo "import * as $name from '$module';"
+		modules="$modules $name"
+	fi
+done
+
+echo
+echo "const slices = { $(for name in $modules; do echo $name, ; done) }"
+echo "export { $(for name in $modules; do echo $name, ; done) }"
+echo
+
+cat << INDEX
+
+export const reducers = Object.entries(slices).reduce(
+  (acc, [name, slice]) => ({
+    ...acc,
+    [name]: slice.default,
+  }),
+  {}
+);
+INDEX
+
+echo
+for name in $modules
+do 
+	echo "export const use${name^}Slice = () => useSlice($name);"
+done
+echo
+echo "export default slices;"
+
+) | yarn --silent prettier --parser babel --loglevel silent

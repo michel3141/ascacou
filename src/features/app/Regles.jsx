@@ -34,7 +34,7 @@ export default function Regles() {
       </h1>
       <p style={{ textAlign: 'center' }}>
         <img
-          src='img/100000000000013C00000176017FE24A41E0F645.jpg'
+          src='/assets/img/100000000000013C00000176017FE24A41E0F645.jpg'
           style={{ width: '6.387cm', height: '7.535cm' }}
         />
       </p>
@@ -110,7 +110,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src='img/1000000000000071000000875A7E52B12142BB18.jpg'
+                src='/assets/img/1000000000000071000000875A7E52B12142BB18.jpg'
               />
             </td>
             <td>
@@ -118,7 +118,7 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src='img/100000000000002D00000036A3FE065D9632E68D.jpg'
+                  src='/assets/img/100000000000002D00000036A3FE065D9632E68D.jpg'
                 />
               </p>
             </td>
@@ -143,7 +143,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src='img/100000000000007100000087DFB228A471609B16.jpg'
+                src='/assets/img/100000000000007100000087DFB228A471609B16.jpg'
               />
             </td>
             <td>
@@ -153,11 +153,11 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src='img/100000000000008C000000A87317F4896CA6D119.png'
+                  src='/assets/img/100000000000008C000000A87317F4896CA6D119.png'
                 />
                 <img
                   className='Carte'
-                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
+                  src='/assets/img/100000000000008C000000A8E110F53E54B6FFD9.png'
                 />
               </p>
             </td>
@@ -166,7 +166,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src='img/100000000000007100000087CEB676665D7F11B8.jpg'
+                src='/assets/img/100000000000007100000087CEB676665D7F11B8.jpg'
               />
             </td>
             <td>
@@ -174,7 +174,7 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src='img/100000000000002D000000360BEA7FAC9C4847CD.jpg'
+                  src='/assets/img/100000000000002D000000360BEA7FAC9C4847CD.jpg'
                 />
               </p>
               <p>serait présente deux fois sur le plateau</p>
@@ -198,7 +198,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src='img/100000000000007100000087AAFEA097B5664748.jpg'
+                src='/assets/img/100000000000007100000087AAFEA097B5664748.jpg'
               />
             </td>
             <td>
@@ -206,11 +206,11 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src='img/100000000000008C000000A85906570A090FB8B7.png'
+                  src='/assets/img/100000000000008C000000A85906570A090FB8B7.png'
                 />{' '}
                 <img
                   className='Carte'
-                  src='img/100000000000008C000000A8E110F53E54B6FFD9.png'
+                  src='/assets/img/100000000000008C000000A8E110F53E54B6FFD9.png'
                 />
               </p>
             </td>

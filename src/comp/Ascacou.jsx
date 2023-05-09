@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
-import { Grid, AppBar } from '@mui/material'
+import { Grid } from '@mui/material'
+
+import AppBar from '/features/app/Bar'
+
 import Game from '/lib/Ascacou'
 import Board from '/features/board/Board'
-import Config from '/features/params/Config'
 
 import Player from './Player'
 import Selector from '/features/selector/Selector'
-import Menu from './Menu'
-import Regles from './Regles'
 import '/css/Ascacou.css'
 
 import { useSelectorSlice } from '/app/slices'
 
 import { useParamsSlice } from '/app/slices'
 
-import { SkipPrevious, Help, Replay, Menu as MenuIcn } from '@mui/icons-material'
+import { SkipPrevious, Replay } from '@mui/icons-material'
 
 const actions = [
   {
@@ -33,9 +33,6 @@ const actions = [
 ]
 
 const Ascacou = ({ ascacou, newGame }) => {
-  const [showRegles, setShowRegles] = useState(false)
-  const [showNewGame, setShowNewGame] = useState(true)
-
   const { useShowForbidden } = useParamsSlice()
   const showForbidden = useShowForbidden()
 
@@ -45,30 +42,6 @@ const Ascacou = ({ ascacou, newGame }) => {
 
   const { useColor } = useSelectorSlice()
   const currentColor = useColor()
-  const play = move => {
-    /*
-     * move = {
-     * coord,
-     * }
-     */
-    move = { ...move, content: currentColor }
-    const moved = ascacou.play(move)
-    if (moved === null) return
-    if (moved) {
-      forceUpdate()
-    } else {
-      if (showForbidden) {
-        // ça va certainement ailleurs
-        forceUpdate()
-        setTimeout(() => {
-          ascacou.clear(move)
-          forceUpdate()
-        }, 750)
-      } else {
-        ascacou.clear(move)
-      }
-    }
-  }
 
   const onAction = cmd => {
     const noop = () => undefined
@@ -83,54 +56,9 @@ const Ascacou = ({ ascacou, newGame }) => {
     forceUpdate()
   }
 
-  const onNewGame = prefs => {
-    setShowNewGame(false)
-    newGame(prefs)
-  }
-
   return (
     <div className='Ascacou'>
-      <AppBar
-        position='static'
-        color='transparent'
-      >
-        <Menu
-          actions={actions.map(action => ({
-            ...action,
-            cmd: () => onAction(action.cmd),
-            long: () => onAction(action.long),
-          }))}
-          drawers={[
-            {
-              title: 'Règles',
-              lbl: <Help />,
-              action: <Regles />,
-              visible: showRegles,
-              enable: true,
-              onToggle: v => setShowRegles(v),
-            },
-            {
-              title: 'Nouvelle partie',
-              lbl: <MenuIcn />,
-              action: (
-                <Config
-                  onApply={onNewGame}
-                  appClass={Game}
-                />
-              ),
-              visible: showNewGame,
-              enable: true,
-              onToggle: v => setShowNewGame(v),
-            },
-          ]}
-          titre={
-            <img
-              src='img/titre-t.png'
-              onMouseDown={e => e.preventDefault()}
-            />
-          }
-        />
-      </AppBar>
+      <AppBar {...{ actions }} />
       <Grid
         container
         direction='row'
@@ -162,10 +90,7 @@ const Ascacou = ({ ascacou, newGame }) => {
               item
               xs
             >
-              <Board
-                onMove={play}
-                squares={ascacou.squares}
-              />
+              <Board />
             </Grid>
             <Grid
               item

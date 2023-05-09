@@ -41,8 +41,8 @@ const Option = ({ color }) => {
   const currentColor = useColor()
   const className = mkClasses({ Selected: color === currentColor })
   const src = {
-    [BLACK]: 'img/noirs.png',
-    [WHITE]: 'img/blancs.png',
+    [BLACK]: '/assets/img/noirs.png',
+    [WHITE]: '/assets/img/blancs.png',
   }[color]
   return (
     <div

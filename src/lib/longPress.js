@@ -33,8 +33,11 @@ const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500
   const click = useCallback(
     ev => {
       if (timerRef.current) {
-        onClick(ev)
-        stop(ev)
+        try {
+          onClick(ev)
+        } finally {
+          stop(ev)
+        }
       }
     },
     [onClick, stop]

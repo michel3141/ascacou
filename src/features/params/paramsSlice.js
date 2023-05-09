@@ -1,4 +1,4 @@
-import rtk, { _ } from '/lib/rtk'
+import rtk, { _, update } from '/lib/rtk'
 
 import Ascacou from '/lib/Ascacou'
 
@@ -32,7 +32,7 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   updateValue: _,
-  newGame: _
+  newGame: _,
 })
 export const selectors = createSelectors({
   show_blocked: state => state.params.show_blocked.value,
@@ -50,6 +50,7 @@ export default createReducer({
       }
     }
   },
+  [actions.newGame]: update(),
 })
 
 export { listener }

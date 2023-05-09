@@ -15,7 +15,7 @@ const Square = ({ coord }) => {
 
   let { content, alert } = square
   //if (showBlocked && square.playable().length === 0) content = content || 3
-  const className =     `Square xy-${coord} c-${alert ? alert: content}`
+  const className = `Square xy-${coord} c-${alert ? alert : content}`
   return (
     <div
       {...{ className, onMouseDown }}

@@ -5,7 +5,7 @@ import { useParamsSlice } from '/app/slices'
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material'
 import './Config.css'
 
-export default function Config({ onApply }) {
+export default function Config() {
   return (
     <div className='Config'>
       <Grid
@@ -15,11 +15,11 @@ export default function Config({ onApply }) {
         alignItems='center'
       >
         <p style={{ textAlign: 'center' }}>
-          <img src='img/icon_128.png' />
+          <img src='/assets/img/icon_128.png' />
         </p>
         <Params />
         <Divider />
-        <NewGame {...{ onApply }} />
+        <NewGame />
       </Grid>
     </div>
   )
@@ -38,8 +38,8 @@ const Params = () => {
   )
 }
 
-const NewGame = ({ onApply }) => {
-  const { useParams } = useParamsSlice()
+const NewGame = () => {
+  const { newGame, useParams } = useParamsSlice()
 
   const [params, setParams] = useState(useParams())
   const updateValue = (changes = {}) => {
@@ -64,11 +64,7 @@ const NewGame = ({ onApply }) => {
   useEffect(updateValue, [])
 
   const submit = () => {
-    const current = Object.entries(params).reduce(
-      (acc, [key, item]) => ({ ...acc, [key]: item.value }),
-      {}
-    )
-    onApply(current)
+    newGame(params)
   }
 
   return (

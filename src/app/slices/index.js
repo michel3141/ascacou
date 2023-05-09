@@ -1,23 +1,13 @@
 import { useSlice } from '/lib/react-redux'
-// https://vitejs.dev/guide/features.html#glob-import
-const modules = import.meta.glob(
-  [
-    './*/index.js',
-    './*.js',
-    '!./index.js',
-    '../../features/*/*Slice.js',
-    '../../features/*/*Slice/index.js',
-  ],
-  { eager: true }
-)
 
-const slices = Object.values(modules).reduce(
-  (acc, module) => ({
-    ...acc,
-    [module.name]: module,
-  }),
-  {}
-)
+import * as theme from './theme'
+import * as params from '../../features/params/paramsSlice'
+import * as app from '../../features/app/appSlice'
+import * as board from '../../features/board/boardSlice'
+import * as selector from '../../features/selector/selectorSlice'
+
+const slices = { theme, app, board, params, selector }
+export { theme, app, board, params, selector }
 
 export const reducers = Object.entries(slices).reduce(
   (acc, [name, slice]) => ({
@@ -27,14 +17,10 @@ export const reducers = Object.entries(slices).reduce(
   {}
 )
 
-// !.mkexport
-export const { theme, params, selector, board } = slices
-
 export const useThemeSlice = () => useSlice(theme)
+export const useAppSlice = () => useSlice(app)
+export const useBoardSlice = () => useSlice(board)
 export const useParamsSlice = () => useSlice(params)
 export const useSelectorSlice = () => useSlice(selector)
-export const useBoardSlice = () => useSlice(board)
-
-window.slices = slices
 
 export default slices
