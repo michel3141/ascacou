@@ -7,7 +7,7 @@ export const useSlice = slice => {
   for (const [name, selector] of Object.entries(slice.selectors || {})) {
     const hookName = name.replace('select', 'use')
     // FIXME eslint-disable-next-line react-hooks/rules-of-hooks
-    selections[hookName] = () => useSelector(selector)
+    selections[hookName] = params => useSelector(params === undefined ? selector : selector(params))
   }
   const dispatch = useDispatch()
   const dispatchs = useMemo(

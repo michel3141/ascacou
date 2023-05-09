@@ -6,7 +6,7 @@ import { selector, useSelectorSlice } from '/app/slices'
 
 import mkClasses from '/lib/mkClasses'
 
-const { BLACK, WHITE } = selector
+import { WHITE, BLACK } from '/app/constants/colors'
 
 export default function Selector() {
   return (
