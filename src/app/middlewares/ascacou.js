@@ -1,9 +1,10 @@
-import { selector, board } from '/app/slices'
+import { selector, board, params } from '/app/slices'
 import { BLACK, WHITE, EMPTY } from '/app/constants/colors'
 
 const { selectColor } = selector.selectors
 const { selectSquares } = board.selectors
 const { select, updateSquare } = board.actions
+const { selectAllowMultipleCards } = params.selectors
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -62,13 +63,20 @@ function createMiddleware() {
     actionCreator: select,
     effect: ({ payload }, { dispatch, getState }) => {
       const color = selectColor(getState())
-      const square = { ...payload, content: color }
       const squares = selectSquares(getState())
-      const newSquares = { ...squares, [square.coord]: square }
-      const cards = activeCards(newSquares)
-      if (hasDuplicates(cards)) {
-      } else {
-        dispatch(updateSquare(square))
+      const square = squares[payload.coord]
+
+      const newSquare = { ...payload, content: color }
+
+      if (square.content === EMPTY) {
+        const newSquares = { ...squares, [square.coord]: newSquare }
+        const cards = activeCards(newSquares)
+        if (!selectAllowMultipleCards(getState()) && hasDuplicates(cards)) {
+          dispatch(updateSquare({ ...square, alert: `${color}x` }))
+          setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750)
+        } else {
+          dispatch(updateSquare(newSquare))
+        }
       }
     },
   })

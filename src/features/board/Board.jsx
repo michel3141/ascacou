@@ -1,6 +1,6 @@
 import React from 'react'
 import Square from './Square'
-import '/css/Board.css'
+import './Board.css'
 
 const Board = ({}) => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
-import '/css/Square.css'
-import { useCurrentConfigSlice, useBoardSlice } from '/app/slices'
+import './Square.css'
+import { useParamsSlice, useBoardSlice } from '/app/slices'
 
 const Square = ({ coord }) => {
-  const { useShowBlocked, useShowForbidden } = useCurrentConfigSlice()
+  const { useShowBlocked, useShowForbidden } = useParamsSlice()
   const { select, useSquareByCoord } = useBoardSlice()
   const showBlocked = useShowBlocked()
   const square = useSquareByCoord(coord)
@@ -13,9 +13,9 @@ const Square = ({ coord }) => {
     select(square)
   }
 
-  let { content } = square
+  let { content, alert } = square
   //if (showBlocked && square.playable().length === 0) content = content || 3
-  const className = `Square xy-${coord} c-${content}`
+  const className =     `Square xy-${coord} c-${alert ? alert: content}`
   return (
     <div
       {...{ className, onMouseDown }}

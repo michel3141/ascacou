@@ -28,10 +28,10 @@ export const reducers = Object.entries(slices).reduce(
 )
 
 // !.mkexport
-export const { theme, currentConfig, selector, board } = slices
+export const { theme, params, selector, board } = slices
 
 export const useThemeSlice = () => useSlice(theme)
-export const useCurrentConfigSlice = () => useSlice(currentConfig)
+export const useParamsSlice = () => useSlice(params)
 export const useSelectorSlice = () => useSlice(selector)
 export const useBoardSlice = () => useSlice(board)
 

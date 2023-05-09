@@ -7,7 +7,7 @@ for my $c (0..3, '1x', '2x') {
   for my $i (1..5) {
     for my $j (1..5) {
       print ".Square.xy-${i}x${j}.c-$c {";
-      print "background-image:url('img/case-$c-$o.png');";
+      print "background-image:url('assets/img/case-$c-$o.png');";
       print "}\n";
       $o++;
     }

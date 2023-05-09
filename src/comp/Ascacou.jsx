@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { Grid, AppBar } from '@mui/material'
 import Game from '/lib/Ascacou'
+import Board from '/features/board/Board'
+import Config from '/features/params/Config'
+
 import Player from './Player'
-import Board from './Board'
 import Selector from '/features/selector/Selector'
 import Menu from './Menu'
 import Regles from './Regles'
-import Config from './Config'
 import '/css/Ascacou.css'
 
 import { useSelectorSlice } from '/app/slices'
 
-import { useCurrentConfigSlice } from '/app/slices'
+import { useParamsSlice } from '/app/slices'
 
 import { SkipPrevious, Help, Replay, Menu as MenuIcn } from '@mui/icons-material'
 
@@ -35,7 +36,7 @@ const Ascacou = ({ ascacou, newGame }) => {
   const [showRegles, setShowRegles] = useState(false)
   const [showNewGame, setShowNewGame] = useState(true)
 
-  const { useShowForbidden } = useCurrentConfigSlice()
+  const { useShowForbidden } = useParamsSlice()
   const showForbidden = useShowForbidden()
 
   const [z, Z] = useState(0)

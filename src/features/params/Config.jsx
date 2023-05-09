@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { useCurrentConfigSlice } from '/app/slices'
+import { useParamsSlice } from '/app/slices'
 
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material'
-import '/css/Config.css'
+import './Config.css'
 
 export default function Config({ onApply }) {
   return (
@@ -17,7 +17,7 @@ export default function Config({ onApply }) {
         <p style={{ textAlign: 'center' }}>
           <img src='img/icon_128.png' />
         </p>
-        <CurrentConfig />
+        <Params />
         <Divider />
         <NewGame {...{ onApply }} />
       </Grid>
@@ -25,13 +25,13 @@ export default function Config({ onApply }) {
   )
 }
 
-const CurrentConfig = () => {
-  const { useCurrentConfig, updateValue } = useCurrentConfigSlice()
-  const currentConfig = useCurrentConfig()
+const Params = () => {
+  const { useParams, updateValue } = useParamsSlice()
+  const params = useParams()
   return (
     <>
       <Typography variant='h4'>Partie en cours</Typography>
-      {Object.entries(currentConfig).map(([key, item]) => (
+      {Object.entries(params).map(([key, item]) => (
         <Item {...{ key, item, id: key, updateValue }} />
       ))}
     </>
@@ -39,10 +39,9 @@ const CurrentConfig = () => {
 }
 
 const NewGame = ({ onApply }) => {
-  const { useCurrentConfig } = useCurrentConfigSlice()
-  const currentConfig = useCurrentConfig()
+  const { useParams } = useParamsSlice()
 
-  const [params, setParams] = useState(currentConfig)
+  const [params, setParams] = useState(useParams())
   const updateValue = (changes = {}) => {
     const current = Object.entries(params).reduce(
       (acc, [key, item]) => ({ ...acc, [key]: item.value }),

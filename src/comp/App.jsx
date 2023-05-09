@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useCurrentConfigSlice } from '/app/slices'
+import { useParamsSlice } from '/app/slices'
 
 import Game from '/lib/Ascacou'
 import '/css/App.css'
@@ -14,7 +14,7 @@ export default function App(props) {
     allow_multiple_cards,
     deal_method,
     */
-  const { updateValue } = useCurrentConfigSlice()
+  const { updateValue } = useParamsSlice()
   useEffect(() => {
     updateValue({
       ...props,

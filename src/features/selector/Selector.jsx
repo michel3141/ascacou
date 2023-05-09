@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from '@mui/material'
-import '/css/Selector.css'
+import './Selector.css'
 
 import { selector, useSelectorSlice } from '/app/slices'
 

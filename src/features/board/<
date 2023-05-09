@@ -6,21 +6,18 @@ export const name = 'board'
 
 const squares = {}
 
-const emptyBoard = () => {
-  let next = null
-  for (const line of [5, 4, 3, 2, 1]) {
-    for (const row of [5, 4, 3, 2, 1]) {
-      const coord = `${line}x${row}`
-      const square = {
-        coord,
-        content: EMPTY,
-        alert: null,
-      }
-      squares[coord] = square
+const emptyBoard = ()=> {let next = null
+for (const line of [5, 4, 3, 2, 1]) {
+  for (const row of [5, 4, 3, 2, 1]) {
+    const coord = `${line}x${row}`
+    const square = {
+      coord,
+      content: EMPTY,
+      alert: null,
     }
+    squares[coord] = square
   }
-  return squares
-}
+}}
 
 const initialState = {
   squares: emptyBoard(),

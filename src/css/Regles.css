@@ -13,7 +13,7 @@ div.Regles {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url('img/fond.png');
+  background-image: url('assets/img/fond.png');
   background-color: rgba(255, 255, 255, 0.6);
   background-blend-mode: lighten;
   padding: 10px;

@@ -2,7 +2,7 @@ import rtk, { _ } from '/lib/rtk'
 
 import Ascacou from '/lib/Ascacou'
 
-export const name = 'currentConfig'
+export const name = 'params'
 
 const initialState = {
   allow_multiple_cards: {
@@ -32,11 +32,12 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   updateValue: _,
+  newGame: _
 })
 export const selectors = createSelectors({
-  show_blocked: state => state.currentConfig.show_blocked.value,
-  show_forbidden: state => state.currentConfig.show_forbidden.value,
-  allowi_multiple_cards: state => state.currentConfig.allow_multiple_cards.value,
+  show_blocked: state => state.params.show_blocked.value,
+  show_forbidden: state => state.params.show_forbidden.value,
+  allow_multiple_cards: state => state.params.allow_multiple_cards.value,
 })
 
 export default createReducer({
@@ -45,7 +46,7 @@ export default createReducer({
       if (key in state) {
         state[key].value = value
         // attention different de rtk.update :
-        // statekey] = value
+        // state[key] = value
       }
     }
   },
