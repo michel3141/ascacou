@@ -1,19 +1,19 @@
-import React from 'react'
-import { useLongPress } from '/lib/longPress'
-import { Toolbar, IconButton, Typography, Drawer } from '@mui/material'
+import React from 'react';
+import { useLongPress } from '/lib/longPress';
+import { Toolbar, IconButton, Typography, Drawer } from '@mui/material';
 
 export default function Menu({ drawers = [], actions, titre }) {
-  const hideDrawer = (e, d) => d.onToggle && d.onToggle(false)
-  const showDrawer = (e, d) => d.onToggle && d.onToggle(true)
+  const hideDrawer = (e, d) => d.onToggle && d.onToggle(false);
+  const showDrawer = (e, d) => d.onToggle && d.onToggle(true);
 
   actions.forEach(
-    action =>
+    (action) =>
       (action.mouseEvents = useLongPress({
         onClick: action.cmd,
         onLongPress: action.long,
         ms: 1500,
       }))
-  )
+  );
 
   return (
     <Toolbar color='transparent'>
@@ -23,7 +23,7 @@ export default function Menu({ drawers = [], actions, titre }) {
           </IconIconButton>
           */}
       {actions.map(
-        a =>
+        (a) =>
           a.enable && (
             <IconButton
               {...a.mouseEvents}
@@ -43,7 +43,7 @@ export default function Menu({ drawers = [], actions, titre }) {
             <IconButton
               key={i}
               style={i === 0 ? { marginLeft: 'auto' } : {}}
-              onClick={e => showDrawer(e, d)}
+              onClick={(e) => showDrawer(e, d)}
               color='inherit'
               title={d.title}
             >
@@ -59,12 +59,12 @@ export default function Menu({ drawers = [], actions, titre }) {
               key={i}
               anchor='right'
               open={d.visible}
-              onClose={e => hideDrawer(e, d)}
+              onClose={(e) => hideDrawer(e, d)}
             >
               {d.action}
             </Drawer>
           )
       )}
     </Toolbar>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
 
-import { AppBar } from '@mui/material'
-import { useAppSlice, useParamsSlice } from '/app/slices'
-import Config from '/features/params/Config'
-import Menu from './Menu'
-import Regles from './Regles'
+import { AppBar } from '@mui/material';
+import { useAppSlice, useParamsSlice } from '/app/slices';
+import Config from '/features/params/Config';
+import Menu from './Menu';
+import Regles from './Regles';
 
-import { SkipPrevious, Replay, Help, Menu as MenuIcn } from '@mui/icons-material'
+import { SkipPrevious, Replay, Help, Menu as MenuIcn } from '@mui/icons-material';
 
 const Bar = () => {
-  const { useShowRules, useShowConfig, toggleShowRules, toggleShowConfig } = useAppSlice()
-  const [showRules, showConfig] = [useShowRules(), useShowConfig()]
-  const { newGame } = useParamsSlice()
+  const { useShowRules, useShowConfig, toggleShowRules, toggleShowConfig } = useAppSlice();
+  const [showRules, showConfig] = [useShowRules(), useShowConfig()];
+  const { newGame } = useParamsSlice();
   const actions = useMemo(
     () => [
       {
@@ -29,7 +29,7 @@ const Bar = () => {
       },
     ],
     [newGame]
-  )
+  );
   return (
     <AppBar
       position='static'
@@ -58,12 +58,12 @@ const Bar = () => {
         titre={
           <img
             src='/assets/img/titre-t.png'
-            onMouseDown={e => e.preventDefault()}
+            onMouseDown={(e) => e.preventDefault()}
           />
         }
       />
     </AppBar>
-  )
-}
+  );
+};
 
-export default Bar
+export default Bar;

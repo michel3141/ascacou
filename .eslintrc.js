@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'standard'],
+  extends: ['plugin:react/recommended', 'standard', 'prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -12,9 +12,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/prop-types': 'off',
-    'import/no-absolute-path': 'off', // use a vite alias ?
-    'comma-dangle': 'off', // moi j'aime bien
-    'space-before-function-paren': 'off', // ???
-    camelcase: 'off', // TODO
+    camelcase: 'warn', // TODO
+    'import/no-absolute-path': 'off', // use a vite alias ? attention autofixabvle par --fix
   },
-}
+};

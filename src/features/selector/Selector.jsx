@@ -1,12 +1,12 @@
-import React from 'react'
-import { Grid } from '@mui/material'
-import './Selector.css'
+import React from 'react';
+import { Grid } from '@mui/material';
+import './Selector.css';
 
-import { selector, useSelectorSlice } from '/app/slices'
+import { selector, useSelectorSlice } from '/app/slices';
 
-import mkClasses from '/lib/mkClasses'
+import mkClasses from '/lib/mkClasses';
 
-import { WHITE, BLACK } from '/app/constants/colors'
+import { WHITE, BLACK } from '/app/constants/colors';
 
 export default function Selector() {
   return (
@@ -14,7 +14,7 @@ export default function Selector() {
       <Option color={BLACK} />
       <Option color={WHITE} />
     </Grided>
-  )
+  );
 }
 
 const Grided = ({ children }) => (
@@ -35,15 +35,15 @@ const Grided = ({ children }) => (
       </Grid>
     ))}
   </Grid>
-)
+);
 const Option = ({ color }) => {
-  const { select, useColor } = useSelectorSlice()
-  const currentColor = useColor()
-  const className = mkClasses({ Selected: color === currentColor })
+  const { select, useColor } = useSelectorSlice();
+  const currentColor = useColor();
+  const className = mkClasses({ Selected: color === currentColor });
   const src = {
     [BLACK]: '/assets/img/noirs.png',
     [WHITE]: '/assets/img/blancs.png',
-  }[color]
+  }[color];
   return (
     <div
       {...{ className }}
@@ -51,8 +51,8 @@ const Option = ({ color }) => {
     >
       <img
         {...{ src }}
-        onMouseDown={e => e.preventDefault() /* no-drag */}
+        onMouseDown={(e) => e.preventDefault() /* no-drag */}
       />
     </div>
-  )
-}
+  );
+};

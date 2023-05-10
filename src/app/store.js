@@ -1,9 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
 
-import isDevMode from '/lib/isDevMode'
+import isDevMode from '/lib/isDevMode';
 
-import { reducers } from './slices'
-import middlewares from './middlewares'
+import { reducers } from './slices';
+import middlewares from './middlewares';
 
 const store = configureStore({
   preloadedState: {},
@@ -11,9 +11,9 @@ const store = configureStore({
   middleware: middlewares, // accept array
   devTools: isDevMode,
   trace: isDevMode,
-})
+});
 
-window.store = store
+window.store = store;
 
-export { store }
-export default store
+export { store };
+export default store;

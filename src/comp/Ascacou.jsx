@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-import { FIRST, SECOND } from '/app/constants/players'
+import { FIRST, SECOND } from '/app/constants/players';
 
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
 
-import Board from '/features/board/Board'
+import Board from '/features/board/Board';
 
-import Player from './Player'
-import Selector from '/features/selector/Selector'
-import '/css/Ascacou.css'
+import Player from './Player';
+import Selector from '/features/selector/Selector';
+import '/css/Ascacou.css';
 
 const Ascacou = () => {
   return (
@@ -58,7 +58,7 @@ const Ascacou = () => {
       </Grid>
       <div className='Fen'> ascacou.fen()</div>
     </div>
-  )
-}
+  );
+};
 
-export default Ascacou
+export default Ascacou;

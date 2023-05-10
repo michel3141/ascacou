@@ -3,117 +3,117 @@ import {
   createReducer,
   createListenerMiddleware,
   createAsyncThunk,
-} from '@reduxjs/toolkit'
-import { camelize } from 'inflected'
-import { /* setItem, */ getItem } from '/lib/localstorage'
+} from '@reduxjs/toolkit';
+import { camelize } from 'inflected';
+import { /* setItem, */ getItem } from '/lib/localstorage';
 
-export const mkSelect = prop => (prop.startsWith('select') ? '' : 'select') + camelize(prop)
-const normalizedSelectors = selectors =>
+export const mkSelect = (prop) => (prop.startsWith('select') ? '' : 'select') + camelize(prop);
+const normalizedSelectors = (selectors) =>
   Object.entries(selectors).reduce(
     (acc, [name, selector]) => ({
       ...acc,
       [mkSelect(name)]: selector,
     }),
     {}
-  )
+  );
 
-const persisted = defaultValue => name => {
-  const persistedState = getItem(name) || {}
-  return { ...defaultValue, ...persistedState } // defaultValue pourrait être lazy
-}
+const persisted = (defaultValue) => (name) => {
+  const persistedState = getItem(name) || {};
+  return { ...defaultValue, ...persistedState }; // defaultValue pourrait être lazy
+};
 
 const rtk = (name, getInitialState, persisted) => {
   /* TODO revoir comment était fait redux.js...
    * avec le persistFilter
    */
   const initialState =
-    typeof getInitialState === 'function' ? getInitialState(name) : getInitialState
+    typeof getInitialState === 'function' ? getInitialState(name) : getInitialState;
   return {
     // à supprimer ?? createActions peut tout faire
     createAction: (type, prepareAction) => createAction(`${name}/${type}`, prepareAction),
 
-    createActions: actionsMap =>
+    createActions: (actionsMap) =>
       Object.entries(actionsMap).reduce((actions, [type, prepareAction]) => {
-        const extended = {}
+        const extended = {};
         if (typeof prepareAction === 'function') {
-          extended[type] = createAction(`${name}/${type}`, prepareAction)
+          extended[type] = createAction(`${name}/${type}`, prepareAction);
         } else {
           const main = createAction(`${name}/${type}`, () => {
-            throw new Error(`private action '${main}'`)
-          })
+            throw new Error(`private action '${main}'`);
+          });
           if (!type.startsWith('_')) {
-            throw new Error(`private subtype '${type}' must start with un underscore`)
+            throw new Error(`private subtype '${type}' must start with un underscore`);
           }
-          extended[type] = main
+          extended[type] = main;
           for (const subType in prepareAction) {
-            extended[subType] = createAction(`${main}`, prepareAction[subType])
+            extended[subType] = createAction(`${main}`, prepareAction[subType]);
           }
         }
         return {
           ...actions,
           ...extended,
-        }
+        };
       }, {}),
 
     createReducer: (actionsMap, actionMatchers, defaultCaseReducer) =>
-      createReducer(initialState, builder => {
+      createReducer(initialState, (builder) => {
         for (const action in actionsMap) {
-          builder.addCase(action, actionsMap[action])
+          builder.addCase(action, actionsMap[action]);
         }
         for (const actionMatcher in actionMatchers) {
-          builder.addMatcher(actionMatcher, actionMatchers[actionMatcher])
+          builder.addMatcher(actionMatcher, actionMatchers[actionMatcher]);
         }
-        builder.addDefaultCase(defaultCaseReducer)
+        builder.addDefaultCase(defaultCaseReducer);
       }),
 
     createSelectors: (selectorsMap = {}) => {
       const stateSelectors = Object.keys(initialState).reduce(
-        (acc, prop) => ({ ...acc, [prop]: state => state[name][prop] }),
+        (acc, prop) => ({ ...acc, [prop]: (state) => state[name][prop] }),
         {
-          [name]: state => state[name],
+          [name]: (state) => state[name],
         }
-      )
+      );
       const selectors = Object.keys(selectorsMap).reduce(
         (acc, selector) => ({
           ...acc,
           [selector]: selectorsMap[selector],
         }),
         stateSelectors
-      )
-      return normalizedSelectors(selectors)
+      );
+      return normalizedSelectors(selectors);
     },
 
     createThunk: createAsyncThunk,
 
     listener: createListenerMiddleware(),
-  }
-}
+  };
+};
 
 // actionPrepare
 // alias pour faciliter la création d'un prepare payload
-const _ = value => ({ payload: value })
-const no_ = value => _()
+const _ = (value) => ({ payload: value });
+const no_ = (value) => _();
 
 // un prépare courant
-const payload = key => value => key ? _({ [key]: value }) : _(value)
+const payload = (key) => (value) => key ? _({ [key]: value }) : _(value);
 
 // reducers
 const filter = (state, action) =>
   Object.entries(action.payload)
     .filter(([key, value]) => key in state)
-    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), state)
+    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), state);
 
 const toggle =
-  key =>
+  (key) =>
   (state, { booleanOrUndefined }) =>
     typeof booleanOrUndefined === 'boolean'
       ? { ...state, [key]: booleanOrUndefined }
-      : { ...state, [key]: !state[key] }
+      : { ...state, [key]: !state[key] };
 
-const update = key => (state, action) =>
-  key ? filter(state, _({ [key]: action.payload })) : filter(state, action)
+const update = (key) => (state, action) =>
+  key ? filter(state, _({ [key]: action.payload })) : filter(state, action);
 
-export default rtk
+export default rtk;
 
 export {
   payload,
@@ -123,4 +123,4 @@ export {
   toggle,
   update,
   persisted,
-}
+};

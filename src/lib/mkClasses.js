@@ -7,58 +7,58 @@
 
 class Classes {
   constructor() {
-    this.classes = this.parse_args(arguments)
+    this.classes = this.parse_args(arguments);
   }
 
   push() {
-    const new_classes = this.parse_args(arguments)
-    this.classes = { ...this.classes, ...new_classes }
-    return this
+    const newClasses = this.parse_args(arguments);
+    this.classes = { ...this.classes, ...newClasses };
+    return this;
   }
 
   extend() {
-    const new_classes = this.parse_args(arguments)
-    return new Classes({ ...this.classes, ...new_classes })
+    const newClasses = this.parse_args(arguments);
+    return new Classes({ ...this.classes, ...newClasses });
   }
 
   toString = () => {
     if (this.cache) {
-      return this.class_names
+      return this.classNames;
     }
-    const class_names = []
+    const classNames = [];
     for (const key in this.classes) {
-      if (this.classes[key]) class_names.push(key)
+      if (this.classes[key]) classNames.push(key);
     }
-    this.class_names = class_names.join(' ')
-    this.cache = true
-    return this.class_names
-  }
+    this.classNames = classNames.join(' ');
+    this.cache = true;
+    return this.classNames;
+  };
 
-  parse_args = args => {
-    let classes = {}
+  parse_args = (args) => {
+    let classes = {};
     for (const arg of args) {
-      if (!arg) continue
+      if (!arg) continue;
 
-      const argType = typeof arg
+      const argType = typeof arg;
 
       if (argType === 'string' || argType === 'number') {
-        classes[arg] = true
+        classes[arg] = true;
       } else if (Array.isArray(arg)) {
-        const inner = this.parse_args(arg)
-        classes = { ...classes, ...inner }
+        const inner = this.parse_args(arg);
+        classes = { ...classes, ...inner };
       } else if (argType === 'object') {
-        classes = { ...classes, ...arg }
+        classes = { ...classes, ...arg };
       }
-      this.cache = false
+      this.cache = false;
     }
-    return classes
-  }
+    return classes;
+  };
 }
 
 function mkClasses(...args) {
-  const instance = new Classes(...args)
-  return instance.toString()
+  const instance = new Classes(...args);
+  return instance.toString();
 }
 
-export { Classes }
-export default mkClasses
+export { Classes };
+export default mkClasses;

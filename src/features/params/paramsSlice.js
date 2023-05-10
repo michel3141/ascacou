@@ -1,8 +1,8 @@
-import rtk, { _, update } from '/lib/rtk'
+import rtk, { _, update } from '/lib/rtk';
 
-import { deals } from '/app/constants/cards'
+import { deals } from '/app/constants/cards';
 
-export const name = 'params'
+export const name = 'params';
 
 const initialState = {
   allow_multiple_cards: {
@@ -30,32 +30,32 @@ const initialState = {
     value: 'random',
     values: deals,
   },
-}
+};
 
-const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState)
+const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
 
 export const actions = createActions({
   updateValue: _,
   newGame: _,
-})
+});
 export const selectors = createSelectors({
-  show_blocked: state => state.params.show_blocked.value,
-  show_forbidden: state => state.params.show_forbidden.value,
-  allow_multiple_cards: state => state.params.allow_multiple_cards.value,
-})
+  show_blocked: (state) => state.params.show_blocked.value,
+  show_forbidden: (state) => state.params.show_forbidden.value,
+  allow_multiple_cards: (state) => state.params.allow_multiple_cards.value,
+});
 
 const updateConfig = (state, { payload }) => {
   for (const [key, value] of Object.entries(payload)) {
     if (key in state) {
-      state[key].value = value
+      state[key].value = value;
       // attention different de rtk.update :
       // state[key] = value
     }
   }
-}
+};
 export default createReducer({
   [actions.updateValue]: updateConfig,
   [actions.newGame]: updateConfig,
-})
+});
 
-export { listener }
+export { listener };

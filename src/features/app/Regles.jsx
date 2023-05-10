@@ -1,8 +1,8 @@
-import React from 'react'
-import '/css/Regles.css'
-import { PublishRounded } from '@mui/icons-material'
+import React from 'react';
+import '/css/Regles.css';
+import { PublishRounded } from '@mui/icons-material';
 
-import pjs from '/../package.json'
+import pjs from '/../package.json';
 
 export default function Regles() {
   return (
@@ -250,5 +250,5 @@ export default function Regles() {
         </a>
       </p>
     </div>
-  )
+  );
 }

@@ -2,11 +2,11 @@
 const modules = import.meta.glob(['./*/index.js', './*.js', '!./index.js'], {
   eager: true,
   import: 'default',
-})
+});
 
-const middlewares = Object.values(modules).flat()
+const middlewares = Object.values(modules).flat();
 
-export default middlewares
+export default middlewares;
 
 /*
  * createStore se charge de chainer les middlewares.

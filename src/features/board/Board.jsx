@@ -1,6 +1,6 @@
-import React from 'react'
-import Square from './Square'
-import './Board.css'
+import React from 'react';
+import Square from './Square';
+import './Board.css';
 
 const Board = ({}) => {
   return (
@@ -97,7 +97,7 @@ const Board = ({}) => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default Board
+export default Board;

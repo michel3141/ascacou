@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
-import { useParamsSlice } from '/app/slices'
+import { useParamsSlice } from '/app/slices';
 
-import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material'
-import './Config.css'
+import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material';
+import './Config.css';
 
 export default function Config() {
   return (
@@ -22,12 +22,12 @@ export default function Config() {
         <NewGame />
       </Grid>
     </div>
-  )
+  );
 }
 
 const Params = () => {
-  const { useParams, updateValue } = useParamsSlice()
-  const params = useParams()
+  const { useParams, updateValue } = useParamsSlice();
+  const params = useParams();
   return (
     <>
       <Typography variant='h4'>Partie en cours</Typography>
@@ -35,37 +35,37 @@ const Params = () => {
         <Item {...{ key, item, id: key, updateValue }} />
       ))}
     </>
-  )
-}
+  );
+};
 
 const NewGame = () => {
-  const { newGame, useParams } = useParamsSlice()
+  const { newGame, useParams } = useParamsSlice();
 
-  const [params, setParams] = useState(useParams())
+  const [params, setParams] = useState(useParams());
   const config = Object.entries(params).reduce(
     (acc, [key, item]) => ({ ...acc, [key]: item.value }),
     {}
-  )
+  );
   const updateValue = (changes = {}) => {
-    changes = { ...config, ...changes }
+    changes = { ...config, ...changes };
     Object.entries(changes).forEach(([key, value]) =>
-      setParams(p => {
-        let enable = true
+      setParams((p) => {
+        let enable = true;
         if (['show_blocked', 'show_forbidden'].includes(key)) {
-          enable = !changes.allow_multiple_cards
+          enable = !changes.allow_multiple_cards;
         }
         return {
           ...p,
           [key]: { ...p[key], enable, value },
-        }
+        };
       })
-    )
-  }
-  useEffect(updateValue, [])
+    );
+  };
+  useEffect(updateValue, []);
 
   const submit = () => {
-    newGame(config)
-  }
+    newGame(config);
+  };
 
   return (
     <>
@@ -81,19 +81,19 @@ const NewGame = () => {
         Commencer
       </Button>
     </>
-  )
-}
+  );
+};
 const Item = ({ id, item, updateValue }) => {
-  const { enable, value, lbl, type, values } = item
+  const { enable, value, lbl, type, values } = item;
   switch (type) {
     case 'boolean':
-      return <OnOff {...{ id, value, enable, lbl, updateValue }} />
+      return <OnOff {...{ id, value, enable, lbl, updateValue }} />;
     case 'enum':
-      return <Select {...{ id, value, enable, lbl, values, updateValue }} />
+      return <Select {...{ id, value, enable, lbl, values, updateValue }} />;
     default:
-      return <div>null</div>
+      return <div>null</div>;
   }
-}
+};
 const OnOff = ({ id, value, enable, lbl, updateValue }) => (
   <div>
     <FormControlLabel
@@ -109,15 +109,15 @@ const OnOff = ({ id, value, enable, lbl, updateValue }) => (
       labelPlacement='start'
     />
   </div>
-)
+);
 
 const Select = ({ id, value, enable, lbl, values, updateValue }) => (
   <fieldset disabled={!enable}>
     <legend>{lbl}</legend>
     <List>
       {Object.keys(values)
-        .filter(key => enable || key === value)
-        .map(key => (
+        .filter((key) => enable || key === value)
+        .map((key) => (
           <ListItem
             key={key}
             button
@@ -129,7 +129,7 @@ const Select = ({ id, value, enable, lbl, values, updateValue }) => (
         ))}
     </List>
   </fieldset>
-)
+);
 
 const Divider = () => (
   <hr
@@ -141,4 +141,4 @@ const Divider = () => (
       backgroundColor: '#333',
     }}
   />
-)
+);

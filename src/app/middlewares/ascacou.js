@@ -1,11 +1,11 @@
-import { selector, board, params, cards } from '/app/slices'
-import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors'
+import { selector, board, params, cards } from '/app/slices';
+import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 
-const { selectColor } = selector.selectors
-const { selectSquares } = board.selectors
-const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors
-const { select, updateSquare, play } = board.actions
-const { toggleActive } = cards.actions
+const { selectColor } = selector.selectors;
+const { selectSquares } = board.selectors;
+const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors;
+const { select, updateSquare, play } = board.actions;
+const { toggleActive } = cards.actions;
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -24,97 +24,97 @@ const inters = [
   ['4x2', '4x3', '5x2', '5x3'],
   ['4x3', '4x4', '5x3', '5x4'],
   ['4x4', '4x5', '5x4', '5x5'],
-]
+];
 
-const activeCards = squares => {
-  const cards = []
+const activeCards = (squares) => {
+  const cards = [];
   for (const inter of inters) {
-    let card = 0
+    let card = 0;
     for (const coord of inter) {
-      card *= 2
-      const { content } = squares[coord]
+      card *= 2;
+      const { content } = squares[coord];
       if (content === BLACK) {
       } else if (content === WHITE) {
-        card += 1
+        card += 1;
       } else {
-        card = -1
-        break
+        card = -1;
+        break;
       }
     }
     if (card >= 0) {
-      cards.push(card)
+      cards.push(card);
     }
   }
-  return cards
-}
+  return cards;
+};
 
-const hasDuplicates = arrayOfInts => {
-  const map = {}
+const hasDuplicates = (arrayOfInts) => {
+  const map = {};
   for (const item of arrayOfInts) {
     if (item in map) {
-      return true
+      return true;
     } else {
-      map[item] = true
+      map[item] = true;
     }
   }
-}
+};
 
 function createMiddleware() {
   board.listener.startListening({
     actionCreator: select,
     effect: ({ payload }, { dispatch, getState }) => {
-      const color = selectColor(getState())
-      const squares = selectSquares(getState())
-      const square = squares[payload.coord]
+      const color = selectColor(getState());
+      const squares = selectSquares(getState());
+      const square = squares[payload.coord];
 
-      const newSquare = { ...payload, content: color }
+      const newSquare = { ...payload, content: color };
       const showAlert = () => {
-        dispatch(updateSquare({ ...square, alert: `${color}x` }))
-        setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750)
-      }
+        dispatch(updateSquare({ ...square, alert: `${color}x` }));
+        setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750);
+      };
       if (
         square.content === BLOCKED &&
         !selectShowBlocked(getState()) &&
         selectShowForbidden(getState())
       ) {
-        showAlert()
+        showAlert();
       }
 
       if (square.content === EMPTY) {
-        const newSquares = { ...squares, [square.coord]: newSquare }
-        const cards = activeCards(newSquares)
+        const newSquares = { ...squares, [square.coord]: newSquare };
+        const cards = activeCards(newSquares);
         if (!selectAllowMultipleCards(getState()) && hasDuplicates(cards)) {
-          showAlert()
+          showAlert();
         } else {
-          dispatch(play(newSquare))
-          dispatch(toggleActive(cards))
+          dispatch(play(newSquare));
+          dispatch(toggleActive(cards));
         }
       }
     },
-  })
+  });
 
   board.listener.startListening({
     actionCreator: select,
     effect: ({ payload }, { dispatch, getState }) => {
-      if (selectAllowMultipleCards(getState())) return
+      if (selectAllowMultipleCards(getState())) return;
 
-      const squares = selectSquares(getState())
+      const squares = selectSquares(getState());
       for (const square of Object.values(squares)) {
-        const playables = square.playables.filter(color => {
-          const newSquare = { ...square, content: color }
-          const newSquares = { ...squares, [square.coord]: newSquare }
-          const cards = activeCards(newSquares)
-          return !hasDuplicates(cards)
-        })
+        const playables = square.playables.filter((color) => {
+          const newSquare = { ...square, content: color };
+          const newSquares = { ...squares, [square.coord]: newSquare };
+          const cards = activeCards(newSquares);
+          return !hasDuplicates(cards);
+        });
         if (playables.length !== square.playables.length) {
-          const content = playables.length === 0 ? BLOCKED : EMPTY
-          dispatch(updateSquare({ ...square, playables, content }))
+          const content = playables.length === 0 ? BLOCKED : EMPTY;
+          dispatch(updateSquare({ ...square, playables, content }));
         }
       }
     },
-  })
+  });
 
-  return board.listener.middleware
+  return board.listener.middleware;
 }
 
-export default createMiddleware()
+export default createMiddleware();

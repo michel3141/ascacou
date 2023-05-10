@@ -1,47 +1,47 @@
-import { useMemo, useRef, useCallback } from 'react'
+import { useMemo, useRef, useCallback } from 'react';
 const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500 } = {}) => {
-  const timerRef = useRef(false)
-  const eventRef = useRef({})
+  const timerRef = useRef(false);
+  const eventRef = useRef({});
 
   const callback = useCallback(() => {
-    onLongPress(eventRef.current)
-    eventRef.current = {}
-    timerRef.current = false
-  }, [onLongPress])
+    onLongPress(eventRef.current);
+    eventRef.current = {};
+    timerRef.current = false;
+  }, [onLongPress]);
 
   const start = useCallback(
-    ev => {
-      ev.persist()
-      eventRef.current = ev
+    (ev) => {
+      ev.persist();
+      eventRef.current = ev;
       timerRef.current = setTimeout(() => {
-        timerRef.current = false
-        eventRef.current = {}
-        callback(ev)
-      }, ms)
+        timerRef.current = false;
+        eventRef.current = {};
+        callback(ev);
+      }, ms);
     },
     [callback, ms]
-  )
+  );
 
-  const stop = useCallback(ev => {
-    ev.persist()
-    eventRef.current = ev
-    clearTimeout(timerRef.current)
-    timerRef.current = false
-    eventRef.current = {}
-  }, [])
+  const stop = useCallback((ev) => {
+    ev.persist();
+    eventRef.current = ev;
+    clearTimeout(timerRef.current);
+    timerRef.current = false;
+    eventRef.current = {};
+  }, []);
 
   const click = useCallback(
-    ev => {
+    (ev) => {
       if (timerRef.current) {
         try {
-          onClick(ev)
+          onClick(ev);
         } finally {
-          stop(ev)
+          stop(ev);
         }
       }
     },
     [onClick, stop]
-  )
+  );
 
   return useMemo(
     () => ({
@@ -52,7 +52,7 @@ const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500
       onTouchEnd: click,
     }),
     [start, stop, click]
-  )
-}
+  );
+};
 
-export { useLongPress }
+export { useLongPress };
