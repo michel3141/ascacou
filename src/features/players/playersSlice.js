@@ -1,22 +1,28 @@
 import rtk, { _, update } from '/lib/rtk'
 import { params, board } from '/app/slices'
 
-import { FIRST, SECOND, NOBODY } from '/app/constants/player'
+import { FIRST, SECOND, NOBODY } from '/app/constants/players'
 
 export const name = 'players'
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
 const { newGame } = params.actions
 const { play } = board.actions
-const initialState = {
-  listes: {
-    [FIRST]: {
-      name: 'toto',
-    },
-    [SECOND]: {
-      name: 'tata',
-    },
+
+const list = {
+  [FIRST]: {
+    name: 'Joueur 1',
   },
+  [SECOND]: {
+    name: 'Joueur 2',
+  },
+  [NOBODY]: {
+    name: 'nobody',
+  },
+}
+
+const initialState = {
+  list,
   current: FIRST,
 }
 
@@ -24,7 +30,9 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({})
 
-export const selectors = createSelectors({})
+export const selectors = createSelectors({
+  player_by_id: id => state => ({ ...state.players.list[id], id }),
+})
 
 export default createReducer({
   [newGame]: state => (state.current = FIRST),

@@ -1,6 +1,6 @@
 import rtk, { _, update } from '/lib/rtk'
 
-import Ascacou from '/lib/Ascacou'
+import { deals } from '/app/constants/cards'
 
 export const name = 'params'
 
@@ -24,7 +24,7 @@ const initialState = {
     lbl: 'Type de distribution',
     enable: false,
     type: 'enum',
-    values: Ascacou.deal_methods,
+    values: deals,
   },
 }
 

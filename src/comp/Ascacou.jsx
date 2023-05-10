@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+
+import { FIRST, SECOND } from '/app/constants/players'
+
 import { Grid } from '@mui/material'
 
 import AppBar from '/features/app/Bar'
@@ -41,12 +44,7 @@ const Ascacou = ({ ascacou, newGame }) => {
           item
           xs
         >
-          <Player
-            id={1}
-            name='Joueur 1'
-            cards={ascacou.cards}
-            player={ascacou.player}
-          />
+          <Player id={FIRST} />
         </Grid>
         <Grid
           item
@@ -76,12 +74,7 @@ const Ascacou = ({ ascacou, newGame }) => {
           item
           xs
         >
-          <Player
-            id={2}
-            name='Joueur 2'
-            cards={ascacou.cards}
-            player={ascacou.player}
-          />
+          <Player id={SECOND} />
         </Grid>
       </Grid>
       <div className='Fen'> {ascacou.fen()}</div>

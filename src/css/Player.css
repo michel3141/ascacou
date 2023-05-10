@@ -11,9 +11,14 @@
   background-color: rgba(20,20,20,.8);
 }
 
-.Player legend {
+.Player .mon-tour legend {
   color: white;
-  display:none;
+/*  display:none;*/
+}
+
+.Player .pas-mon-tour legend {
+  color: grey;
+/*  display:none;*/
 }
 
 .Player .Card {

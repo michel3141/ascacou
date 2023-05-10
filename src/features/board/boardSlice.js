@@ -45,7 +45,6 @@ export const selectors = createSelectors({
 export default createReducer({
   [actions.updateSquare]: (state, { payload }) => {
     const square = payload
-    console.log('LA')
     state.squares[square.coord] = { ...square }
   },
   [actions.play]: (state, { payload }) => {
