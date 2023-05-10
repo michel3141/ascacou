@@ -35,7 +35,9 @@ export const selectors = createSelectors({
 })
 
 export default createReducer({
-  [newGame]: state => (state.current = FIRST),
+  [newGame]: state => {
+    state.current = FIRST
+  },
   [play]: state => {
     switch (state.current) {
       case FIRST:

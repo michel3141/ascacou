@@ -1,10 +1,11 @@
-import { selector, board, params } from '/app/slices'
+import { selector, board, params, cards } from '/app/slices'
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors'
 
 const { selectColor } = selector.selectors
 const { selectSquares } = board.selectors
-const { select, updateSquare, play } = board.actions
 const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors
+const { select, updateSquare, play } = board.actions
+const { toggleActive } = cards.actions
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -86,6 +87,7 @@ function createMiddleware() {
           showAlert()
         } else {
           dispatch(play(newSquare))
+          dispatch(toggleActive(cards))
         }
       }
     },

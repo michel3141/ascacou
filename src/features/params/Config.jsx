@@ -42,12 +42,12 @@ const NewGame = () => {
   const { newGame, useParams } = useParamsSlice()
 
   const [params, setParams] = useState(useParams())
+  const config = Object.entries(params).reduce(
+    (acc, [key, item]) => ({ ...acc, [key]: item.value }),
+    {}
+  )
   const updateValue = (changes = {}) => {
-    const current = Object.entries(params).reduce(
-      (acc, [key, item]) => ({ ...acc, [key]: item.value }),
-      {}
-    )
-    changes = { ...current, ...changes }
+    changes = { ...config, ...changes }
     Object.entries(changes).forEach(([key, value]) =>
       setParams(p => {
         let enable = true
@@ -64,7 +64,7 @@ const NewGame = () => {
   useEffect(updateValue, [])
 
   const submit = () => {
-    newGame(params)
+    newGame(config)
   }
 
   return (

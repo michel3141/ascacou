@@ -1,0 +1,40 @@
+.Card {
+  background-size: cover;
+  margin : 5px;
+  border: solid black 1px;
+  display: inline-block;
+  border-radius: 0 0 0 20px;
+}
+
+.Card.m-0{background-image:url('assets/img/motif-0-1111.png');}
+.Card.m-1{background-image:url('assets/img/motif-0-1112.png');}
+.Card.m-2{background-image:url('assets/img/motif-0-1121.png');}
+.Card.m-3{background-image:url('assets/img/motif-0-1122.png');}
+.Card.m-4{background-image:url('assets/img/motif-0-1211.png');}
+.Card.m-5{background-image:url('assets/img/motif-0-1212.png');}
+.Card.m-6{background-image:url('assets/img/motif-0-1221.png');}
+.Card.m-7{background-image:url('assets/img/motif-0-1222.png');}
+.Card.m-8{background-image:url('assets/img/motif-0-2111.png');}
+.Card.m-9{background-image:url('assets/img/motif-0-2112.png');}
+.Card.m-10{background-image:url('assets/img/motif-0-2121.png');}
+.Card.m-11{background-image:url('assets/img/motif-0-2122.png');}
+.Card.m-12{background-image:url('assets/img/motif-0-2211.png');}
+.Card.m-13{background-image:url('assets/img/motif-0-2212.png');}
+.Card.m-14{background-image:url('assets/img/motif-0-2221.png');}
+.Card.m-15{background-image:url('assets/img/motif-0-2222.png');}
+.Card.m-0.done{background-image:url('assets/img/motif-1-1111.png');}
+.Card.m-1.done{background-image:url('assets/img/motif-1-1112.png');}
+.Card.m-2.done{background-image:url('assets/img/motif-1-1121.png');}
+.Card.m-3.done{background-image:url('assets/img/motif-1-1122.png');}
+.Card.m-4.done{background-image:url('assets/img/motif-1-1211.png');}
+.Card.m-5.done{background-image:url('assets/img/motif-1-1212.png');}
+.Card.m-6.done{background-image:url('assets/img/motif-1-1221.png');}
+.Card.m-7.done{background-image:url('assets/img/motif-1-1222.png');}
+.Card.m-8.done{background-image:url('assets/img/motif-1-2111.png');}
+.Card.m-9.done{background-image:url('assets/img/motif-1-2112.png');}
+.Card.m-10.done{background-image:url('assets/img/motif-1-2121.png');}
+.Card.m-11.done{background-image:url('assets/img/motif-1-2122.png');}
+.Card.m-12.done{background-image:url('assets/img/motif-1-2211.png');}
+.Card.m-13.done{background-image:url('assets/img/motif-1-2212.png');}
+.Card.m-14.done{background-image:url('assets/img/motif-1-2221.png');}
+.Card.m-15.done{background-image:url('assets/img/motif-1-2222.png');}

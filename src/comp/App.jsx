@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParamsSlice } from '/app/slices'
+import { useParamsSlice, useAppSlice } from '/app/slices'
 
-import Game from '/lib/Ascacou'
+import AppBar from '/features/app/Bar'
 import '/css/App.css'
 // import Solver from 'ascacou-solver-wasm'
 
@@ -14,35 +14,19 @@ export default function App(props) {
     allow_multiple_cards,
     deal_method,
     */
-  const { updateValue } = useParamsSlice()
+  const { newGame } = useParamsSlice()
+  const { useReady, boot, toggleShowConfig } = useAppSlice()
+  const ready = useReady()
   useEffect(() => {
-    updateValue({
-      ...props,
-      show_blocked: true,
-      show_forbidden: true,
-    })
+    boot()
+    newGame(props)
+    toggleShowConfig(true)
   }, [props])
-  const [ascacou, setAscacou] = useState(
-    () =>
-      new Game({
-        ...props,
-        show_blocked: true,
-        show_forbidden: true,
-      })
-  )
-
-  const newGame = newPrefs => {
-    // show_new_game ??
-    // n'a rien n'à faire ici
-    updateValue({ show_new_game: false, ...newPrefs })
-    setAscacou(new Game(newPrefs))
-  }
-
-  // const end_game = () => setAscacou(null)
 
   return (
     <div className='App'>
-      {ascacou && <Ascacou {...{ ascacou, newGame }} />}
+      <AppBar />
+      {ready && <Ascacou />}
       <div className='Square hidden' />
     </div>
   )

@@ -1,7 +1,7 @@
-attention, il y un ordre pour importer les slices
 import * as theme from './theme'
 import * as params from '../../features/params/paramsSlice'
 import * as app from '../../features/app/appSlice'
 import * as board from '../../features/board/boardSlice'
 import * as selector from '../../features/selector/selectorSlice'
-import * as player from '../../features/player/playerSlice'
+import * as players from '../../features/players/playersSlice'
+import * as cards from '../../features/cards/cardsSlice'

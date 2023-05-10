@@ -27,7 +27,7 @@ const emptyBoard = () => {
 }
 
 const initialState = {
-  squares: emptyBoard(),
+  squares: null,
 }
 
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState)

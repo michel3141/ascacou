@@ -4,36 +4,15 @@ import { FIRST, SECOND } from '/app/constants/players'
 
 import { Grid } from '@mui/material'
 
-import AppBar from '/features/app/Bar'
-
-import Game from '/lib/Ascacou'
 import Board from '/features/board/Board'
 
 import Player from './Player'
 import Selector from '/features/selector/Selector'
 import '/css/Ascacou.css'
 
-const Ascacou = ({ ascacou, newGame }) => {
-  const [z, Z] = useState(0)
-  window.unused = z
-  const forceUpdate = () => Z(p => p + 1) // TODO ceci est un hack
-
-  const onAction = cmd => {
-    const noop = () => undefined
-    switch (cmd) {
-      case 'undo':
-        ascacou.undo()
-        break
-      case 'restart':
-        while (ascacou.undo()) noop()
-        break
-    }
-    forceUpdate()
-  }
-
+const Ascacou = () => {
   return (
     <div className='Ascacou'>
-      <AppBar />
       <Grid
         container
         direction='row'
@@ -77,7 +56,7 @@ const Ascacou = ({ ascacou, newGame }) => {
           <Player id={SECOND} />
         </Grid>
       </Grid>
-      <div className='Fen'> {ascacou.fen()}</div>
+      <div className='Fen'> ascacou.fen()</div>
     </div>
   )
 }
