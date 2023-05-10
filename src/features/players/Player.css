@@ -4,21 +4,21 @@
 }
 
 .Player fieldset.mon-tour {
-  background-color: rgba(200,200,200,.4);
+  background-color: rgba(200, 200, 200, 0.4);
 }
 
 .Player fieldset.pas-mon-tour {
-  background-color: rgba(20,20,20,.8);
+  background-color: rgba(20, 20, 20, 0.8);
 }
 
 .Player .mon-tour legend {
   color: white;
-/*  display:none;*/
+  /*  display:none;*/
 }
 
 .Player .pas-mon-tour legend {
   color: grey;
-/*  display:none;*/
+  /*  display:none;*/
 }
 
 .Player .Card {

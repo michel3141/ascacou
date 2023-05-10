@@ -5,8 +5,9 @@ import { FIRST, SECOND } from '/app/constants/players';
 import { Grid } from '@mui/material';
 
 import Board from '/features/board/Board';
+import { useBoardSlice } from '/app/slices';
 
-import Player from './Player';
+import Player from '/features/players/Player';
 import Selector from '/features/selector/Selector';
 import '/css/Ascacou.css';
 
@@ -56,9 +57,13 @@ const Ascacou = () => {
           <Player id={SECOND} />
         </Grid>
       </Grid>
-      <div className='Fen'> ascacou.fen()</div>
+      <Fen />
     </div>
   );
 };
 
+const Fen = () => {
+  const fen = useBoardSlice().useFen();
+  return <div className='Fen'>{fen}</div>;
+};
 export default Ascacou;

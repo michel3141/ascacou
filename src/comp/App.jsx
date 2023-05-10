@@ -27,7 +27,7 @@ export default function App(props) {
     <div className='App'>
       <AppBar />
       {ready && <Ascacou />}
-      <div className='Square hidden' />
+      <div className='Square pre-load' />
     </div>
   );
 }

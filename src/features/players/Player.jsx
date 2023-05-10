@@ -1,8 +1,8 @@
 import React from 'react';
-import '/css/Player.css';
+import './Player.css';
 import mkClasses from '/lib/mkClasses';
-import Card from '/features/cards/Card';
 import { usePlayersSlice, useCardsSlice } from '/app/slices';
+import Cards from '/features/cards/Cards';
 
 export default function Player({ id }) {
   const { useCurrent, usePlayerById } = usePlayersSlice();
@@ -33,13 +33,3 @@ export default function Player({ id }) {
     </div>
   );
 }
-
-const Cards = ({ cards, done = false }) =>
-  cards
-    .filter((card) => done === card.active)
-    .map((card) => (
-      <Card
-        key={card.id}
-        {...card}
-      />
-    ));

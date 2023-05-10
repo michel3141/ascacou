@@ -1,23 +1,23 @@
 .Selector {
   margin: 10px;
 }
-.Selector div{
+.Selector div {
   text-align: center;
   position: relative;
 }
 
-.Selector div.Selected{
-  background-color: rgba(200,200,200,.4);
+.Selector div.Selected {
+  background-color: rgba(200, 200, 200, 0.4);
   border: solid grey 1px;
-  border-radius:10% 10% 10% 35%;
+  border-radius: 10% 10% 10% 35%;
 }
 .Selector img {
   margin: 10px;
   width: 120px;
-  border-radius:10% 10% 10% 10%;
+  border-radius: 10% 10% 10% 10%;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.8);
-/*  filter: blur(1px);*/
+  /*  filter: blur(1px);*/
 }
 .Selector .Selected img {
-  border-radius:10% 10% 10% 35%;
+  border-radius: 10% 10% 10% 35%;
 }
