@@ -2,4 +2,4 @@ faire une IA
 eslint + vim :
 https://github.com/standard/standard#vim
 
-Config comopnent => new Game (avec state local)
+Affichage des cards avec redux

@@ -16,7 +16,7 @@ const Square = ({ coord }) => {
   return (
     <div
       {...{ className }}
-      onMouseDown={() => console.log('ICI') || select(square)}
+      onMouseDown={() => select(square)}
       onTouchStart={() => select(square)}
     ></div>
   )
