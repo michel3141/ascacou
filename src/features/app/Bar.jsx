@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { AppBar } from '@mui/material'
 import { useAppSlice, useParamsSlice } from '/app/slices'
@@ -6,23 +6,37 @@ import Config from '/features/params/Config'
 import Menu from './Menu'
 import Regles from './Regles'
 
-import { Help, Menu as MenuIcn } from '@mui/icons-material'
+import { SkipPrevious, Replay, Help, Menu as MenuIcn } from '@mui/icons-material'
 
-const Bar = ({ actions }) => {
+const Bar = () => {
   const { useShowRules, useShowConfig, toggleShowRules, toggleShowConfig } = useAppSlice()
   const [showRules, showConfig] = [useShowRules(), useShowConfig()]
   const { newGame } = useParamsSlice()
+  const actions = useMemo(
+    () => [
+      {
+        title: 'Recommencer au début',
+        lbl: <SkipPrevious />,
+        cmd: () => console.log('TODO undo'),
+        enable: false,
+      },
+      {
+        lbl: <Replay />,
+        title: 'Annuler le coup',
+        cmd: () => console.log('TODO undo'),
+        long: () => newGame({}),
+        enable: true,
+      },
+    ],
+    [newGame]
+  )
   return (
     <AppBar
       position='static'
       color='transparent'
     >
       <Menu
-        actions={actions.map(action => ({
-          ...action,
-          cmd: () => onAction(action.cmd),
-          long: () => newGame({}),
-        }))}
+        actions={actions}
         drawers={[
           {
             title: 'Règles',

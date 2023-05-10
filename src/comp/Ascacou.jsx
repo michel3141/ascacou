@@ -10,38 +10,10 @@ import Player from './Player'
 import Selector from '/features/selector/Selector'
 import '/css/Ascacou.css'
 
-import { useSelectorSlice } from '/app/slices'
-
-import { useParamsSlice } from '/app/slices'
-
-import { SkipPrevious, Replay } from '@mui/icons-material'
-
-const actions = [
-  {
-    title: 'Recommencer au début',
-    lbl: <SkipPrevious />,
-    cmd: 'restart',
-    enable: false,
-  },
-  {
-    lbl: <Replay />,
-    title: 'Annuler le coup',
-    cmd: 'undo',
-    long: 'restart',
-    enable: true,
-  },
-]
-
 const Ascacou = ({ ascacou, newGame }) => {
-  const { useShowForbidden } = useParamsSlice()
-  const showForbidden = useShowForbidden()
-
   const [z, Z] = useState(0)
   window.unused = z
   const forceUpdate = () => Z(p => p + 1) // TODO ceci est un hack
-
-  const { useColor } = useSelectorSlice()
-  const currentColor = useColor()
 
   const onAction = cmd => {
     const noop = () => undefined
@@ -58,7 +30,7 @@ const Ascacou = ({ ascacou, newGame }) => {
 
   return (
     <div className='Ascacou'>
-      <AppBar {...{ actions }} />
+      <AppBar />
       <Grid
         container
         direction='row'
