@@ -1,4 +1,5 @@
-import { selector, board, params, cards } from '/app/slices';
+import { isAnyOf } from '@reduxjs/toolkit';
+import { app, selector, board, params, cards } from '/app/slices';
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 
 const { selectColor } = selector.selectors;
@@ -6,6 +7,7 @@ const { selectSquares } = board.selectors;
 const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors;
 const { select, updateSquare, play } = board.actions;
 const { toggleActive } = cards.actions;
+const { toggleShowConfig } = app.actions;
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -94,7 +96,7 @@ function createMiddleware() {
   });
 
   board.listener.startListening({
-    actionCreator: select,
+    actionCreator: play,
     effect: ({ payload }, { dispatch, getState }) => {
       if (selectAllowMultipleCards(getState())) return;
 
@@ -114,6 +116,18 @@ function createMiddleware() {
     },
   });
 
+  board.listener.startListening({
+    matcher: isAnyOf(play, updateSquare),
+    effect: ({ payload }, { dispatch, getState }) => {
+      const squares = selectSquares(getState());
+      const freeSquares = Object.values(squares).filter(
+        (square) => square.content === EMPTY
+      ).length;
+      if (freeSquares === 0) {
+        dispatch(toggleShowConfig(true));
+      }
+    },
+  });
   return board.listener.middleware;
 }
 
