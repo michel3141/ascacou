@@ -2,8 +2,12 @@ import React from 'react'
 import '/css/Player.css'
 import mkClasses from '/lib/mkClasses'
 import Card from './Card'
+import { usePlayersSlice } from '/app/slices'
 
-export default function Player({ id, name, player, cards }) {
+export default function Player({ id, name, cards }) {
+  const { useCurrent } = usePlayersSlice()
+  const player = useCurrent()
+  console.log(player)
   const myCards = cards.filter(c => c.player === id)
   const className = mkClasses({
     'mon-tour': player === id,

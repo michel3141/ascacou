@@ -62,7 +62,6 @@ function createMiddleware() {
   board.listener.startListening({
     actionCreator: select,
     effect: ({ payload }, { dispatch, getState }) => {
-      console.log('ICI', payload)
       const color = selectColor(getState())
       const squares = selectSquares(getState())
       const square = squares[payload.coord]

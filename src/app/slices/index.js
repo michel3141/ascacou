@@ -5,9 +5,10 @@ import * as params from '../../features/params/paramsSlice'
 import * as app from '../../features/app/appSlice'
 import * as board from '../../features/board/boardSlice'
 import * as selector from '../../features/selector/selectorSlice'
+import * as players from '../../features/players/playersSlice'
 
-const slices = { theme, app, board, params, selector }
-export { theme, app, board, params, selector }
+const slices = { theme, app, board, params, players, selector }
+export { theme, app, board, params, players, selector }
 
 export const reducers = Object.entries(slices).reduce(
   (acc, [name, slice]) => ({
@@ -21,6 +22,7 @@ export const useThemeSlice = () => useSlice(theme)
 export const useAppSlice = () => useSlice(app)
 export const useBoardSlice = () => useSlice(board)
 export const useParamsSlice = () => useSlice(params)
+export const usePlayersSlice = () => useSlice(players)
 export const useSelectorSlice = () => useSlice(selector)
 
 export default slices
