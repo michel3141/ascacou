@@ -105,10 +105,11 @@ const filter = (state, action) =>
 
 const toggle =
   (key) =>
-  (state, { booleanOrUndefined }) =>
-    typeof booleanOrUndefined === 'boolean'
-      ? { ...state, [key]: booleanOrUndefined }
-      : { ...state, [key]: !state[key] };
+  (
+    state,
+    { payload } // payload is booleanOrUndefined
+  ) =>
+    typeof payload === 'boolean' ? { ...state, [key]: payload } : { ...state, [key]: !state[key] };
 
 const update = (key) => (state, action) =>
   key ? filter(state, _({ [key]: action.payload })) : filter(state, action);
