@@ -17,6 +17,7 @@ const emptyBoard = () => {
       const square = {
         coord,
         content: EMPTY,
+        playables: [BLACK, WHITE],
         alert: null,
       }
       squares[coord] = square
@@ -34,6 +35,7 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 export const actions = createActions({
   select: _,
   updateSquare: _,
+  play: _,
 })
 
 export const selectors = createSelectors({
@@ -43,7 +45,12 @@ export const selectors = createSelectors({
 export default createReducer({
   [actions.updateSquare]: (state, { payload }) => {
     const square = payload
+    console.log('LA')
     state.squares[square.coord] = { ...square }
+  },
+  [actions.play]: (state, { payload }) => {
+    const square = payload
+    state.squares[square.coord] = { ...square, playables: [] }
   },
   [newGame]: (state, { payload }) => {
     state.squares = emptyBoard()

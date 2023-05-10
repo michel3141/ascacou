@@ -1,5 +1,6 @@
 import React from 'react'
 import './Square.css'
+import { BLOCKED, EMPTY } from '/app/constants/colors'
 import { useParamsSlice, useBoardSlice } from '/app/slices'
 
 const Square = ({ coord }) => {
@@ -7,19 +8,16 @@ const Square = ({ coord }) => {
   const { select, useSquareByCoord } = useBoardSlice()
   const showBlocked = useShowBlocked()
   const square = useSquareByCoord(coord)
-  //const showForbidden = useShowForbidden()
-  const onMouseDown = e => {
-    e.preventDefault() // click
-    select(square)
-  }
+  const showForbidden = useShowForbidden()
 
-  let { content, alert } = square
-  //if (showBlocked && square.playable().length === 0) content = content || 3
-  const className = `Square xy-${coord} c-${alert ? alert : content}`
+  const { content, alert } = square
+  const color = content !== BLOCKED || showBlocked ? content : EMPTY
+  const className = `Square xy-${coord} c-${alert && showForbidden ? alert : color}`
   return (
     <div
-      {...{ className, onMouseDown }}
-      onTouchStart={onMouseDown}
+      {...{ className }}
+      onMouseDown={() => console.log('ICI') || select(square)}
+      onTouchStart={() => select(square)}
     ></div>
   )
 }

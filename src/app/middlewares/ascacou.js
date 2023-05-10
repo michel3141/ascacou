@@ -1,10 +1,10 @@
 import { selector, board, params } from '/app/slices'
-import { BLACK, WHITE, EMPTY } from '/app/constants/colors'
+import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors'
 
 const { selectColor } = selector.selectors
 const { selectSquares } = board.selectors
-const { select, updateSquare } = board.actions
-const { selectAllowMultipleCards } = params.selectors
+const { select, updateSquare, play } = board.actions
+const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -62,20 +62,52 @@ function createMiddleware() {
   board.listener.startListening({
     actionCreator: select,
     effect: ({ payload }, { dispatch, getState }) => {
+      console.log('ICI', payload)
       const color = selectColor(getState())
       const squares = selectSquares(getState())
       const square = squares[payload.coord]
 
       const newSquare = { ...payload, content: color }
+      const showAlert = () => {
+        dispatch(updateSquare({ ...square, alert: `${color}x` }))
+        setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750)
+      }
+      if (
+        square.content === BLOCKED &&
+        !selectShowBlocked(getState()) &&
+        selectShowForbidden(getState())
+      ) {
+        showAlert()
+      }
 
       if (square.content === EMPTY) {
         const newSquares = { ...squares, [square.coord]: newSquare }
         const cards = activeCards(newSquares)
         if (!selectAllowMultipleCards(getState()) && hasDuplicates(cards)) {
-          dispatch(updateSquare({ ...square, alert: `${color}x` }))
-          setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750)
+          showAlert()
         } else {
-          dispatch(updateSquare(newSquare))
+          dispatch(play(newSquare))
+        }
+      }
+    },
+  })
+
+  board.listener.startListening({
+    actionCreator: select,
+    effect: ({ payload }, { dispatch, getState }) => {
+      if (selectAllowMultipleCards(getState())) return
+
+      const squares = selectSquares(getState())
+      for (const square of Object.values(squares)) {
+        const playables = square.playables.filter(color => {
+          const newSquare = { ...square, content: color }
+          const newSquares = { ...squares, [square.coord]: newSquare }
+          const cards = activeCards(newSquares)
+          return !hasDuplicates(cards)
+        })
+        if (playables.length !== square.playables.length) {
+          const content = playables.length === 0 ? BLOCKED : EMPTY
+          dispatch(updateSquare({ ...square, playables, content }))
         }
       }
     },
