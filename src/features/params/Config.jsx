@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useParamsSlice } from '/app/slices';
+import icon from '/assets/img/icon_128.png';
 
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material';
 import './Config.css';
@@ -15,7 +16,7 @@ export default function Config() {
         alignItems='center'
       >
         <p style={{ textAlign: 'center' }}>
-          <img src='/assets/img/icon_128.png' />
+          <img src={icon} />
         </p>
         <Params />
         <Divider />

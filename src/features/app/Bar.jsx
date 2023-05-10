@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-
+import titre from '/assets/img/titre-t.png';
 import { AppBar } from '@mui/material';
 import { useAppSlice, useParamsSlice } from '/app/slices';
 import Config from '/features/params/Config';
@@ -57,7 +57,7 @@ const Bar = () => {
         ]}
         titre={
           <img
-            src='/assets/img/titre-t.png'
+            src={titre}
             onMouseDown={(e) => e.preventDefault()}
           />
         }

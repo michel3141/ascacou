@@ -4,7 +4,7 @@ yes ?= n
 
 #TARGET=$$(find $$(sed s/^/src\\// src/build ) -type f)
 TARGET=src/
-BUILD_OPT=
+BUILD_OPT=--outDir ../dist
 SERVE_OPT=--host 0.0.0.0 --strictPort --port 1234
 
 all: clean build

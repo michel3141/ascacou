@@ -6,7 +6,8 @@ const Board = ({}) => {
   return (
     // align='center'
     <div className='Board'>
-      {/* <img className="titre" src='img/titre.png'/> */}
+      {/* import titre from '/assets/img/titre.png
+      <img className="titre" src={titre}/> */}
       <table>
         <tbody>
           <tr>

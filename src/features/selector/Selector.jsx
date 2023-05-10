@@ -7,6 +7,8 @@ import { selector, useSelectorSlice } from '/app/slices';
 import mkClasses from '/lib/mkClasses';
 
 import { WHITE, BLACK } from '/app/constants/colors';
+import noirs from '/assets/img/noirs.png';
+import blancs from '/assets/img/blancs.png';
 
 export default function Selector() {
   return (
@@ -41,8 +43,8 @@ const Option = ({ color }) => {
   const currentColor = useColor();
   const className = mkClasses({ Selected: color === currentColor });
   const src = {
-    [BLACK]: '/assets/img/noirs.png',
-    [WHITE]: '/assets/img/blancs.png',
+    [BLACK]: noirs,
+    [WHITE]: blancs,
   }[color];
   return (
     <div
