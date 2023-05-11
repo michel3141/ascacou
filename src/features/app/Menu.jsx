@@ -3,8 +3,8 @@ import { useLongPress } from '/lib/longPress';
 import { Toolbar, IconButton, Typography, Drawer } from '@mui/material';
 
 export default function Menu({ drawers = [], actions, titre }) {
-  const hideDrawer = (e, d) => d.onToggle && d.onToggle(false);
-  const showDrawer = (e, d) => d.onToggle && d.onToggle(true);
+  const hideDrawer = (d) => d.onToggle && d.onToggle(false);
+  const showDrawer = (d) => d.onToggle && d.onToggle(true);
 
   actions.forEach(
     (action) =>
@@ -24,7 +24,7 @@ export default function Menu({ drawers = [], actions, titre }) {
           */}
       {actions.map(
         (a) =>
-          a.enable && (
+          !a.disabled && (
             <IconButton
               {...a.mouseEvents}
               key={a.cmd}
@@ -39,11 +39,12 @@ export default function Menu({ drawers = [], actions, titre }) {
 
       {drawers.map(
         (d, i) =>
-          d.enable && (
+          !d.disabled &&
+          d.lbl && (
             <IconButton
               key={i}
               style={i === 0 ? { marginLeft: 'auto' } : {}}
-              onClick={(e) => showDrawer(e, d)}
+              onClick={() => showDrawer(d)}
               color='inherit'
               title={d.title}
             >
@@ -54,12 +55,12 @@ export default function Menu({ drawers = [], actions, titre }) {
 
       {drawers.map(
         (d, i) =>
-          d.enable && (
+          !d.disabled && (
             <Drawer
               key={i}
               anchor='right'
               open={d.visible}
-              onClose={(e) => hideDrawer(e, d)}
+              onClose={() => hideDrawer(d)}
             >
               {d.action}
             </Drawer>

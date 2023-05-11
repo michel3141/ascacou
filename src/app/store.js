@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import isDevMode from '/lib/isDevMode';
 
-import { reducers } from './slices';
+import slices, { reducers } from './slices';
 import middlewares from './middlewares';
 
 const store = configureStore({
@@ -14,6 +14,7 @@ const store = configureStore({
 });
 
 window.store = store;
+window.slices = slices;
 
 export { store };
 export default store;

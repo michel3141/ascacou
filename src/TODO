@@ -3,3 +3,4 @@ eslint + vim :
 https://github.com/standard/standard#vim
 
 redux - undo
+add ascacou slice (avec les règles ?)
