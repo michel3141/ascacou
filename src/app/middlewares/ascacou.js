@@ -7,7 +7,7 @@ const { selectSquares } = board.selectors;
 const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors;
 const { select, updateSquare, play } = board.actions;
 const { toggleActive } = cards.actions;
-const { toggleShowConfig } = app.actions;
+const { toggleShowVictoire } = app.actions;
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -36,6 +36,7 @@ const activeCards = (squares) => {
       card *= 2;
       const { content } = squares[coord];
       if (content === BLACK) {
+        card += 0;
       } else if (content === WHITE) {
         card += 1;
       } else {
@@ -124,7 +125,7 @@ function createMiddleware() {
         (square) => square.content === EMPTY
       ).length;
       if (freeSquares === 0) {
-        dispatch(toggleShowConfig(true));
+        dispatch(toggleShowVictoire(true));
       }
     },
   });

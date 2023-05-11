@@ -1,7 +1,7 @@
-import rtk, { _, update } from '/lib/rtk';
+import rtk, { _ } from '/lib/rtk';
 import { params } from '/app/slices';
 
-import { deal_methods } from '/app/constants/cards';
+import { dealMethods } from '/app/constants/cards';
 import { FIRST, SECOND } from '/app/constants/players';
 
 export const name = 'cards';
@@ -25,13 +25,21 @@ export const actions = createActions({
 
 export const selectors = createSelectors({
   cards_by_player_id: (id) => (state) => state.cards[id],
+  score: (state) =>
+    Object.keys(state.cards).reduce(
+      (acc, id) => ({
+        ...acc,
+        [id]: state.cards[id].filter((card) => card.active).length,
+      }),
+      {}
+    ),
 });
 
 const inflate = (id) => ({ id, active: false });
 export default createReducer({
   [newGame]: (state, { payload }) => {
-    const deal_method = payload?.deal_method || 'random';
-    const cards = deal_methods[deal_method];
+    const dealMethod = payload?.deal_method || 'random';
+    const cards = dealMethods[dealMethod];
     state[FIRST] = cards.map(inflate);
     state[SECOND] = complement(cards).map(inflate);
   },

@@ -11,7 +11,7 @@ export default function Player({ id }) {
   const player = usePlayerById(id);
 
   const { name } = player;
-  const myCards = useCardsByPlayerId(id);
+  const cards = useCardsByPlayerId(id);
 
   const monTour = id === useCurrent();
   const className = mkClasses({
@@ -22,11 +22,11 @@ export default function Player({ id }) {
     <div className='Player'>
       <fieldset {...{ className }}>
         <legend>{monTour ? `${name}` : `[${name}]`}</legend>
-        <Cards cards={myCards} />
+        <Cards {...{ cards }} />
       </fieldset>
       <fieldset>
         <Cards
-          cards={myCards}
+          {...{ cards }}
           done
         />
       </fieldset>

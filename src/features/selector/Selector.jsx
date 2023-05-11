@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import './Selector.css';
 
-import { selector, useSelectorSlice } from '/app/slices';
+import { useSelectorSlice } from '/app/slices';
 
 import mkClasses from '/lib/mkClasses';
 

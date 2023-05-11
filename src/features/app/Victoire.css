@@ -20,14 +20,26 @@ div.Victoire {
   padding: 10px;
 }
 
-.Victoire .Carte {
-  width: 70px;
+.Victoire .Card {
+  width: 85px;
+  height: 85px;
   margin: 5px;
   border-radius: 0 0 0 20px;
 }
 
-.Victoire .Plateau {
-  width: 200px;
-  margin: 5px;
-  border-radius: 0 0 5px 5px;
+.Victoire div.Score {
+  width: 50vw;
+}
+
+.Victoire .Score h2 {
+  text-align: center;
+}
+
+.Victoire table {
+  width: 100%;
+}
+
+.Victoire .Score td {
+  width: 50%;
+  border: solid red 1px;
 }

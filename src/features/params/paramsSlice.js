@@ -1,4 +1,4 @@
-import rtk, { _, update } from '/lib/rtk';
+import rtk, { _ } from '/lib/rtk';
 
 import { deals } from '/app/constants/cards';
 

@@ -1,4 +1,4 @@
-import rtk, { _, update } from '/lib/rtk';
+import rtk, { _ } from '/lib/rtk';
 import { params } from '/app/slices';
 
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
@@ -10,7 +10,6 @@ const { newGame } = params.actions;
 
 const emptyBoard = () => {
   const squares = {};
-  let next = null;
   for (const row of [1, 2, 3, 4, 5]) {
     for (const col of [1, 2, 3, 4, 5]) {
       const coord = `${row}x${col}`;

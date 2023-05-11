@@ -33,7 +33,10 @@ const Params = () => {
     <>
       <Typography variant='h4'>Partie en cours</Typography>
       {Object.entries(params).map(([key, item]) => (
-        <Item {...{ key, item, id: key, updateValue }} />
+        <Item
+          key={key}
+          {...{ item, id: key, updateValue }}
+        />
       ))}
     </>
   );
@@ -72,7 +75,10 @@ const NewGame = () => {
     <>
       <Typography variant='h4'>Nouvelle partie</Typography>
       {Object.entries(params).map(([key, item]) => (
-        <Item {...{ key, item: { ...item }, id: key, updateValue }} />
+        <Item
+          key={key}
+          {...{ item: { ...item }, id: key, updateValue }}
+        />
       ))}
       <Button
         variant='contained'

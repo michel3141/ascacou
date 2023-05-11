@@ -1,4 +1,4 @@
-import rtk, { _, update } from '/lib/rtk';
+import rtk from '/lib/rtk';
 import { params, board } from '/app/slices';
 
 import { FIRST, SECOND, NOBODY } from '/app/constants/players';

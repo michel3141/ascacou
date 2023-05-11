@@ -1,16 +1,16 @@
 import React from 'react';
 import './Regles.css';
 import { PublishRounded } from '@mui/icons-material';
-import img_100000000000002D000000360BEA7FAC9C4847CD from '/assets/img/100000000000002D000000360BEA7FAC9C4847CD.jpg';
-import img_100000000000002D00000036A3FE065D9632E68D from '/assets/img/100000000000002D00000036A3FE065D9632E68D.jpg';
-import img_1000000000000071000000875A7E52B12142BB18 from '/assets/img/1000000000000071000000875A7E52B12142BB18.jpg';
-import img_100000000000007100000087AAFEA097B5664748 from '/assets/img/100000000000007100000087AAFEA097B5664748.jpg';
-import img_100000000000007100000087CEB676665D7F11B8 from '/assets/img/100000000000007100000087CEB676665D7F11B8.jpg';
-import img_100000000000007100000087DFB228A471609B16 from '/assets/img/100000000000007100000087DFB228A471609B16.jpg';
-import img_100000000000008C000000A85906570A090FB8B7 from '/assets/img/100000000000008C000000A85906570A090FB8B7.png';
-import img_100000000000008C000000A87317F4896CA6D119 from '/assets/img/100000000000008C000000A87317F4896CA6D119.png';
-import img_100000000000008C000000A8E110F53E54B6FFD9 from '/assets/img/100000000000008C000000A8E110F53E54B6FFD9.png';
-import img_100000000000013C00000176017FE24A41E0F645 from '/assets/img/100000000000013C00000176017FE24A41E0F645.jpg';
+import _100000000000002D000000360BEA7FAC9C4847CD from '/assets/img/100000000000002D000000360BEA7FAC9C4847CD.jpg';
+import _100000000000002D00000036A3FE065D9632E68D from '/assets/img/100000000000002D00000036A3FE065D9632E68D.jpg';
+import _1000000000000071000000875A7E52B12142BB18 from '/assets/img/1000000000000071000000875A7E52B12142BB18.jpg';
+import _100000000000007100000087AAFEA097B5664748 from '/assets/img/100000000000007100000087AAFEA097B5664748.jpg';
+import _100000000000007100000087CEB676665D7F11B8 from '/assets/img/100000000000007100000087CEB676665D7F11B8.jpg';
+import _100000000000007100000087DFB228A471609B16 from '/assets/img/100000000000007100000087DFB228A471609B16.jpg';
+import _100000000000008C000000A85906570A090FB8B7 from '/assets/img/100000000000008C000000A85906570A090FB8B7.png';
+import _100000000000008C000000A87317F4896CA6D119 from '/assets/img/100000000000008C000000A87317F4896CA6D119.png';
+import _100000000000008C000000A8E110F53E54B6FFD9 from '/assets/img/100000000000008C000000A8E110F53E54B6FFD9.png';
+import _100000000000013C00000176017FE24A41E0F645 from '/assets/img/100000000000013C00000176017FE24A41E0F645.jpg';
 
 import pjs from '/../package.json';
 
@@ -44,7 +44,7 @@ export default function Regles() {
       </h1>
       <p style={{ textAlign: 'center' }}>
         <img
-          src={img_100000000000013C00000176017FE24A41E0F645}
+          src={_100000000000013C00000176017FE24A41E0F645}
           style={{ width: '6.387cm', height: '7.535cm' }}
         />
       </p>
@@ -120,7 +120,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src={img_1000000000000071000000875A7E52B12142BB18}
+                src={_1000000000000071000000875A7E52B12142BB18}
               />
             </td>
             <td>
@@ -128,7 +128,7 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src={img_100000000000002D00000036A3FE065D9632E68D}
+                  src={_100000000000002D00000036A3FE065D9632E68D}
                 />
               </p>
             </td>
@@ -153,7 +153,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src={img_100000000000007100000087DFB228A471609B16}
+                src={_100000000000007100000087DFB228A471609B16}
               />
             </td>
             <td>
@@ -163,11 +163,11 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src={img_100000000000008C000000A87317F4896CA6D119}
+                  src={_100000000000008C000000A87317F4896CA6D119}
                 />
                 <img
                   className='Carte'
-                  src={img_100000000000008C000000A8E110F53E54B6FFD9}
+                  src={_100000000000008C000000A8E110F53E54B6FFD9}
                 />
               </p>
             </td>
@@ -176,7 +176,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src={img_100000000000007100000087CEB676665D7F11B8}
+                src={_100000000000007100000087CEB676665D7F11B8}
               />
             </td>
             <td>
@@ -184,7 +184,7 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src={img_100000000000002D000000360BEA7FAC9C4847CD}
+                  src={_100000000000002D000000360BEA7FAC9C4847CD}
                 />
               </p>
               <p>serait présente deux fois sur le plateau</p>
@@ -208,7 +208,7 @@ export default function Regles() {
             <td>
               <img
                 className='Plateau'
-                src={img_100000000000007100000087AAFEA097B5664748}
+                src={_100000000000007100000087AAFEA097B5664748}
               />
             </td>
             <td>
@@ -216,11 +216,11 @@ export default function Regles() {
               <p>
                 <img
                   className='Carte'
-                  src={img_100000000000008C000000A85906570A090FB8B7}
+                  src={_100000000000008C000000A85906570A090FB8B7}
                 />{' '}
                 <img
                   className='Carte'
-                  src={img_100000000000008C000000A8E110F53E54B6FFD9}
+                  src={_100000000000008C000000A8E110F53E54B6FFD9}
                 />
               </p>
             </td>
