@@ -11,7 +11,12 @@ ou
 yarn
 make build
 ```
+## Notes
 
+les assets sont à fabriquer
+    cd src/assets/img/
+    ./MAKEFILE.pl
+    make
 
 ## But
 
