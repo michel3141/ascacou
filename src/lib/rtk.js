@@ -39,14 +39,12 @@ const rtk = (name, getInitialState, persisted) => {
           extended[type] = createAction(`${name}/${type}`, prepareAction);
         } else {
           const main = createAction(`${name}/${type}`, () => {
-            throw new Error(`private action '${main}'`);
+            throw new Error(`default action for '${main}' is not defined`);
           });
-          if (!type.startsWith('_')) {
-            throw new Error(`private subtype '${type}' must start with un underscore`);
-          }
           extended[type] = main;
-          for (const subType in prepareAction) {
-            extended[subType] = createAction(`${main}`, prepareAction[subType]);
+          for (const key in prepareAction) {
+            const subType = key === 'default' ? type : key;
+            extended[subType] = createAction(`${main}`, prepareAction[key]);
           }
         }
         return {
