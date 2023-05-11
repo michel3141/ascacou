@@ -1,14 +1,14 @@
 # ascacou
 
 ```
-npm i
+yarn
 make server
 ```
 
 ou
 
 ```
-npm i
+yarn
 make build
 ```
 
