@@ -1,12 +1,12 @@
 import rtk, { _ } from '/lib/rtk';
-import { params } from '/app/slices';
+import { ascacou } from '/app/slices';
 
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 
 export const name = 'board';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
-const { newGame } = params.actions;
+const { newGame } = ascacou.actions;
 
 const emptyBoard = () => {
   const squares = {};

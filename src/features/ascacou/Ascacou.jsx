@@ -9,7 +9,9 @@ import { useBoardSlice } from '/app/slices';
 
 import Player from '/features/players/Player';
 import Selector from '/features/selector/Selector';
-import '/css/Ascacou.css';
+import './Ascacou.css';
+
+const md = [4, 4, 4]
 
 const Ascacou = () => {
   return (
@@ -20,15 +22,18 @@ const Ascacou = () => {
         justify='space-evenly'
         alignItems='flex-start'
       >
+
         <Grid
           item
-          xs
+          xs={3}
+	  md={md[0]}
         >
           <Player id={FIRST} />
         </Grid>
         <Grid
           item
-          xs
+	  xs={6}
+	  md={md[1]}
         >
           <Grid
             container
@@ -38,13 +43,11 @@ const Ascacou = () => {
           >
             <Grid
               item
-              xs
             >
               <Board />
             </Grid>
             <Grid
               item
-              xs
             >
               <Selector />
             </Grid>
@@ -52,7 +55,8 @@ const Ascacou = () => {
         </Grid>
         <Grid
           item
-          xs
+          xs={3}
+	  md={md[2]}
         >
           <Player id={SECOND} />
         </Grid>

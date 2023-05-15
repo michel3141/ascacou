@@ -1,6 +1,9 @@
 import rtk, { _ } from '/lib/rtk';
 
 import { deals } from '/app/constants/cards';
+import { ascacou } from '/app/slices';
+
+const { newGame } = ascacou.actions;
 
 export const name = 'params';
 
@@ -36,7 +39,6 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   updateValue: _,
-  newGame: _,
 });
 export const selectors = createSelectors({
   show_blocked: (state) => state.params.show_blocked.value,
@@ -55,7 +57,7 @@ const updateConfig = (state, { payload }) => {
 };
 export default createReducer({
   [actions.updateValue]: updateConfig,
-  [actions.newGame]: updateConfig,
+  [newGame]: updateConfig,
 });
 
 export { listener };

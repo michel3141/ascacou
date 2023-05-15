@@ -1,5 +1,5 @@
 import rtk, { _ } from '/lib/rtk';
-import { params } from '/app/slices';
+import { ascacou } from '/app/slices';
 
 import { dealMethods } from '/app/constants/cards';
 import { FIRST, SECOND } from '/app/constants/players';
@@ -7,7 +7,7 @@ import { FIRST, SECOND } from '/app/constants/players';
 export const name = 'cards';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
-const { newGame } = params.actions;
+const { newGame } = ascacou.actions;
 
 const complement = (a) =>
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].filter((value) => !a.includes(value));

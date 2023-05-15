@@ -1,14 +1,12 @@
 import rtk, { no_ } from '/lib/rtk';
 import { RULES, VICTORY, CONFIG } from '/app/constants/drawers';
-import { params } from '/app/slices';
+import { ascacou } from '/app/slices';
 
-const { newGame } = params.actions;
+const { newGame } = ascacou.actions;
 export const name = 'app';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
 const initialState = {
-  showRules: false,
-  showVictoire: false,
   ready: false,
   drawer: null,
 };

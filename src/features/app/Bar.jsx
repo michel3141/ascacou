@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { AppBar } from '@mui/material';
 import { RULES, VICTORY, CONFIG } from '/app/constants/drawers';
 import titre from '/assets/img/titre-t.png';
-import { useAppSlice, useParamsSlice } from '/app/slices';
+import { useAppSlice, useAscacouSlice } from '/app/slices';
 import Config from '/features/params/Config';
 import Menu from './Menu';
 import Regles from './Regles';
@@ -13,7 +13,7 @@ import { SkipPrevious, Replay, Help, Menu as MenuIcn } from '@mui/icons-material
 const Bar = () => {
   const { useDrawer, toggleDrawer } = useAppSlice();
   const activeDrawer = useDrawer();
-  const { newGame } = useParamsSlice();
+  const { newGame } = useAscacouSlice();
   const actions = useMemo(
     () => [
       {

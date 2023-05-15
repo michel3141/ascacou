@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useParamsSlice, useAppSlice } from '/app/slices';
+import { useAscacouSlice, useAppSlice } from '/app/slices';
 
-import AppBar from '/features/app/Bar';
-import '/css/App.css';
+import Ascacou from '/features/ascacou/Ascacou';
+import AppBar from './Bar';
+import './App.css';
 // import Solver from 'ascacou-solver-wasm'
 
-import Ascacou from './Ascacou';
 
 export default function App(props) {
   /*
@@ -14,7 +14,7 @@ export default function App(props) {
     allow_multiple_cards,
     deal_method,
     */
-  const { newGame } = useParamsSlice();
+  const { newGame } = useAscacouSlice();
   const { useReady, boot, toggleShowConfig } = useAppSlice();
   const ready = useReady();
   useEffect(() => {

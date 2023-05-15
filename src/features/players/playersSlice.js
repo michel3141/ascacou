@@ -1,12 +1,12 @@
 import rtk from '/lib/rtk';
-import { params, board } from '/app/slices';
+import { ascacou, board } from '/app/slices';
 
 import { FIRST, SECOND, NOBODY } from '/app/constants/players';
 
 export const name = 'players';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
-const { newGame } = params.actions;
+const { newGame } = ascacou.actions;
 const { play } = board.actions;
 
 const list = {

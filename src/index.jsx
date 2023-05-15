@@ -5,7 +5,7 @@ import ThemeProvider from '/Providers/Theme';
 
 import store from '/app/store';
 
-import App from '/comp/App';
+import App from '/features/app/App';
 
 const root = createRoot(document.getElementById('root'));
 root.render(

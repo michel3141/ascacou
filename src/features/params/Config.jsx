@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useParamsSlice } from '/app/slices';
+import { useAscacouSlice, useParamsSlice } from '/app/slices';
 import icon from '/assets/img/icon_128.png';
 
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material';
@@ -27,9 +27,9 @@ export default function Config() {
 }
 
 const Params = () => {
-  const { useParams, updateValue } = useParamsSlice();
-  const params = useParams();
-  return (
+	const { useParams, updateValue } = useParamsSlice();
+	const params = useParams();
+	return (
     <>
       <Typography variant='h4'>Partie en cours</Typography>
       {Object.entries(params).map(([key, item]) => (
@@ -43,7 +43,8 @@ const Params = () => {
 };
 
 const NewGame = () => {
-  const { newGame, useParams } = useParamsSlice();
+  const { newGame } = useAscacouSlice();
+  const { useParams } = useParamsSlice();
 
   const [params, setParams] = useState(useParams());
   const config = Object.entries(params).reduce(
