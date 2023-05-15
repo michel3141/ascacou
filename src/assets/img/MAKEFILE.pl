@@ -1,9 +1,13 @@
 #!/usr/bin/perl
 
 $out = "";
-$out .= "noirblanc:
+$out .= "1.png:
 \tconvert noir.png -resize 160x160 1.png
+
+2.png:
 \tconvert blanc.png -resize 160x160 2.png
+
+3.png:
 \tconvert vert.png -resize 160x160 3.png
 
 clean:
@@ -23,7 +27,7 @@ for $case(0..24) {
       if($x) {
         $out .= "\tcomposite -gravity center croix.png \$\@ \$\@\n";
       }
-      $out .= "\tmogrify -resize 50x \$\@\n";
+      $out .= "\tmogrify -interlace Plane -resize 50x \$\@\n";
       $out .= "\n";
       push @all, "case-$col$x-$case.png";
     }
@@ -31,7 +35,7 @@ for $case(0..24) {
 }
 for $case(0..24) {
       $out .= "case-0-$case.png: org/case-0-$case.png\n";
-      $out .= "\tconvert -resize 50x org/\$\@ \$\@\n";
+      $out .= "\tconvert -interlace Plane -resize 50x org/\$\@ \$\@\n";
       $out .= "\n";
       push @all, "case-0-$case.png";
 }
@@ -68,7 +72,7 @@ for $active (0..1) {
     $c4 = "case-$motif[3]-$i4.png";
     $out .= "motif-$active-$motif.png: $c1 $c2 $c3 $c4\n";
     $out .= "\tmontage -geometry 175x175+0+0 -tile 2x2 $c1 $c2 $c3 $c4 \$\@\n";
-    $out .= "\tmogrify -resize 85x \$\@\n\n";
+    $out .= "\tmogrify -interlace Plane -resize 85x \$\@\n\n";
 
     push @all, "motif-$active-$motif.png";
   }
@@ -77,7 +81,7 @@ $a=-1;$iconlist = join " ", map {$a++;"case-$_-$a.png"} split //,"12211211222211
 $out .= "icon.png: $iconlist
 \tmontage -geometry +0+0 -tile 5x5 $iconlist tmp.png\n";
 for $size (qw/48 64 128 192 256/) {
-  $out .= "\tconvert -resize ${size}x${size} tmp.png icon_$size.png\n";
+  $out .= "\tconvert -interlace Plane -resize ${size}x${size} tmp.png icon_$size.png\n";
 }
 $out .= "\tln -sf icon_48.png \$\@\n";
 $out .= "\t\@rm tmp.png\n\n";
