@@ -75,7 +75,7 @@ export const selectors = createSelectors({
     const player = state.players.current;
     const cards = state.cards[player].map((card) => card.id.toString(16)).sort();
     const myCards = cards.join('');
-    return [board, myCards].join(' ');
+    return [`[${state.ascacou.id}]`, board, myCards].join(' ');
   },
 });
 
