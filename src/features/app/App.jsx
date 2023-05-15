@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { useAscacouSlice, useAppSlice } from '/app/slices';
-
-import Ascacou from '/features/ascacou/Ascacou';
-import AppBar from './Bar';
 import './App.css';
-// import Solver from 'ascacou-solver-wasm'
 
+const Ascacou = lazy(() => import('/features/ascacou/Ascacou'));
+const AppBar = lazy(() => import('./Bar'));
+// import Solver from 'ascacou-solver-wasm'
 
 export default function App(props) {
   /*
@@ -25,9 +24,10 @@ export default function App(props) {
 
   return (
     <div className='App'>
-      <AppBar />
-      {ready && <Ascacou />}
-      <div className='Square pre-load' />
+      <Suspense fallback={'...'}>
+        <AppBar />
+        {ready && <Ascacou />}
+      </Suspense>
     </div>
   );
 }

@@ -27,9 +27,9 @@ export default function Config() {
 }
 
 const Params = () => {
-	const { useParams, updateValue } = useParamsSlice();
-	const params = useParams();
-	return (
+  const { useParams, updateValue } = useParamsSlice();
+  const params = useParams();
+  return (
     <>
       <Typography variant='h4'>Partie en cours</Typography>
       {Object.entries(params).map(([key, item]) => (

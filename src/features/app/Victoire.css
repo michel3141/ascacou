@@ -42,4 +42,6 @@ div.Victoire {
 .Victoire .Score td {
   width: 50%;
 }
-.Victoire .Score td + td { border-left:2px solid black; }
+.Victoire .Score td + td {
+  border-left: 2px solid black;
+}

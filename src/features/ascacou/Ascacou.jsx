@@ -1,67 +1,63 @@
-import React from 'react';
-
-import { FIRST, SECOND } from '/app/constants/players';
+import React, { Suspense, lazy } from 'react';
+import './Ascacou.css';
 
 import { Grid } from '@mui/material';
 
-import Board from '/features/board/Board';
+import { FIRST, SECOND } from '/app/constants/players';
 import { useBoardSlice } from '/app/slices';
 
-import Player from '/features/players/Player';
-import Selector from '/features/selector/Selector';
-import './Ascacou.css';
+const Board = lazy(() => import('/features/board/Board'));
+const Player = lazy(() => import('/features/players/Player'));
+const Selector = lazy(() => import('/features/selector/Selector'));
 
-const md = [4, 4, 4]
+const md = [4, 4, 4];
 
 const Ascacou = () => {
   return (
     <div className='Ascacou'>
-      <Grid
-        container
-        direction='row'
-        justify='space-evenly'
-        alignItems='flex-start'
-      >
-
+      <Suspense fallback={'...'}>
         <Grid
-          item
-          xs={3}
-	  md={md[0]}
-        >
-          <Player id={FIRST} />
-        </Grid>
-        <Grid
-          item
-	  xs={6}
-	  md={md[1]}
+          container
+          direction='row'
+          justify='space-evenly'
+          alignItems='flex-start'
         >
           <Grid
-            container
-            direction='column'
-            alignItems='center'
-            justify='space-evenly'
+            item
+            xs={3}
+            md={md[0]}
+          >
+            <Player id={FIRST} />
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            md={md[1]}
           >
             <Grid
-              item
+              container
+              direction='column'
+              alignItems='center'
+              justify='space-evenly'
             >
-              <Board />
-            </Grid>
-            <Grid
-              item
-            >
-              <Selector />
+              <Grid item>
+                <Board />
+              </Grid>
+              <Grid item>
+                <Selector />
+              </Grid>
             </Grid>
           </Grid>
+          <Grid
+            item
+            xs={3}
+            md={md[2]}
+          >
+            <Player id={SECOND} />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          xs={3}
-	  md={md[2]}
-        >
-          <Player id={SECOND} />
-        </Grid>
-      </Grid>
-      <Fen />
+        <Fen />
+      </Suspense>
     </div>
   );
 };

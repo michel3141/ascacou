@@ -1,22 +1,25 @@
-import React, { StrictMode } from 'react';
+import React, { Suspense, lazy, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import ThemeProvider from '/Providers/Theme';
 
-import store from '/app/store';
-
-import App from '/features/app/App';
+const ReduxProvider = lazy(() => import('/Providers/Redux'));
+const ThemeProvider = lazy(() => import('/Providers/Theme'));
+const SquaresProvider = lazy(() => import('/Providers/Squares'));
+const App = lazy(() => import('/features/app/App'));
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <Provider {...{ store }}>
-      <ThemeProvider>
-        <App
-          allow_multiple_cards={false}
-          deal_method='random'
-        />
-      </ThemeProvider>
-    </Provider>
+    <Suspense fallback={'...'}>
+      <ReduxProvider>
+        <ThemeProvider>
+          <SquaresProvider>
+            <App
+              allow_multiple_cards={false}
+              deal_method='random'
+            />
+          </SquaresProvider>
+        </ThemeProvider>
+      </ReduxProvider>
+    </Suspense>
   </StrictMode>
 );
