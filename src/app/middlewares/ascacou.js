@@ -84,6 +84,7 @@ const selectEmpty = ({ payload }, { dispatch, getState }) => {
   const squares = selectSquares(getState());
   const square = squares[payload.coord];
 
+  if (color === EMPTY) return;
   if (square.content !== EMPTY) return;
 
   const newSquare = { ...payload, content: color };

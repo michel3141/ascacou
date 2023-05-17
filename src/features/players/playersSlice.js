@@ -1,13 +1,10 @@
 import rtk from '/lib/rtk';
-import { ascacou, board } from '/app/slices';
+import { ascacou } from '/app/slices';
 
 import { FIRST, SECOND, NOBODY } from '/app/constants/players';
 
 export const name = 'players';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
-
-const { newGame } = ascacou.actions;
-const { play } = board.actions;
 
 const list = {
   [FIRST]: {
@@ -33,6 +30,8 @@ export const actions = createActions({});
 export const selectors = createSelectors({
   player_by_id: (id) => (state) => ({ ...state.players.list[id], id }),
 });
+
+const { newGame, play } = ascacou.actions;
 
 export default createReducer({
   [newGame]: (state) => {
