@@ -1,13 +1,5 @@
 .Config {
-  height: 100%; /* <= bien ici pour l'image de fond */
   max-width: 350px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-image: url('/assets/img/fond.png');
-  background-color: rgba(255, 255, 255, 0.6);
-  background-blend-mode: lighten;
 
   & .MuiListItem-root.Mui-selected {
     background-color: var(--main-color-opacity-60);
