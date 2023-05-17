@@ -2,9 +2,6 @@ faire une IA
 eslint + vim :
 https://github.com/standard/standard#vim
 
-redux - undo
+redux - undo (=> restart redémarre au début de *ce* jeu)
 try reponsive
-
-
-plus de jeu... pb dans app/model ascacou
 
