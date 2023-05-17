@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css';
+import './Card.scss';
 import mkClasses from '/lib/mkClasses';
 
 export default function Card({ id, active }) {

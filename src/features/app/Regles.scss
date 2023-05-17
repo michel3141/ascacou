@@ -1,36 +1,35 @@
 .Regles {
-	font-family: 'arial';
-		width: 500px;
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-attachment: fixed;
-		background-image: url('/assets/img/fond.png');
-		background-color: rgba(255, 255, 255, 0.6);
-		background-blend-mode: lighten;
-		padding: 10px;
+  font-family: 'arial';
+  width: 500px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('/assets/img/fond.png');
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  padding: 10px;
 
-	& .MuiPaper-root {
-		padding: 7px;
-		height: 100%; /* <= bien ici pour l'image de fond */
-	}
+  & .MuiPaper-root {
+    padding: 7px;
+    height: 100%; /* <= bien ici pour l'image de fond */
+  }
 
+  & table {
+    margin: auto;
+    text-align: center;
+    border-spacing: 10px;
+  }
 
-	& table {
-		margin: auto;
-		text-align: center;
-		border-spacing: 10px;
-	}
+  & .Carte {
+    width: 70px;
+    margin: 5px;
+    border-radius: 0 0 0 20px;
+  }
 
-	& .Carte {
-		width: 70px;
-		margin: 5px;
-		border-radius: 0 0 0 20px;
-	}
-
-	& .Plateau {
-		width: 200px;
-		margin: 5px;
-		border-radius: 0 0 5px 5px;
-	}
+  & .Plateau {
+    width: 200px;
+    margin: 5px;
+    border-radius: 0 0 5px 5px;
+  }
 }
