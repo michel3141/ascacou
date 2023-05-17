@@ -4,8 +4,10 @@ export const name = 'theme';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
 const initialState = {
-  mainColor: '#000000',
-  secondColor: '#888888',
+  mainColor: '#815817',
+  secondColor: '#00FF88',
+  foregroundColor: '#FFFFFF',
+  backgroundColor: '#000000',
 };
 
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);

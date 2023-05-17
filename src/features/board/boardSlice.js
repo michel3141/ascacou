@@ -34,7 +34,6 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 export const actions = createActions({
   select: _,
   updateSquare: _,
-  play: _,
 });
 
 export const selectors = createSelectors({
@@ -84,7 +83,7 @@ export default createReducer({
     const square = payload;
     state.squares[square.coord] = { ...square };
   },
-  [actions.play]: (state, { payload }) => {
+  [ascacou.play]: (state, { payload }) => {
     const square = payload;
     state.squares[square.coord] = { ...square, playables: [] };
   },

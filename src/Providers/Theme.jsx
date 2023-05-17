@@ -22,12 +22,11 @@ const CustomThemeProvider = ({ children }) => {
 
 const updateCSS = (theme) => {
   const { style } = window.document.documentElement; // html
-  const { mainColor, secondColor } = theme;
-  const [forgroundColor, backgroundColor] = ['#111', '#EEE'];
+  const { mainColor, secondColor, foregroundColor, backgroundColor } = theme;
   const colors = [
     ['main-color', mainColor],
     ['second-color', secondColor],
-    ['foreground-color', forgroundColor],
+    ['foreground-color', foregroundColor],
     ['background-color', backgroundColor],
   ];
   for (const [prop, value] of colors) {
