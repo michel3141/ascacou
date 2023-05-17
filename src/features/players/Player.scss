@@ -6,6 +6,7 @@
       background-color: var(--foreground-color-opacity-40);
       & legend {
         color: var(--foreground-color);
+        background-color: var(--main-color);
         /*  display:none;*/
       }
     }
@@ -14,6 +15,7 @@
       background-color: var(--background-color-opacity-40);
       & legend {
         color: var(--main-color);
+        background-color: var(--background-color-opacity-60);
         /*  display:none;*/
       }
     }

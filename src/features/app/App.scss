@@ -1,5 +1,7 @@
 body {
-  color: white;
+  font-family: 'arial';
+  color: var(--foreground-color);
+  background-color: var(--background-color);
   background-color: black;
   background-position: 50% 50%;
   background-repeat: no-repeat;

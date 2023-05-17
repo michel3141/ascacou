@@ -1,5 +1,5 @@
 import React from 'react';
-import './Square.css';
+import './Square.scss';
 import { BLOCKED, EMPTY } from '/app/constants/colors';
 import { useParamsSlice, useBoardSlice } from '/app/slices';
 

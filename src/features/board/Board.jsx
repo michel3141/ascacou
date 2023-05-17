@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import './Board.css';
+import './Board.scss';
 const Square = lazy(() => import('./Square'));
 
 const Board = () => (
