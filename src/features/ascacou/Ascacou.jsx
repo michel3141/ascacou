@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import './Ascacou.css';
+import './Ascacou.scss';
 
 import { Grid } from '@mui/material';
 
