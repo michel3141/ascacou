@@ -6,8 +6,6 @@ import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 export const name = 'board';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
-const { newGame } = ascacou.actions;
-
 const emptyBoard = () => {
   const squares = {};
   for (const row of [1, 2, 3, 4, 5]) {
@@ -78,12 +76,14 @@ export const selectors = createSelectors({
   },
 });
 
+const { play, newGame } = ascacou.actions;
+
 export default createReducer({
   [actions.updateSquare]: (state, { payload }) => {
     const square = payload;
     state.squares[square.coord] = { ...square };
   },
-  [ascacou.play]: (state, { payload }) => {
+  [play]: (state, { payload }) => {
     const square = payload;
     state.squares[square.coord] = { ...square, playables: [] };
   },

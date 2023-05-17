@@ -1,14 +1,12 @@
 import { isAnyOf } from '@reduxjs/toolkit';
-import { app, ascacou, selector, board, params, cards } from '/app/slices';
+import { ascacou, selector, board, params } from '/app/slices';
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 
 const { selectColor } = selector.selectors;
 const { selectSquares } = board.selectors;
 const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors;
 const { select, updateSquare } = board.actions;
-const { play } = ascacou.actions;
-const { toggleActive } = cards.actions;
-const { toggleShowVictoire } = app.actions;
+const { play, activeCards, endGame } = ascacou.actions;
 
 const inters = [
   ['1x1', '1x2', '2x1', '2x2'],
@@ -29,7 +27,7 @@ const inters = [
   ['4x4', '4x5', '5x4', '5x5'],
 ];
 
-const activeCards = (squares) => {
+const findActiveCards = (squares) => {
   const cards = [];
   for (const inter of inters) {
     let card = 0;
@@ -68,47 +66,47 @@ const showAlert = (dispatch, square, alert) => {
   setTimeout(() => dispatch(updateSquare({ ...square, alert: null })), 750);
 };
 
+/// *************************************
+
+const selectBlocked = ({ payload }, { dispatch, getState }) => {
+  const color = selectColor(getState());
+  const squares = selectSquares(getState());
+  const square = squares[payload.coord];
+
+  if (square.content !== BLOCKED) return;
+  if (selectShowBlocked(getState())) return;
+  if (!selectShowForbidden(getState())) return;
+  showAlert(dispatch, square, `${color}x`);
+};
+
+const selectEmpty = ({ payload }, { dispatch, getState }) => {
+  const color = selectColor(getState());
+  const squares = selectSquares(getState());
+  const square = squares[payload.coord];
+
+  if (square.content !== EMPTY) return;
+
+  const newSquare = { ...payload, content: color };
+  const newSquares = { ...squares, [square.coord]: newSquare };
+  const cards = findActiveCards(newSquares);
+  if (!selectAllowMultipleCards(getState()) && hasDuplicates(cards)) {
+    showAlert(dispatch, square, `${color}x`);
+  } else {
+    dispatch(play(newSquare));
+    dispatch(activeCards(cards));
+  }
+};
+
 function createMiddleware() {
   board.listener.startListening({
-    // select BLOCKED
     actionCreator: select,
-    effect: ({ payload }, { dispatch, getState }) => {
-      const color = selectColor(getState());
-      const squares = selectSquares(getState());
-      const square = squares[payload.coord];
-
-      const newSquare = { ...payload, content: color };
-
-      if (square.content !== BLOCKED) return;
-      if (selectShowBlocked(getState())) return;
-      if (!selectShowForbidden(getState())) return;
-      showAlert(dispatch, square, `${color}x`);
-    },
+    effect: selectBlocked,
   });
 
-  function createMiddleware() {
-    board.listener.startListening({
-      // select EMPTY
-      actionCreator: select,
-      effect: ({ payload }, { dispatch, getState }) => {
-        const color = selectColor(getState());
-        const squares = selectSquares(getState());
-        const square = squares[payload.coord];
-
-        if (square.content !== EMPTY) return;
-
-        const newSquare = { ...payload, content: color };
-        const newSquares = { ...squares, [square.coord]: newSquare };
-        const cards = activeCards(newSquares);
-        if (!selectAllowMultipleCards(getState()) && hasDuplicates(cards)) {
-          showAlert(dispatch, square, `${color}x`);
-        } else {
-          dispatch(play(newSquare));
-          dispatch(toggleActive(cards));
-        }
-      },
-    });
-  }
+  board.listener.startListening({
+    actionCreator: select,
+    effect: selectEmpty,
+  });
 
   board.listener.startListening({
     /**
@@ -123,7 +121,7 @@ function createMiddleware() {
         const playables = square.playables.filter((color) => {
           const newSquare = { ...square, content: color };
           const newSquares = { ...squares, [square.coord]: newSquare };
-          const cards = activeCards(newSquares);
+          const cards = findActiveCards(newSquares);
           return !hasDuplicates(cards);
         });
         if (playables.length !== square.playables.length) {
@@ -145,7 +143,7 @@ function createMiddleware() {
         (square) => square.content === EMPTY
       ).length;
       if (freeSquares === 0) {
-        dispatch(toggleShowVictoire(true));
+        dispatch(endGame());
       }
     },
   });

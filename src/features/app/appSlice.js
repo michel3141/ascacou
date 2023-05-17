@@ -2,7 +2,6 @@ import rtk, { no_ } from '/lib/rtk';
 import { RULES, VICTORY, CONFIG } from '/app/constants/drawers';
 import { ascacou } from '/app/slices';
 
-const { newGame } = ascacou.actions;
 export const name = 'app';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
 
@@ -25,10 +24,15 @@ export const actions = createActions({
 
 export const selectors = createSelectors({});
 
+const { newGame, endGame } = ascacou.actions;
+
 export default createReducer({
   [newGame]: (state) => {
     state.drawer = null;
     state.ready = true;
+  },
+  [endGame]: (state) => {
+    state.drawer = VICTORY;
   },
   [actions.toggleDrawer]: (state, { payload }) => {
     const { drawer, visible } = payload;
