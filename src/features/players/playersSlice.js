@@ -31,11 +31,14 @@ export const selectors = createSelectors({
   player_by_id: (id) => (state) => ({ ...state.players.list[id], id }),
 });
 
-const { newGame, play } = ascacou.actions;
+const { newGame, play, endGame } = ascacou.actions;
 
 export default createReducer({
   [newGame]: (state) => {
     state.current = FIRST;
+  },
+  [endGame]: (state) => {
+    state.current = NOBODY;
   },
   [play]: (state) => {
     switch (state.current) {

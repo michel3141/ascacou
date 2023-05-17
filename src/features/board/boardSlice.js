@@ -2,6 +2,7 @@ import rtk, { _ } from '/lib/rtk';
 import { ascacou } from '/app/slices';
 
 import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
+import { NOBODY, FIRST } from '/app/constants/players';
 
 export const name = 'board';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
@@ -70,7 +71,9 @@ export const selectors = createSelectors({
     const board = fen.join('/');
 
     const player = state.players.current;
-    const cards = state.cards[player].map((card) => card.id.toString(16)).sort();
+    const cards = state.cards[player === NOBODY ? FIRST : player]
+      .map((card) => card.id.toString(16))
+      .sort();
     const myCards = cards.join('');
     return [`[${state.ascacou.id}]`, board, myCards].join(' ');
   },

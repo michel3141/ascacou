@@ -1,14 +1,15 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import Board from '/features/board/Board';
 import Cards from '/features/cards/Cards';
 import './Victoire.scss';
-import { useCardsSlice, usePlayersSlice } from '/app/slices';
+import { useCardsSlice, usePlayersSlice, useAppSlice } from '/app/slices';
 import { FIRST, SECOND } from '/app/constants/players';
 
 export default function Victoire() {
   const { useScore } = useCardsSlice();
   const { usePlayerById } = usePlayersSlice();
+  const { toggleShowConfig } = useAppSlice();
   const score = useScore();
   const winnerId = score[FIRST] >= score[SECOND] ? FIRST : SECOND;
   const looserId = score[FIRST] > score[SECOND] ? SECOND : FIRST;
@@ -39,6 +40,23 @@ export default function Victoire() {
           xs
         >
           <Score {...{ score, winnerId, looserId }} />
+        </Grid>
+        <Grid
+          item
+          xs
+        >
+          &nbsp;
+        </Grid>
+        <Grid
+          item
+          xs
+        >
+          <Button
+            variant='contained'
+            onClick={toggleShowConfig}
+          >
+            Nouvelle partie
+          </Button>
         </Grid>
       </Grid>
     </div>

@@ -10,7 +10,7 @@ const initialState = {
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
 
 export const actions = createActions({
-  newGame: _,
+  newGame: (params = {}) => _(params),
   play: _,
   activeCards: _,
   endGame: _,
