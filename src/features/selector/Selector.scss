@@ -1,9 +1,7 @@
 .Selector {
   margin: 10px;
   border-radius: 10% 10% 10% 10%;
-  &.Unselected {
-    background-color: var(--main-color-opacity-60);
-  }
+  background-color: var(--main-color-opacity-20);
 
   & div {
     text-align: center;

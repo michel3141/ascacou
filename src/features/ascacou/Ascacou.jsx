@@ -8,7 +8,6 @@ import { useBoardSlice } from '/app/slices';
 
 const Board = lazy(() => import('/features/board/Board'));
 const Player = lazy(() => import('/features/players/Player'));
-const Selector = lazy(() => import('/features/selector/Selector'));
 
 const md = [4, 4, 4];
 
@@ -42,9 +41,6 @@ const Ascacou = () => {
             >
               <Grid item>
                 <Board />
-              </Grid>
-              <Grid item>
-                <Selector />
               </Grid>
             </Grid>
           </Grid>

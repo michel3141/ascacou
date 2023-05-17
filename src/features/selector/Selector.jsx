@@ -6,7 +6,7 @@ import { useSelectorSlice } from '/app/slices';
 
 import mkClasses from '/lib/mkClasses';
 
-import { EMPTY, WHITE, BLACK } from '/app/constants/colors';
+import { WHITE, BLACK } from '/app/constants/colors';
 import noirs from '/assets/img/noirs.png';
 import blancs from '/assets/img/blancs.png';
 
@@ -19,30 +19,25 @@ export default function Selector() {
   );
 }
 
-const Grided = ({ children }) => {
-  const { useColor } = useSelectorSlice();
-  const currentColor = useColor();
-  const className = mkClasses('Selector', { Unselected: EMPTY === currentColor });
-  return (
-    <Grid
-      {...{ className }}
-      container
-      direction='row'
-      justify='space-evenly'
-      alignItems='flex-start'
-    >
-      {children.map((child, id) => (
-        <Grid
-          item
-          xs
-          key={id}
-        >
-          {child}
-        </Grid>
-      ))}
-    </Grid>
-  );
-};
+const Grided = ({ children }) => (
+  <Grid
+    className='Selector'
+    container
+    direction='row'
+    justify='space-evenly'
+    alignItems='flex-start'
+  >
+    {children.map((child, id) => (
+      <Grid
+        item
+        xs
+        key={id}
+      >
+        {child}
+      </Grid>
+    ))}
+  </Grid>
+);
 
 const Option = ({ color }) => {
   const { select, useColor } = useSelectorSlice();

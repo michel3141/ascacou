@@ -3,6 +3,7 @@ import './Player.scss';
 import mkClasses from '/lib/mkClasses';
 import { usePlayersSlice, useCardsSlice } from '/app/slices';
 import Cards from '/features/cards/Cards';
+import Selector from '/features/selector/Selector';
 
 export default function Player({ id }) {
   const { useCurrent, usePlayerById } = usePlayersSlice();
@@ -23,6 +24,7 @@ export default function Player({ id }) {
       <fieldset {...{ className }}>
         <legend>{monTour ? `${name}` : `[${name}]`}</legend>
         <Cards {...{ cards }} />
+        {monTour && <Selector />}
       </fieldset>
       <fieldset>
         <Cards
