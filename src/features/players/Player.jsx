@@ -24,7 +24,7 @@ export default function Player({ id }) {
       <fieldset {...{ className }}>
         <legend>{monTour ? `${name}` : `[${name}]`}</legend>
         <Cards {...{ cards }} />
-        {monTour && <Selector />}
+        <Selector />
       </fieldset>
       <fieldset>
         <Cards
