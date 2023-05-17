@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import Board from '/features/board/Board';
 import Cards from '/features/cards/Cards';
-import './Victoire.css';
+import './Victoire.scss';
 import { useCardsSlice, usePlayersSlice } from '/app/slices';
 import { FIRST, SECOND } from '/app/constants/players';
 

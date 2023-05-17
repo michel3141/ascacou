@@ -1,5 +1,5 @@
 import React from 'react';
-import './Regles.css';
+import './Regles.scss';
 import { PublishRounded } from '@mui/icons-material';
 import _100000000000002D000000360BEA7FAC9C4847CD from '/assets/img/100000000000002D000000360BEA7FAC9C4847CD.jpg';
 import _100000000000002D00000036A3FE065D9632E68D from '/assets/img/100000000000002D00000036A3FE065D9632E68D.jpg';

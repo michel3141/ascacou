@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useAscacouSlice, useAppSlice } from '/app/slices';
-import './App.css';
+import './App.scss';
 
 const Ascacou = lazy(() => import('/features/ascacou/Ascacou'));
 const AppBar = lazy(() => import('./Bar'));
