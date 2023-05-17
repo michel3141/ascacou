@@ -1,0 +1,30 @@
+.Player {
+  & fieldset {
+    border: solid var(--main-color) 1px;
+    text-align: center;
+    &.mon-tour {
+      background-color: var(--foreground-color-opacity-40);
+      & legend {
+        color: var(--foreground-color);
+        /*  display:none;*/
+      }
+    }
+
+    &.pas-mon-tour {
+      background-color: var(--background-color-opacity-40);
+      & legend {
+        color: var(--main-color);
+        /*  display:none;*/
+      }
+    }
+  }
+
+  & .Card {
+    width: 85px;
+    height: 85px;
+  }
+
+  & fieldset:empty {
+    display: none;
+  }
+}

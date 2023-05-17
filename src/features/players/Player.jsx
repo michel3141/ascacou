@@ -1,5 +1,5 @@
 import React from 'react';
-import './Player.css';
+import './Player.scss';
 import mkClasses from '/lib/mkClasses';
 import { usePlayersSlice, useCardsSlice } from '/app/slices';
 import Cards from '/features/cards/Cards';

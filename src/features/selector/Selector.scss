@@ -14,8 +14,8 @@
     }
 
     &.Selected {
-      background-color: var(--background-color-opacity-60);
-      border: solid grey 1px;
+      background-color: var(--foreground-color-opacity-40);
+      border: solid var(--main-color) 1px;
       border-radius: 10% 10% 10% 35%;
       & img {
         border-radius: 10% 10% 10% 35%;
