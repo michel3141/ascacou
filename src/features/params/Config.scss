@@ -1,8 +1,4 @@
-div.Config .MuiPaper-root {
-  padding: 7px;
-}
-
-div.Config {
+.Config {
   height: 100%; /* <= bien ici pour l'image de fond */
   max-width: 350px;
   background-position: 50% 50%;
@@ -12,14 +8,11 @@ div.Config {
   background-image: url('/assets/img/fond.png');
   background-color: rgba(255, 255, 255, 0.6);
   background-blend-mode: lighten;
-}
 
-div.Config table {
-  margin: auto;
-  text-align: center;
-  border-spacing: 10px;
-}
-
-div.Config .MuiListItem-root.Mui-selected {
-  background-color: rgba(0, 0, 0, 0.28);
+  & .MuiListItem-root.Mui-selected {
+    background-color: var(--main-color-opacity-60);
+  }
+  & .MuiPaper-root {
+    padding: 7px;
+  }
 }

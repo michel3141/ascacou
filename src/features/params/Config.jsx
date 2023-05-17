@@ -4,7 +4,7 @@ import { useAscacouSlice, useParamsSlice } from '/app/slices';
 import icon from '/assets/img/icon_128.png';
 
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material';
-import './Config.css';
+import './Config.scss';
 
 export default function Config() {
   return (
@@ -120,13 +120,14 @@ const OnOff = ({ id, value, enable, lbl, updateValue }) => (
 );
 
 const Select = ({ id, value, enable, lbl, values, updateValue }) => (
-  <fieldset disabled={!enable}>
+  <fieldset>
     <legend>{lbl}</legend>
     <List>
       {Object.keys(values)
         .filter((key) => enable || key === value)
         .map((key) => (
           <ListItem
+            disabled={!enable}
             key={key}
             button
             onClick={() => updateValue({ [id]: key })}
