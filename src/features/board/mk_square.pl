@@ -8,7 +8,7 @@ for my $i (1..5) {
     print "&.xy-${i}x${j} {";
     for my $c (0..3, '1x', '2x') {
       print "&.c-$c {";
-      print "background-image:url('assets/img/case-$c-$o.png');";
+      print "background-image:url('/assets/img/case-$c-$o.png');";
       print "}";
     }
     $o++;
