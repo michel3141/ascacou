@@ -33,6 +33,7 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 export const actions = createActions({
   select: _,
   updateSquare: _,
+	setBoard: _,
 });
 
 export const selectors = createSelectors({
@@ -86,6 +87,18 @@ export default createReducer({
     const square = payload;
     state.squares[square.coord] = { ...square };
   },
+	[actions.setBoard]: (state, {payload}) => {
+		//  payload.split('').map(parseInt) est buggué !!
+		const colors = payload.split('').map(x=>parseInt(x))
+    for (const row of [1, 2, 3, 4, 5]) {
+      for (const col of [1, 2, 3, 4, 5]) {
+        const coord = `${row}x${col}`;
+        const square = state.squares[coord];
+	      square.content = colors.shift()
+	      console.log(square.content)
+      }
+    }
+	},
   [play]: (state, { payload }) => {
     const square = payload;
     state.squares[square.coord] = { ...square, playables: [] };

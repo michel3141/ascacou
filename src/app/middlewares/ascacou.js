@@ -5,7 +5,7 @@ import { BLACK, WHITE, EMPTY, BLOCKED } from '/app/constants/colors';
 const { selectColor } = selector.selectors;
 const { selectSquares } = board.selectors;
 const { selectShowForbidden, selectShowBlocked, selectAllowMultipleCards } = params.selectors;
-const { select, updateSquare } = board.actions;
+const { select, updateSquare, setBoard } = board.actions;
 const { play, activeCards, endGame } = ascacou.actions;
 
 const inters = [
@@ -110,10 +110,19 @@ function createMiddleware() {
   });
 
   board.listener.startListening({
+    actionCreator: setBoard,
+    effect: ({payload}, {dispatch, getState}) => {
+  const squares = selectSquares(getState());
+  const cards = findActiveCards(squares);
+    dispatch(activeCards(cards));
+    }
+  });
+
+  board.listener.startListening({
     /**
      * update playables squares
      */
-    actionCreator: play,
+    matcher: isAnyOf(play,setBoard),
     effect: ({ payload }, { dispatch, getState }) => {
       if (selectAllowMultipleCards(getState())) return;
 
@@ -126,7 +135,7 @@ function createMiddleware() {
           return !hasDuplicates(cards);
         });
         if (playables.length !== square.playables.length) {
-          const content = playables.length === 0 ? BLOCKED : EMPTY;
+          const content = square.content !== EMPTY ? square.content:(playables.length === 0 ? BLOCKED : EMPTY);
           dispatch(updateSquare({ ...square, playables, content }));
         }
       }
