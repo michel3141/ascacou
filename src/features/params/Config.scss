@@ -1,5 +1,6 @@
 .Config {
-  max-width: 350px;
+  max-width: 35vw;
+  min-width: 260px;
 
   & .MuiListItem-root.Mui-selected {
     background-color: var(--main-color-opacity-60);

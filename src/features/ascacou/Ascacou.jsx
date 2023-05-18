@@ -1,10 +1,10 @@
 import React, { Suspense, lazy } from 'react';
 import './Ascacou.scss';
 
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 
-import { FIRST, SECOND } from '/app/constants/players';
-import { useBoardSlice } from '/app/slices';
+import { NOBODY, FIRST, SECOND } from '/app/constants/players';
+import { useBoardSlice, usePlayersSlice, useCardsSlice, useAppSlice } from '/app/slices';
 
 const Board = lazy(() => import('/features/board/Board'));
 const Player = lazy(() => import('/features/players/Player'));
@@ -42,6 +42,9 @@ const Ascacou = () => {
               <Grid item>
                 <Board />
               </Grid>
+              <Grid item>
+                <Score />
+              </Grid>
             </Grid>
           </Grid>
           <Grid
@@ -61,5 +64,29 @@ const Ascacou = () => {
 const Fen = () => {
   const fen = useBoardSlice().useFen();
   return <div className='Fen'>{fen}</div>;
+};
+
+const Score = () => {
+  const { useScore } = useCardsSlice();
+  const { useCurrent } = usePlayersSlice();
+  const { toggleShowConfig } = useAppSlice();
+  const score = useScore();
+  const playerId = useCurrent();
+
+  return (
+    <div className='Score'>
+      <h2>
+        {score[FIRST]} à {score[SECOND]}
+      </h2>
+      {playerId === NOBODY && (
+        <Button
+          variant='contained'
+          onClick={toggleShowConfig}
+        >
+          Nouvelle partie
+        </Button>
+      )}
+    </div>
+  );
 };
 export default Ascacou;

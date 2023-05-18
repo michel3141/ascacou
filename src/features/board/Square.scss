@@ -1,5 +1,8 @@
 .Square {
   background-size: cover;
+  width: 5vw;
+  height: 5vw;
+
   &.xy-1x1 {
     &.c-0 {
       background-image: url('/assets/img/case-0-0.png');
@@ -504,7 +507,7 @@
 
 /*https://stackoverflow.com/questions/1373142/preloading-css-images
  */
-.Square.pre-load::after {
+.pre-load::after {
   position: absolute;
   width: 0;
   height: 0;
