@@ -1,4 +1,4 @@
-import rtk, { _ } from '/lib/rtk';
+import rtk, { _, select } from '/lib/rtk';
 
 import { deals } from '/app/constants/cards';
 import { ascacou } from '/app/slices';
@@ -44,6 +44,7 @@ export const selectors = createSelectors({
   show_blocked: (state) => state.params.show_blocked.value,
   show_forbidden: (state) => state.params.show_forbidden.value,
   allow_multiple_cards: (state) => state.params.allow_multiple_cards.value,
+  params: select('all'),
 });
 
 const updateConfig = (state, { payload }) => {

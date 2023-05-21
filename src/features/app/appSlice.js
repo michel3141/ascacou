@@ -1,4 +1,4 @@
-import rtk, { no_ } from '/lib/rtk';
+import rtk, { no_, select } from '/lib/rtk';
 import { RULES, VICTORY, CONFIG } from '/app/constants/drawers';
 import { ascacou } from '/app/slices';
 
@@ -22,7 +22,10 @@ export const actions = createActions({
   boot: no_,
 });
 
-export const selectors = createSelectors({});
+export const selectors = createSelectors({
+  ready: select(),
+  drawer: select(),
+});
 
 const { newGame, endGame } = ascacou.actions;
 

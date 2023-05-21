@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-WWW ?= ~/www/appli/ascacou2
+WWW ?= ~/www/appli/ascacou
 yes ?= n
 
 #TARGET=$$(find $$(sed s/^/src\\// src/build ) -type f)

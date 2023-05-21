@@ -34,6 +34,7 @@ export const selectors = createSelectors({
 const { newGame, activeCards } = ascacou.actions;
 
 const inflate = (id) => ({ id, active: false });
+
 export default createReducer({
   [newGame]: (state, { payload }) => {
     const dealMethod = payload?.deal_method || 'random';

@@ -1,4 +1,4 @@
-import rtk from '/lib/rtk';
+import rtk, { select } from '/lib/rtk';
 
 export const name = 'theme';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
@@ -13,7 +13,9 @@ const initialState = {
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
 
 export const actions = createActions({});
-export const selectors = createSelectors();
+export const selectors = createSelectors({
+  theme: select('all'),
+});
 
 export default createReducer({});
 

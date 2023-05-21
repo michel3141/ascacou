@@ -1,4 +1,4 @@
-import rtk, { _, update } from '/lib/rtk';
+import rtk, { _, select } from '/lib/rtk';
 import { ascacou } from '/app/slices';
 
 import { EMPTY } from '/app/constants/colors';
@@ -16,12 +16,20 @@ export const actions = createActions({
   select: _,
 });
 
-export const selectors = createSelectors({});
+export const selectors = createSelectors({
+  color: select(),
+});
 
-const { play } = ascacou.actions;
+const { validMove } = ascacou.actions;
 export default createReducer({
-  [actions.select]: update('color'),
-  [play]: (state) => {
+  [actions.select]: (state, { payload }) => {
+    if (payload === state.color) {
+      state.color = EMPTY;
+    } else {
+      state.color = payload;
+    }
+  },
+  [validMove]: (state) => {
     state.color = EMPTY;
   },
 });

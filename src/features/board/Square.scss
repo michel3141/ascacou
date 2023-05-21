@@ -3,6 +3,17 @@
   width: 5vw;
   height: 5vw;
 
+  &.Selected {
+    box-sizing: border-box;
+    border: solid 2px var(--main-color);
+    élément {
+      border-radius: 2px;
+    }
+    &.c-0 {
+      border: solid 2px var(--foreground-color);
+    }
+  }
+
   &.xy-1x1 {
     &.c-0 {
       background-image: url('/assets/img/case-0-0.png');

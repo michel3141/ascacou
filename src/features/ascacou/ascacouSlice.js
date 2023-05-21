@@ -11,7 +11,8 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   newGame: (params = {}) => _(params),
-  play: _,
+  validMove: _,
+  invalidMove: _,
   activeCards: _,
   endGame: _,
 });

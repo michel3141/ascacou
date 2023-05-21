@@ -1,4 +1,4 @@
-import rtk from '/lib/rtk';
+import rtk, { select } from '/lib/rtk';
 import { ascacou } from '/app/slices';
 
 import { FIRST, SECOND, NOBODY } from '/app/constants/players';
@@ -29,9 +29,10 @@ export const actions = createActions({});
 
 export const selectors = createSelectors({
   player_by_id: (id) => (state) => ({ ...state.players.list[id], id }),
+  current: select(),
 });
 
-const { newGame, play, endGame } = ascacou.actions;
+const { newGame, validMove, endGame } = ascacou.actions;
 
 export default createReducer({
   [newGame]: (state) => {
@@ -40,7 +41,7 @@ export default createReducer({
   [endGame]: (state) => {
     state.current = NOBODY;
   },
-  [play]: (state) => {
+  [validMove]: (state) => {
     switch (state.current) {
       case FIRST:
         state.current = SECOND;

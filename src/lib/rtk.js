@@ -7,7 +7,8 @@ import {
 import { camelize } from 'inflected';
 import { /* setItem, */ getItem } from '/lib/localstorage';
 
-export const mkSelect = (prop) => (prop.startsWith('select') ? '' : 'select') + camelize(prop);
+export const mkSelect = (prop) => 'select' + camelize(prop);
+
 const normalizedSelectors = (selectors) =>
   Object.entries(selectors).reduce(
     (acc, [name, selector]) => ({
@@ -65,19 +66,21 @@ const rtk = (name, getInitialState, persisted) => {
       }),
 
     createSelectors: (selectorsMap = {}) => {
-      const stateSelectors = Object.keys(initialState).reduce(
-        (acc, prop) => ({ ...acc, [prop]: (state) => state[name][prop] }),
-        {
-          [name]: (state) => state[name],
+      const selectors = Object.entries(selectorsMap).reduce((acc, [selectorName, selector]) => {
+        if (typeof selector !== 'function') {
+          if (selector === 'default') {
+            selector = (state) => state[name][selectorName];
+          } else if (selector === 'all') {
+            selector = (state) => state[name];
+          } else {
+            selector = (state) => state[name][selector];
+          }
         }
-      );
-      const selectors = Object.keys(selectorsMap).reduce(
-        (acc, selector) => ({
+        return {
           ...acc,
-          [selector]: selectorsMap[selector],
-        }),
-        stateSelectors
-      );
+          [selectorName]: selector,
+        };
+      }, {});
       return normalizedSelectors(selectors);
     },
 
@@ -112,6 +115,9 @@ const toggle =
 const update = (key) => (state, action) =>
   key ? filter(state, _({ [key]: action.payload })) : filter(state, action);
 
+// selectors
+const select = (key) => key || 'default' || 'all';
+
 export default rtk;
 
 export {
@@ -121,5 +127,6 @@ export {
   filter,
   toggle,
   update,
+  select,
   persisted,
 };

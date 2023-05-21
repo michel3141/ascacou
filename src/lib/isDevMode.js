@@ -1,4 +1,5 @@
-const { MODE } = process.env.NODE_ENV; // avec vite: import.meta.env;
+// https://dmitripavlutin.com/environment-variables-javascript/
+const MODE = typeof proccess !== 'undefined' ? process.env.NODE_ENV : import.meta.env.MODE;
 const isDevMode = MODE !== 'production';
 
 export const log = (...args) => isDevMode && console.log(...args);
