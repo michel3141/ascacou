@@ -1,0 +1,29 @@
+.Victoire {
+  width: 50vw;
+
+  & .MuiPaper-root {
+    padding: 7px;
+    height: 100%; /* <= bien ici pour l'image de fond */
+  }
+
+  & .Card {
+    width: 85px;
+    height: 85px;
+    margin: 5px;
+    border-radius: 0 0 0 20px;
+  }
+
+  & table {
+    width: 100%;
+  }
+
+  & .Score {
+    width: 50vw;
+    & td {
+      width: 50%;
+    }
+    & td + td {
+      border-left: 2px solid black;
+    }
+  }
+}

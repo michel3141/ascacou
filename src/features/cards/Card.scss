@@ -1,0 +1,103 @@
+.Card {
+  background-size: cover;
+  margin: min(5px, 0.5vw);
+  border: solid black 1px;
+  display: inline-block;
+  border-radius: 0 0 0 20px;
+  &.m-0 {
+    background-image: url('/assets/img/motif-0-1111.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1111.png');
+    }
+  }
+  &.m-1 {
+    background-image: url('/assets/img/motif-0-1112.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1112.png');
+    }
+  }
+  &.m-2 {
+    background-image: url('/assets/img/motif-0-1121.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1121.png');
+    }
+  }
+  &.m-3 {
+    background-image: url('/assets/img/motif-0-1122.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1122.png');
+    }
+  }
+  &.m-4 {
+    background-image: url('/assets/img/motif-0-1211.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1211.png');
+    }
+  }
+  &.m-5 {
+    background-image: url('/assets/img/motif-0-1212.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1212.png');
+    }
+  }
+  &.m-6 {
+    background-image: url('/assets/img/motif-0-1221.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1221.png');
+    }
+  }
+  &.m-7 {
+    background-image: url('/assets/img/motif-0-1222.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-1222.png');
+    }
+  }
+  &.m-8 {
+    background-image: url('/assets/img/motif-0-2111.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2111.png');
+    }
+  }
+  &.m-9 {
+    background-image: url('/assets/img/motif-0-2112.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2112.png');
+    }
+  }
+  &.m-10 {
+    background-image: url('/assets/img/motif-0-2121.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2121.png');
+    }
+  }
+  &.m-11 {
+    background-image: url('/assets/img/motif-0-2122.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2122.png');
+    }
+  }
+  &.m-12 {
+    background-image: url('/assets/img/motif-0-2211.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2211.png');
+    }
+  }
+  &.m-13 {
+    background-image: url('/assets/img/motif-0-2212.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2212.png');
+    }
+  }
+  &.m-14 {
+    background-image: url('/assets/img/motif-0-2221.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2221.png');
+    }
+  }
+  &.m-15 {
+    background-image: url('/assets/img/motif-0-2222.png');
+    &.done {
+      background-image: url('/assets/img/motif-1-2222.png');
+    }
+  }
+}

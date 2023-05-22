@@ -1,0 +1,27 @@
+.Selector {
+  margin: 10px;
+  border-radius: 10% 10% 10% 10%;
+  background-color: var(--main-color-opacity-20);
+
+  & div {
+    text-align: center;
+    position: relative;
+
+    & img {
+      margin: 10px;
+      width: 11.7vw;
+      border-radius: 10% 10% 10% 10%;
+      box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.8);
+      /*  filter: blur(1px);*/
+    }
+
+    &.Selected {
+      background-color: var(--foreground-color-opacity-40);
+      border: solid var(--main-color) 1px;
+      border-radius: 10% 10% 10% 35%;
+      & img {
+        border-radius: 10% 10% 10% 35%;
+      }
+    }
+  }
+}

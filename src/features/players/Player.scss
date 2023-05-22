@@ -1,0 +1,36 @@
+.Player {
+  & fieldset {
+    border: solid var(--main-color) 1px;
+    text-align: center;
+    padding: 0px;
+    &.mon-tour {
+      background-color: var(--foreground-color-opacity-40);
+      & legend {
+        color: var(--foreground-color);
+        background-color: var(--main-color);
+        /*  display:none;*/
+      }
+    }
+
+    &.pas-mon-tour {
+      background-color: var(--background-color-opacity-40);
+      & legend {
+        color: var(--main-color);
+        background-color: var(--background-color-opacity-60);
+        /*  display:none;*/
+      }
+      & .Selector {
+        display: none;
+      }
+    }
+  }
+
+  & .Card {
+    width: 8.3vw;
+    height: 8.3vw;
+  }
+
+  & fieldset:empty {
+    display: none;
+  }
+}
