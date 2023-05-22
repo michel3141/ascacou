@@ -1,6 +1,6 @@
 .Card {
   background-size: cover;
-  margin: 5px;
+  margin: min(5px, 0.5vw);
   border: solid black 1px;
   display: inline-block;
   border-radius: 0 0 0 20px;

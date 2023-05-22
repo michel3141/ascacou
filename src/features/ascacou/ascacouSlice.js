@@ -1,4 +1,4 @@
-import rtk, { _ } from '/lib/rtk';
+import rtk, { _, no_ } from '/lib/rtk';
 
 export const name = 'app';
 // const name = module.id.replace(/(\/index)?\.jsx?/,'').replace(/.*\//,'')
@@ -11,6 +11,8 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 
 export const actions = createActions({
   newGame: (params = {}) => _(params),
+  undo: no_,
+  reset: no_,
   validMove: _,
   invalidMove: _,
   activeCards: _,

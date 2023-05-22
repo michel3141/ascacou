@@ -13,6 +13,7 @@ const complement = (a) =>
 const initialState = {
   [FIRST]: null,
   [SECOND]: null,
+  history: [],
 };
 
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
@@ -31,7 +32,7 @@ export const selectors = createSelectors({
     ),
 });
 
-const { newGame, activeCards } = ascacou.actions;
+const { undo, reset, validMove, newGame, activeCards } = ascacou.actions;
 
 const inflate = (id) => ({ id, active: false });
 
@@ -47,6 +48,24 @@ export default createReducer({
     [...state[FIRST], ...state[SECOND]]
       .filter((card) => ids.includes(card.id))
       .forEach((card) => (card.active = true));
+  },
+  [validMove]: (state, { payload }) => {
+    state.history.push({ [FIRST]: state[FIRST], [SECOND]: state[SECOND] });
+  },
+  [undo]: (state) => {
+    if (state.history.length) {
+      const cards = state.history.pop();
+      state[FIRST] = cards[FIRST];
+      state[SECOND] = cards[SECOND];
+    }
+  },
+  [reset]: (state) => {
+    if (state.history.length) {
+      const cards = state.history[0];
+      state[FIRST] = cards[FIRST];
+      state[SECOND] = cards[SECOND];
+      state.history = [];
+    }
   },
 });
 

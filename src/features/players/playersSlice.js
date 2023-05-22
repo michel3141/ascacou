@@ -21,6 +21,7 @@ const list = {
 const initialState = {
   list,
   current: FIRST,
+  history: [],
 };
 
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
@@ -32,7 +33,7 @@ export const selectors = createSelectors({
   current: select(),
 });
 
-const { newGame, validMove, endGame } = ascacou.actions;
+const { undo, reset, newGame, validMove, endGame } = ascacou.actions;
 
 export default createReducer({
   [newGame]: (state) => {
@@ -42,6 +43,7 @@ export default createReducer({
     state.current = NOBODY;
   },
   [validMove]: (state) => {
+    state.history.push(state.current);
     switch (state.current) {
       case FIRST:
         state.current = SECOND;
@@ -51,6 +53,17 @@ export default createReducer({
         break;
       default:
         state.current = NOBODY;
+    }
+  },
+  [undo]: (state) => {
+    if (state.history.length) {
+      state.current = state.history.pop();
+    }
+  },
+  [reset]: (state) => {
+    if (state.history.length) {
+      state.current = state.history[0];
+      state.history = [];
     }
   },
 });

@@ -30,7 +30,7 @@ const Grided = ({ children }) => (
     {children.map((child, id) => (
       <Grid
         item
-        xs
+        xs={6}
         key={id}
       >
         {child}

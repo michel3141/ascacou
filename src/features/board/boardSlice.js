@@ -27,6 +27,7 @@ const emptyBoard = () => {
 const initialState = {
   squares: null,
   selected: null,
+  history: [],
 };
 
 const { createActions, createReducer, createSelectors, listener } = rtk(name, initialState);
@@ -90,7 +91,7 @@ export const selectors = createSelectors({
   },
 });
 
-const { invalidMove, newGame, endGame } = ascacou.actions;
+const { undo, reset, validMove, invalidMove, newGame, endGame } = ascacou.actions;
 
 export default createReducer({
   [actions.select]: (state, { payload }) => {
@@ -116,8 +117,24 @@ export default createReducer({
   [endGame]: (state, { payload }) => {
     state.selected = null;
   },
+  [validMove]: (state, { payload }) => {
+    state.history.push(state.squares);
+  },
   [invalidMove]: (state, { payload }) => {
     state.selected = null;
+  },
+  [undo]: (state) => {
+    if (state.history.length) {
+      state.squares = state.history.pop();
+      state.selected = null;
+    }
+  },
+  [reset]: (state) => {
+    if (state.history.length) {
+      state.squares = state.history[0];
+      state.history = [];
+      state.selected = null;
+    }
   },
 });
 

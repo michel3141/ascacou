@@ -2,6 +2,7 @@
   & fieldset {
     border: solid var(--main-color) 1px;
     text-align: center;
+    padding: 0px;
     &.mon-tour {
       background-color: var(--foreground-color-opacity-40);
       & legend {

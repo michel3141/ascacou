@@ -9,7 +9,7 @@ import { useBoardSlice, usePlayersSlice, useCardsSlice, useAppSlice } from '/app
 const Board = lazy(() => import('/features/board/Board'));
 const Player = lazy(() => import('/features/players/Player'));
 
-const md = [4, 4, 4];
+const xs = [4, 4, 4];
 
 const Ascacou = () => {
   return (
@@ -23,15 +23,13 @@ const Ascacou = () => {
         >
           <Grid
             item
-            xs={3}
-            md={md[0]}
+            xs={xs[0]}
           >
             <Player id={FIRST} />
           </Grid>
           <Grid
             item
-            xs={6}
-            md={md[1]}
+            xs={xs[1]}
           >
             <Grid
               container
@@ -49,8 +47,7 @@ const Ascacou = () => {
           </Grid>
           <Grid
             item
-            xs={3}
-            md={md[2]}
+            xs={xs[2]}
           >
             <Player id={SECOND} />
           </Grid>
