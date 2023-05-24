@@ -1,6 +1,6 @@
 // https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)
 // Version 4.1
-/* eslint-disable no-bitwise */
+/* XXeslint-disable no-bitwise */
 /* eslint-disable prefer-const */
 const pSBC = (p, c0, c1, l) => {
   let r;
@@ -100,7 +100,7 @@ pSBC.pSBCw = (x, { rgb = false, transparency = false } = {}) => {
   }
 };
 /* eslint-enable prefer-const */
-/* eslint-enable no-bitwise */
+/* XXeslint-enable no-bitwise */
 
 class Color {
   constructor(color) {
