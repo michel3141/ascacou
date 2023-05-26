@@ -15,7 +15,7 @@ const normalizedSelectors = (selectors) =>
       ...acc,
       [mkSelect(name)]: selector,
     }),
-    {}
+    {},
   );
 
 const persisted = (defaultValue) => (name) => {
@@ -106,11 +106,11 @@ const filter = (state, action) =>
 
 const toggle =
   (key) =>
-  (
-    state,
-    { payload } // payload is booleanOrUndefined
-  ) =>
-    typeof payload === 'boolean' ? { ...state, [key]: payload } : { ...state, [key]: !state[key] };
+    (
+      state,
+      { payload }, // payload is booleanOrUndefined
+    ) =>
+      typeof payload === 'boolean' ? { ...state, [key]: payload } : { ...state, [key]: !state[key] };
 
 const update = (key) => (state, action) =>
   key ? filter(state, _({ [key]: action.payload })) : filter(state, action);

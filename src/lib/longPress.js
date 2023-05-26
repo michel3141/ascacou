@@ -1,5 +1,7 @@
 import { useMemo, useRef, useCallback } from 'react';
-const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500 } = {}) => {
+const nullFunc = () => null;
+const useLongPress = ({ onClick = nullFunc, onLongPress = nullFunc, ms = 500 } = {}) => {
+  console.log(onClick, onLongPress);
   const timerRef = useRef(false);
   const eventRef = useRef({});
 
@@ -19,7 +21,7 @@ const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500
         callback(ev);
       }, ms);
     },
-    [callback, ms]
+    [callback, ms],
   );
 
   const stop = useCallback((ev) => {
@@ -40,7 +42,7 @@ const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500
         }
       }
     },
-    [onClick, stop]
+    [onClick, stop],
   );
 
   return useMemo(
@@ -51,7 +53,7 @@ const useLongPress = ({ onClick = () => null, onLongPress = () => null, ms = 500
       onTouchStart: start,
       onTouchEnd: click,
     }),
-    [start, stop, click]
+    [start, stop, click],
   );
 };
 

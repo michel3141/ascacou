@@ -14,7 +14,7 @@ import _100000000000013C00000176017FE24A41E0F645 from '/assets/img/1000000000000
 
 import pjs from '/../package.json';
 
-export default function Regles() {
+export default function Regles () {
   return (
     <div className='Regles'>
       <ul id='top'>

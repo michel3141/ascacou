@@ -22,7 +22,7 @@ if (isDevMode) {
         console.log(sliceName);
         for (const [name, action] of Object.entries(slices[sliceName].actions)) {
           console.log(
-            `   ${name}${action.toString().endsWith(name) ? '' : '*' + action.toString()}`
+            `   ${name}${action.toString().endsWith(name) ? '' : '*' + action.toString()}`,
           );
         }
       }

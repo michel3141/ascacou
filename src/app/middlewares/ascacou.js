@@ -65,7 +65,7 @@ const hasDuplicates = (arrayOfInts) => {
 
 /// *************************************
 
-function createMiddleware() {
+function createMiddleware () {
   board.listener.startListening({
     matcher: isAnyOf(boardSelect, selectorSelect),
     effect: ({ payload }, { dispatch, getState }) => {
@@ -129,8 +129,9 @@ function createMiddleware() {
     const showBlocked = selectShowBlocked(getState());
     if ([BLACK, WHITE].includes(content)) return;
     const newContent = showBlocked ? BLOCKED : EMPTY;
-    if (square.playables.length === 0 && newContent !== content)
+    if (square.playables.length === 0 && newContent !== content) {
       dispatch(updateSquare({ ...square, content: newContent }));
+    }
   };
 
   board.listener.startListening({
@@ -166,11 +167,11 @@ function createMiddleware() {
           square.content !== EMPTY
             ? []
             : square.playables.filter((color) => {
-                const newSquare = { ...square, content: color };
-                const newSquares = { ...squares, [square.coord]: newSquare };
-                const cards = findActiveCards(newSquares);
-                return !hasDuplicates(cards);
-              });
+              const newSquare = { ...square, content: color };
+              const newSquares = { ...squares, [square.coord]: newSquare };
+              const cards = findActiveCards(newSquares);
+              return !hasDuplicates(cards);
+            });
         if (playables.length !== square.playables.length) {
           dispatch(updateSquare({ ...square, playables }));
         }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import { useAscacouSlice, useParamsSlice } from '/app/slices';
 import icon from '/assets/img/icon_128.png';
@@ -6,7 +6,7 @@ import icon from '/assets/img/icon_128.png';
 import { Grid, Button, Switch, List, ListItem, Typography, FormControlLabel } from '@mui/material';
 import './Config.scss';
 
-export default function Config() {
+export default function Config () {
   return (
     <div className='Config'>
       <Grid
@@ -47,9 +47,9 @@ const NewGame = () => {
   const { useParams } = useParamsSlice();
 
   const [params, setParams] = useState(useParams());
-  const config = Object.entries(params).reduce(
-    (acc, [key, item]) => ({ ...acc, [key]: item.value }),
-    {}
+  const config = useMemo(
+    () => Object.entries(params).reduce((acc, [key, item]) => ({ ...acc, [key]: item.value }), {}),
+    [params],
   );
   const updateValue = (changes = {}) => {
     changes = { ...config, ...changes };
@@ -63,10 +63,9 @@ const NewGame = () => {
           ...p,
           [key]: { ...p[key], enable, value },
         };
-      })
+      }),
     );
   };
-  useEffect(updateValue, []);
 
   const submit = () => {
     newGame(config);
