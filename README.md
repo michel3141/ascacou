@@ -29,4 +29,4 @@ La partie se termine quand aucun pion ne peut être posé.
 
 ## Jeu en ligne
 
-https://ascacou.lespyjamasrougs.fr
+https://ascacou.lespyjamasrouges.fr
