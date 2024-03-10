@@ -28,7 +28,7 @@ export const selectors = createSelectors({
         ...acc,
         [id]: state.cards[id].filter((card) => card.active).length,
       }),
-      {},
+      {}
     ),
 });
 

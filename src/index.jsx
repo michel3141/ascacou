@@ -21,5 +21,5 @@ root.render(
         </ThemeProvider>
       </ReduxProvider>
     </Suspense>
-  </StrictMode>,
+  </StrictMode>
 );

@@ -5,7 +5,7 @@ import { usePlayersSlice, useCardsSlice } from '/app/slices';
 import Cards from '/features/cards/Cards';
 import Selector from '/features/selector/Selector';
 
-export default function Player ({ id }) {
+export default function Player({ id }) {
   const { useCurrent, usePlayerById } = usePlayersSlice();
   const { useCardsByPlayerId } = useCardsSlice();
 

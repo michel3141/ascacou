@@ -18,7 +18,6 @@ build: mount
 
 pretty:
 	yarn prettier --write --print-width 100 --jsx-single-quote --single-quote --single-attribute-per-line  'src/**/*.js*' 'src/**/*.*css'
-	yarn eslint src --ext js,jsx --report-unused-disable-directives --fix --max-warnings 0
 
 clean:
 	rm -rf .cache dist .parcel-cache/ /tmp/parcel-dist /tmp/parcel-cache

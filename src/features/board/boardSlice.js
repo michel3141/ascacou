@@ -35,6 +35,7 @@ const { createActions, createReducer, createSelectors, listener } = rtk(name, in
 export const actions = createActions({
   select: _,
   updateSquare: _,
+  setBoard: _,
 });
 
 export const selectors = createSelectors({

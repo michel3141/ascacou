@@ -10,7 +10,7 @@ import { WHITE, BLACK } from '/app/constants/colors';
 import noirs from '/assets/img/noirs.png';
 import blancs from '/assets/img/blancs.png';
 
-export default function Selector () {
+export default function Selector() {
   return (
     <Grided>
       <Option color={BLACK} />

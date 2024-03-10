@@ -6,7 +6,7 @@ import './Victoire.scss';
 import { useCardsSlice, usePlayersSlice, useAppSlice } from '/app/slices';
 import { FIRST, SECOND } from '/app/constants/players';
 
-export default function Victoire () {
+export default function Victoire() {
   const { useScore } = useCardsSlice();
   const { usePlayerById } = usePlayersSlice();
   const { toggleShowConfig } = useAppSlice();

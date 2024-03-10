@@ -16,25 +16,23 @@ const Victoire = lazy(() => import('./Victoire'));
 const Bar = () => {
   const { useDrawer, toggleDrawer } = useAppSlice();
   const activeDrawer = useDrawer();
-  const { reset, undo } = useAscacouSlice();
+  const { reset, undo, newGame } = useAscacouSlice();
   const actions = useMemo(
     () => [
       {
-        id: 'test',
         title: 'Recommencer au début',
         lbl: <SkipPrevious />,
         cmd: undo,
         disabled: true,
       },
       {
-        id: 'undo',
         lbl: <Replay />,
         title: 'Annuler le coup',
         cmd: undo,
         long: reset,
       },
     ],
-    [reset, undo],
+    [newGame]
   );
   const visibility = (drawer) => ({
     visible: activeDrawer === drawer,

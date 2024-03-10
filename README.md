@@ -26,7 +26,3 @@ Ascacou se joue à deux, en disposant chacun son tour les pions noirs et blancs 
 Le gagnant est celui qui a reproduit le plus de cartes motif de son jeu.
 
 La partie se termine quand aucun pion ne peut être posé.
-
-## Jeu en ligne
-
-https://ascacou.lespyjamasrouges.fr
