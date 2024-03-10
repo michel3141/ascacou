@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@mui/material';
 import { useUi } from '~/features/ui';
 import { Divider } from './Common';

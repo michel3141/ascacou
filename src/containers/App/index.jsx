@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import '~/app/devTools';
 import { READY, LOADING, FAILED } from '~/features/ui/constants';
 import { useUi } from '~/features/ui';
@@ -16,7 +16,7 @@ const StatusBar = lazy(() => import('~/containers/StatusBar'));
 
 // import Solver from 'ascacou-solver-wasm'
 
-export default function AppUi ({ url, apiPath, name }) {
+export default function AppUi({ url, apiPath, name }) {
   const urlParams = new URLSearchParams(window.location.search);
   const gameId = urlParams.get('gameId');
 

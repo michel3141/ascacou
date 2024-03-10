@@ -17,7 +17,7 @@ const { createSelectors } = rtk(name);
 const selectors = createSelectors({
   player_by_pos: (state, pos) => state[name][pos],
   count: (state) => Object.values(state[name]).filter(({ id }) => id).length,
-  playerList: (state) => Object.values(state[name]),
+  player_list: [(state) => selectPlayers(state), (players) => Object.values(players)],
   players: (state) => state[name],
 });
 

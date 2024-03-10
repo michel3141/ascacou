@@ -1,4 +1,4 @@
-function extgcd (a, b) {
+function extgcd(a, b) {
   if (a < b) {
     const tmp = extgcd(b, a);
     return { gcd: tmp.gcd, x: tmp.y, y: tmp.x };

@@ -61,7 +61,10 @@ const cards = createSelectors({
     (cards, pos, activeCards) =>
       cards
         .filter((card) => card.hand === pos)
-        .map((card) => ({ ...card, active: activeCards.includes(card.value) })),
+        .map((card) => ({
+          ...card,
+          active: activeCards.includes(card.value),
+        })),
   ],
   count_active_cards_by_player_pos: [
     actives.selectActiveCards,

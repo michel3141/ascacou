@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 // https://mui.com/material-ui/customization/palette/#customization
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useTheme } from '~/features/theme';

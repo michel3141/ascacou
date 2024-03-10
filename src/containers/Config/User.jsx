@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Share from '~/containers/Ascacou/Share';
 import { TextField, IconButton } from '@mui/material';
 import { Logout } from '@mui/icons-material';

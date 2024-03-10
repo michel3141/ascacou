@@ -1,4 +1,3 @@
-import React from 'react';
 import mkClasses from '~/lib/mkClasses';
 import './Square.scss';
 import { constants, useGame } from '~/features/game';

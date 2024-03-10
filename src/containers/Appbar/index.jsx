@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, Suspense, lazy } from 'react';
+import { useMemo, useCallback, Suspense, lazy } from 'react';
 import { Help, Menu as MenuIcn } from '@mui/icons-material';
 
 import './Appbar.scss';

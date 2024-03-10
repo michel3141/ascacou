@@ -29,17 +29,17 @@ const initialState = {
 
 const unselect =
   (...targets) =>
-    (state) => {
-      if (targets.indexOf('square') > -1) {
-        state.coord = NO_COORD;
-      }
-      if (targets.indexOf('coord') > -1) {
-        state.coord = NO_COORD;
-      }
-      if (targets.indexOf('color') > -1) {
-        state.color = EMPTY;
-      }
-    };
+  (state) => {
+    if (targets.indexOf('square') > -1) {
+      state.coord = NO_COORD;
+    }
+    if (targets.indexOf('coord') > -1) {
+      state.coord = NO_COORD;
+    }
+    if (targets.indexOf('color') > -1) {
+      state.color = EMPTY;
+    }
+  };
 
 export const reducer = createReducer(initialState, {
   [selectColor.fulfilled]: (state, { payload }) => {

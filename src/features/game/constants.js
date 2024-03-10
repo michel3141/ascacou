@@ -14,7 +14,7 @@ export const BLOCKED = 'BLOCKED';
 export const NO_COORD = '0x0';
 
 export const gameInc = (window.gi = ['app', 'moves', 'params', 'cards']);
-function shuffle (a) {
+function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
@@ -26,22 +26,22 @@ const complement = (a) =>
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].filter((value) => !a.includes(value));
 
 const dealMethods = {
-  get random () {
+  get random() {
     const hand1 = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]).slice(0, 8);
     const hand2 = complement(hand1);
     return [hand1, hand2];
   },
-  get bnw () {
+  get bnw() {
     const hand1 = [0, 1, 2, 4, 8, 3, 5, 6];
     const hand2 = complement(hand1);
     return [hand1, hand2];
   },
-  get extrem () {
+  get extrem() {
     const hand1 = [0, 15, 1, 2, 4, 14, 13, 11];
     const hand2 = complement(hand1);
     return [hand1, hand2];
   },
-  get symetric () {
+  get symetric() {
     const hand1 = [0, 1, 2, 11, 7, 3, 5, 4];
     const hand2 = complement(hand1);
     return [hand1, hand2];

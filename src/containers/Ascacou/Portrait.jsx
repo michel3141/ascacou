@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid } from '@mui/material';
 import Selector from '~/containers/Selector';
 import Score from './Score';

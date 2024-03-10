@@ -6,13 +6,13 @@ import CurrentGame from './CurrentGame';
 import NewGame from './NewGame';
 import Close from './Close';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Grid, Button, TextField } from '@mui/material';
 import { decode } from '~/app/aaa';
 import { useApp } from '~/features/app';
 import { useGame } from '~/features/game';
 
-export default function CurrentGamePanel () {
+export default function CurrentGamePanel() {
   const { useId } = useGame();
   const gameId = useId();
   return (
@@ -45,7 +45,7 @@ const Icon = () => (
   </p>
 );
 
-function Welcome () {
+function Welcome() {
   const { useId } = useGame();
   const gameId = useId();
   if (gameId) {

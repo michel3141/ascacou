@@ -1,4 +1,3 @@
-import React from 'react';
 import './Board.scss';
 import Square from './Square';
 // import Square from './Square';

@@ -1,7 +1,6 @@
 // https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)
 // Version 4.1
 /* eslint-disable no-bitwise */
-/* eslint-disable prefer-const */
 const pSBC = (p, c0, c1, l) => {
   let r;
   let g;
@@ -10,7 +9,7 @@ const pSBC = (p, c0, c1, l) => {
   let f;
   let t;
   let h;
-  let m = Math.round;
+  const m = Math.round;
   let a = typeof c1 === 'string';
   if (
     typeof p !== 'number' ||
@@ -54,7 +53,7 @@ const pSBC = (p, c0, c1, l) => {
 pSBC.pSBCr = (d) => {
   const i = parseInt;
   let n = d.length;
-  let x = {};
+  const x = {};
   if (n > 9) {
     const [r, g, b, a] = (d = d.split(','));
     n = d.length;
@@ -99,29 +98,28 @@ pSBC.pSBCw = (x, { rgb = false, transparency = false } = {}) => {
     );
   }
 };
-/* eslint-enable prefer-const */
 /* eslint-enable no-bitwise */
 
 class Color {
-  constructor (color) {
+  constructor(color) {
     this.color = color;
   }
 
-  lighten (percent) {
+  lighten(percent) {
     return pSBC(0.0 + percent, this.color);
   }
 
-  darken (percent) {
+  darken(percent) {
     return pSBC(0.0 - percent, this.color);
   }
 
-  opacity (percent) {
+  opacity(percent) {
     const x = pSBC.pSBCr(this.color);
     x.a = percent;
     return pSBC.pSBCw(x, { transparency: true });
   }
 
-  toString () {
+  toString() {
     return pSBC.pSBCw(pSBC.pSBCr(this.color));
   }
 }

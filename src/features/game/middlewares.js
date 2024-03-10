@@ -194,7 +194,7 @@ addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getSta
 // GRAPH game:update > channel:3
 // GRAPH channel:3 > user:selectId
 // GRAPH channel:3 > channel:selectChannel
-addListener(update.fulfilled, ({ payload }, { didpatch, getState }) => {
+addListener(update.fulfilled, ({ payload }, { dispatch, getState }) => {
   const sender = selectUserId(getState());
   const game = payload;
   const channel = selectChannel(getState());

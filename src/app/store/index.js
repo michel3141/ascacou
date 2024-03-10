@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 // getDefaultMiddleware inclus redux-thunk
 import isDevMode from '~/lib/isDevMode';
 
@@ -24,7 +24,7 @@ const thunks = [];
 const store = configureStore({
   preloadedState: {},
   reducer: reducers, // accept object slices
-  middleware: [
+  middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
       serializableCheck: {
         // https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data
@@ -33,13 +33,13 @@ const store = configureStore({
         ignoreActions: thunks,
       },
       immutableCheck: {
-        ignore: paths,
+        ignoredPaths: paths,
       },
     }),
     ...middlewares,
   ], // accept array
   devTools: isDevMode,
-  trace: false, // isDevMode,
+  trace: isDevMode,
   // enhancers: window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 });
 

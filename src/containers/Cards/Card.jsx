@@ -1,8 +1,7 @@
-import React from 'react';
 import './Card.scss';
 import mkClasses from '~/lib/mkClasses';
 
-export default function Card ({ card, done, mixed }) {
+export default function Card({ card, done, mixed }) {
   if (mixed) {
     done = card.active;
   }

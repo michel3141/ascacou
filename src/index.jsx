@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, StrictMode } from 'react';
+import { Suspense, lazy, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import '~/features';
 import store from '~/app/store';
@@ -17,10 +17,11 @@ import { name, version } from '~~/package.json';
 //    <Resources {...{ servers }}>
 //    </Resources>
 
-const ReduxProvider = lazy(() => import('rtk/react'));
-const ThemeProvider = lazy(() => import('~/Providers/Theme'));
-const SquaresProvider = lazy(() => import('~/Providers/Squares'));
-const App = lazy(() => import('~/containers/App'));
+// https://www.npmjs.com/package/eslint-plugin-react-refresh
+export const ReduxProvider = lazy(() => import('rtk/react'));
+export const ThemeProvider = lazy(() => import('~/Providers/Theme'));
+export const SquaresProvider = lazy(() => import('~/Providers/Squares'));
+export const App = lazy(() => import('~/containers/App'));
 
 const Root = () => (
   <ReduxProvider {...{ store }}>

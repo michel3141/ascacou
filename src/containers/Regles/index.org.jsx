@@ -1,5 +1,4 @@
 // première version des règles avant la relecture par chatgpt
-import React from 'react';
 import './Regles.scss';
 import { PublishRounded } from '@mui/icons-material';
 import _100000000000002D000000360BEA7FAC9C4847CD from '~assets/img/100000000000002D000000360BEA7FAC9C4847CD.jpg';
@@ -16,7 +15,7 @@ import _100000000000013C00000176017FE24A41E0F645 from '~assets/img/1000000000000
 import pjs from '~~/package.json';
 import regles from '~assets/img/regles.pdf';
 
-export default function Regles () {
+export default function Regles() {
   return (
     <div className='Regles'>
       <ul id='top'>

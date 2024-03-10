@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Button } from '@mui/material';
 import Board from '~/containers/Board';
 import Cards from '~/containers/Cards';
@@ -9,7 +8,7 @@ import { usePlayers } from '~/features/players';
 import { FIRST, SECOND } from '~/features/players/constants';
 import { useUser } from '~/features/user';
 
-export default function Victoire () {
+export default function Victoire() {
   const { useScore } = useGame();
   const { usePlayerByPos } = usePlayers();
   const { toggleShowConfig } = useUi();

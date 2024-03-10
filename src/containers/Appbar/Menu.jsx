@@ -1,9 +1,8 @@
-import React from 'react';
 import { useLongPress } from '~/lib/longPress';
 import { Toolbar, IconButton, Typography, Drawer } from '@mui/material';
 import { useFullscreen } from 'fullscreen-slice';
 
-export default function Menu ({ drawers = [], actions, titre }) {
+export default function Menu({ drawers = [], actions, titre }) {
   const hideDrawer = (onToggle) => onToggle && onToggle(false);
   const showDrawer = (onToggle) => onToggle && onToggle(true);
   const { useIsFullscreen } = useFullscreen();

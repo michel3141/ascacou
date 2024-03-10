@@ -18,7 +18,12 @@ const getArgs = (f) =>
     .split(/\s*,\s*/);
 
 if (isDevMode) {
-  store.dispatch(addListener({ matcher: () => true, effect: ({ type }) => console.log(type) }));
+  store.dispatch(
+    addListener({
+      matcher: () => true,
+      effect: ({ type }) => console.log(type),
+    }),
+  );
   store.dispatch(
     addListener({
       matcher: (action) => action.type.endsWith('/rejected'),
@@ -170,7 +175,12 @@ if (isDevMode) {
       if (actions) {
         actions.forEach(dispatch);
       } else {
-        store.dispatch(removeListener({ type: 'app/nextPlayer', effect: runActions }));
+        store.dispatch(
+          removeListener({
+            type: 'app/nextPlayer',
+            effect: runActions,
+          }),
+        );
       }
     };
     store.dispatch(addListener({ type: 'app/nextPlayer', effect: runActions }));

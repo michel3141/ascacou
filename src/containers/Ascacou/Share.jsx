@@ -1,4 +1,3 @@
-import React from 'react';
 import { encode } from '~/app/aaa';
 import { useGame } from '~/features/game';
 import { IconButton } from '@mui/material';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid } from '@mui/material';
 import './Selector.scss';
 
@@ -15,7 +14,7 @@ import { WHITE, BLACK } from '~/features/game/constants';
 import noirs from '~assets/img/noirs.png';
 import blancs from '~assets/img/blancs.png';
 
-export default function Selector () {
+export default function Selector() {
   const { useIsRunning } = useGame();
   const { useIsMyTurn } = useUser();
   const isRunning = useIsRunning();

@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconButton } from '@mui/material';
 import ReplayIcon from '@mui/icons-material/Replay';
 import AutorenewIcon from '@mui/icons-material/Autorenew';

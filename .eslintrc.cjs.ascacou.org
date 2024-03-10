@@ -1,13 +1,12 @@
 module.exports = {
-  settings: {
-    "react": {
-      "version": "detect",
-    },
-  },
   env: {
     browser: true,
     es2022: true,
   },
+  settings: {
+    react: { version: '18.2' } 
+},
+
   extends: [
     'eslint:recommended',
     'plugin:react-hooks/recommended',
@@ -27,15 +26,16 @@ module.exports = {
   rules: {
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
+    "multiline-ternary": 'off',
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
 
     // 'react-refresh/only-export-components': 'warn',
 
     'react/prop-types': 'off',
-    camelcase: 'warn',
+    camelcase: ['warn', {allow:["^__dont_use_me_.*"], properties:"never"}],
     // TODO
-    'import/no-absolute-path': 'off',
+    //'import/no-absolute-path': 'error', // utilise les alias de vite
     // use a vite alias ? attention autofixabvle par --fix
     "no-bitwise": 'error',
 

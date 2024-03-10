@@ -1,44 +1,25 @@
 module.exports = {
-  settings: {
-    "react": {
-      "version": "detect",
+    root: true,
+    env: { browser: true, es2020: true },
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:react-hooks/recommended',
+    ],
+    ignorePatterns: ['dist', '.eslintrc.cjs'],
+    parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+    settings: { react: { version: '18.2' } },
+    plugins: ['react-refresh'],
+    rules: {
+"no-bitwise": 'error',
+"prefer-const": "error",
+        'no-unused-vars': ['error', { args: 'none' }],
+        'react/jsx-no-target-blank': 'off',
+        'react/prop-types': 'off',
+        'react-refresh/only-export-components': [
+            'warn',
+            { allowConstantExport: true },
+        ],
     },
-  },
-  env: {
-    browser: true,
-    es2022: true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react/recommended',
-    'prettier',
-    'standard',
-  ],
-  overrides: [],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['react',
-    //'react-refresh'
-  ],
-  rules: {
-    "semi": ["error", "always"],
-    "comma-dangle": ["error", "always-multiline"],
-    "multiline-ternary": 'off',
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
-
-    // 'react-refresh/only-export-components': 'warn',
-
-    'react/prop-types': 'off',
-    camelcase: ['warn', {allow:["^__dont_use_me_.*"], properties:"never"}],
-    // TODO
-    //'import/no-absolute-path': 'error', // utilise les alias de vite
-    // use a vite alias ? attention autofixabvle par --fix
-    "no-bitwise": 'error',
-
-  },
-};
+}

@@ -77,7 +77,7 @@ addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getSta
   );
 });
 
-addListener(update.fulfilled, ({ payload }, { didpatch, getState }) => {
+addListener(update.fulfilled, ({ payload }, { dispatch, getState }) => {
   const user = payload;
   const channel = selectChannel(getState());
 

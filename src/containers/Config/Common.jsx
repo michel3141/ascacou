@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch, List, ListItem, FormControlLabel, ButtonGroup, Button } from '@mui/material';
 import { useGame } from '~/features/game';
 import { useApp } from '~/features/app';
@@ -19,7 +18,8 @@ const Param = ({ param, updateParam }) => {
     default:
       return (
         <div>
-          unkwon dataType &apos;{dataType}&apos; for param &apos;{param.name}
+          unkwon dataType &apos;{dataType}&apos; for param &apos;
+          {param.name}
           &apos;
         </div>
       );

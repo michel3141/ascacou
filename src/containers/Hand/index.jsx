@@ -1,4 +1,3 @@
-import React from 'react';
 import './Hand.scss';
 import { Button } from '@mui/material';
 import mkClasses from '~/lib/mkClasses';
@@ -9,7 +8,7 @@ import Cards from '~/containers/Cards';
 import Selector from '~/containers/Selector';
 import { useViewport } from 'viewport-slice';
 
-export default function Hand ({ pos }) {
+export default function Hand({ pos }) {
   const { useCardsByPlayerPos, useCurrentPlayerPos } = useGame();
   const { useOrientation } = useViewport();
 

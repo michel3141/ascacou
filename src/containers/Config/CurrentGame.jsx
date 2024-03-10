@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography } from '@mui/material';
 import { useGame } from '~/features/game';
 import { useApp } from '~/features/app';
