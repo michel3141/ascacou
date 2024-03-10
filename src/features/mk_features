@@ -1,0 +1,24 @@
+#!/bin/bash
+>&2 tabs 16 ## met la tabulation à 16 sur STDERR
+(
+modules=""
+#for module in $(ls ./*/index.js ./*.js 2> /dev/null )
+for module in $(
+  ls ./*/index.js | while read path; do dirname $path; done
+)
+do
+  name=$(echo $module | sed s/"\/index.js$"// | sed s/".*\/"//)
+  >&2 echo -e "$name \t=> $module"
+  if echo $name | grep -qe "\."
+  then
+    echo -n
+  else
+    echo -e "import * as ${name} from '$module';"
+    modules="$modules $name"
+  fi
+done
+
+echo
+echo "export default { $(for name in $modules; do echo ${name}, ; done) }"
+
+) | yarn --silent prettier --parser babel --loglevel silent

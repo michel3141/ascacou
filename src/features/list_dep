@@ -1,0 +1,11 @@
+#!/bin/bash
+grep -re features */* ./middleware.js |sed s/"\/[^\/]*:.*features."/" > "/|sed s/"\/[^\/]*$"//|sed s/"'.*"//|sort |uniq
+
+exit
+game > history
+selection > game
+selection > history
+ui > game
+
+circular = 
+

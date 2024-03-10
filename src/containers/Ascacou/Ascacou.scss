@@ -1,0 +1,21 @@
+#Ascacou {
+  position: absolute;
+  top: 120px;
+  bottom: 0px;
+
+  & > .MuiGrid-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%) scale(var(--ascacou-scale, 1));
+  }
+
+  & .Fen {
+    display: none;
+    color: black;
+    width: 100%;
+    text-align: right;
+    background-color: var(--main-color-opacity-40);
+    position: absolute;
+    bottom: 0px;
+  }
+}

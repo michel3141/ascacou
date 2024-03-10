@@ -1,31 +1,46 @@
 {
   "name": "Ascacou",
-  "version": "1.2",
+  "version": "2.0",
   "author": "MicheL",
   "description": "Association de Carrés et de Couleurs",
-  "devDependencies": {
-    "@vitejs/plugin-react": "^1.1.3",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.7.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.7",
-    "sass": "^1.62.0",
-    "vite": "^4.3.1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.1.0",
-    "@mui/material": "^5.2.2",
-    "@reduxjs/toolkit": "^1.9.5",
-    "ascacou-solver-wasm": "^0.2.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "fullscreen-slice": "workspace:^",
     "inflected": "^2.1.0",
+    "localStorage": "workspace:^",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.15.12",
+    "@rails/actioncable": "^7.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "@reduxjs/toolkit": "^1.9.7",
+    "rtk": "workspace:^",
+    "screenfull": "^6.0.2",
+    "spraypaint": "^0.10.24",
+    "spraypaint-toolkit": "workspace:^",
+    "viewport-slice": "workspace:^"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "madge": "^6.1.0",
+    "sass": "^1.71.1",
+    "spraypaint-builder": "workspace:^",
+    "vite": "^5.1.5",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-react": "^4.2.1"
   }
 }

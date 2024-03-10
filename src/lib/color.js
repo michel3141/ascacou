@@ -30,8 +30,8 @@ const pSBC = (p, c0, c1, l) => {
     c1 && c1 !== 'c'
       ? pSBC.pSBCr(c1)
       : P
-      ? { r: 0, g: 0, b: 0, a: -1 }
-      : { r: 255, g: 255, b: 255, a: -1 };
+        ? { r: 0, g: 0, b: 0, a: -1 }
+        : { r: 255, g: 255, b: 255, a: -1 };
   p = P ? p * -1 : p;
   P = 1 - p;
   if (!f || !t) return null;
@@ -103,25 +103,25 @@ pSBC.pSBCw = (x, { rgb = false, transparency = false } = {}) => {
 /* eslint-enable no-bitwise */
 
 class Color {
-  constructor(color) {
+  constructor (color) {
     this.color = color;
   }
 
-  lighten(percent) {
+  lighten (percent) {
     return pSBC(0.0 + percent, this.color);
   }
 
-  darken(percent) {
+  darken (percent) {
     return pSBC(0.0 - percent, this.color);
   }
 
-  opacity(percent) {
+  opacity (percent) {
     const x = pSBC.pSBCr(this.color);
     x.a = percent;
     return pSBC.pSBCw(x, { transparency: true });
   }
 
-  toString() {
+  toString () {
     return pSBC.pSBCw(pSBC.pSBCr(this.color));
   }
 }

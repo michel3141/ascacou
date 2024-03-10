@@ -1,8 +1,8 @@
 import React, { useMemo, useEffect } from 'react';
 // https://mui.com/material-ui/customization/palette/#customization
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useThemeSlice } from '/app/slices';
-import Color from '/lib/color';
+import { useTheme } from '~/features/theme';
+import Color from '~/lib/color';
 
 const createCustomTheme = (theme) =>
   createTheme({
@@ -13,7 +13,7 @@ const createCustomTheme = (theme) =>
   });
 
 const CustomThemeProvider = ({ children }) => {
-  const theme = useThemeSlice().useTheme();
+  const theme = useTheme().useTheme();
   useEffect(() => updateCSS(theme), [theme]);
   const providedTheme = useMemo(() => createCustomTheme(theme), [theme]);
 

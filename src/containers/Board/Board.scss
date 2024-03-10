@@ -1,0 +1,17 @@
+.Board {
+  & table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  }
+  & th,
+  & td {
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  & .titre {
+    width: 250px;
+  }
+}

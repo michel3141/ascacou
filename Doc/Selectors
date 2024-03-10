@@ -1,0 +1,64 @@
+==> alerts/selectors.js <==
+selectAlertByCoord 
+
+==> app/selectors.js <==
+selectApp
+selectConfig
+
+==> connection/selectors.js <==
+selectApiPath
+selectCablePath
+selectChannelConsumer
+selectConnection
+selectEndpoints
+selectUrl
+
+==> game/selectors.js <==
+selectActiveCards 
+selectAllowMultipleCards 
+selectCardsByPlayerPos
+selectChannel 
+selectChannelIdentifier
+selectCountActiveCardsByPlayerPos 
+selectCurrentPlayerPos
+selectFen 
+selectFreeSquaresCount
+selectGame
+selectId
+selectIsRunning
+selectMoveCount
+selectParams
+selectScore
+selectSerializedGame
+selectShowBlocked
+selectShowForbidden
+selectSquareByCoord
+selectSquares
+
+==> history/selectors.js <==
+selectFirst 
+selectIsEmpty
+selectLast
+
+==> players/selectors.js <==
+selectChannelByPlayerId 
+selectChannelIdentifierByPlayerId
+selectPlayerByPos
+selectPlayers 
+
+==> selection/selectors.js <==
+selectSelected 
+
+==> theme/selectors.js <==
+selectTheme 
+
+==> ui/selectors.js <==
+selectAppState
+selectDrawer 
+
+==> user/selectors.js <==
+selectChannel 
+selectChannelIdentifier
+selectId
+selectIsMyTurn 
+selectUser

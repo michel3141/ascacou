@@ -1,0 +1,21 @@
+.StatusBar {
+  /*display: none;*/
+  width: 100%;
+  height: 2em;
+  background-color: var(--main-color-opacity-40);
+  display: flex;
+  align-items: center;
+
+  & .Partie {
+    display: inline-block;
+    max-width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & .Separator {
+    flex: 1;
+    display: inline-block;
+  }
+}

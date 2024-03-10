@@ -1,0 +1,65 @@
+.Regles {
+  width: 50vw;
+  min-width: 250px;
+
+  & h1,
+  h2,
+  h3 {
+    color: #333;
+  }
+
+  & h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 20px;
+  }
+
+  & p {
+    margin-bottom: 15px;
+  }
+
+  & ul,
+  ol {
+    margin-bottom: 15px;
+  }
+
+  & li {
+    margin-bottom: 5px;
+  }
+
+  & code {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f8f8;
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+  }
+
+  & blockquote {
+    border-left: 2px solid #ddd;
+    margin: 0 0 20px 0;
+    padding-left: 10px;
+    color: #777;
+  }
+
+  & .MuiPaper-root {
+    padding: 7px;
+  }
+
+  & table {
+    margin: auto;
+    text-align: center;
+    border-spacing: 10px;
+  }
+
+  & .Carte {
+    width: 70px;
+    margin: 5px;
+    border-radius: 0 0 0 20px;
+  }
+
+  & .Plateau {
+    width: 200px;
+    margin: 5px;
+    border-radius: 0 0 5px 5px;
+  }
+}

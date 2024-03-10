@@ -2,6 +2,31 @@ faire une IA
 eslint + vim :
 https://github.com/standard/standard#vim
 
-redux - undo (=> restart redémarre au début de *ce* jeu)
-try reponsive
+DONE proposer de laisser la main
+DONE victoire ne s'affiche pas à distance chez l'adversaire + rajouter les noms
+DONE supprimer FEN
+DONE entourer de blanc le point marqué et de le laisser en place
+DONE problème du nom de la table de jeu (grand carré rouge sombre)
+DONE à droite : retour, copier-coller+nom, à gauche, menu, aide, grand écran
+* fin de partie => proposition de nouvelle partie ?
+possibilités de revanche
+sur iOs(mac ?) => le menu Config ne défile pas (mais le menu Règles oui)
+cumul des scores ?
+autorise les motifs multiples => pas clair ??
 
+mode solo
+
+utiliser createStore de rtk + onBoot (TODO dans rtk)
+ajout des salons de jeux et de la conservation des scores => garder le nom du salon actif
+
+exporter vers react seulement les thunks dans slice ?
+export les selecteurs à part (pas dans useSlice ?)
+
+gestion des spectateurs... à l'air de fonctionner tout seul. pas sûr :-/
+
+externalisation des bibliothèques (+fixation des versions) + history 
+
+DONE trouver un hebergement
+herberger le backend sur pyjamasrouges
+
+faire une IA

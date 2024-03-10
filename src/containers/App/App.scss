@@ -1,0 +1,81 @@
+body {
+  font-family: 'arial';
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('/img/fond.png');
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+p,
+li {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+#fullscreen-app {
+  &.Fullscreen {
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url('/img/fond.png');
+    margin: 0px;
+    padding: 0px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+}
+
+.App {
+  & .MuiToolbar-root {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    & h2 {
+      margin-left: auto;
+    }
+  }
+  & .appError {
+    color: black;
+    background-color: white;
+    & h1 {
+      color: red;
+    }
+    & dt {
+      font-weight: bold;
+    }
+    & dd {
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  :root {
+    --square-size: 5vw;
+    --selector-size: 11.7vw;
+    --card-size: 8.3vw;
+  }
+}
+
+@media (orientation: portrait) {
+  :root {
+    --square-size: 10vw;
+    --selector-size: 22vw;
+    --card-size: 15vw;
+  }
+}

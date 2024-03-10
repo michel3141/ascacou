@@ -1,0 +1,3 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+pnpm spraypaint-builder http://localhost:3000  -w "$(pwd)"  -W

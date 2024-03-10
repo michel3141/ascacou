@@ -1,0 +1,22 @@
+/* panel background */
+.MuiDrawer-root .MuiPaper-root {
+  height: 100vh;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('/img/fond.png');
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  padding: 10px;
+}
+
+.Appbar {
+  & img.Title {
+    width: 170px;
+    max-width: 50vw;
+  }
+  h2 + .MuiIconButton-root {
+    margin-left: auto;
+  }
+}

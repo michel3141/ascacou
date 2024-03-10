@@ -1,7 +1,8 @@
 {
-  semi: true,
-  singleQuote: true,
-  jsxSingleQuote: true,
-  trailingComma: "all",
-  arrowParens: "always"
+	arrowParens: "always",
+	jsxSingleQuote: true,
+	semi: true,
+	singleAttributePerLine: true,
+	singleQuote: true,
+	trailingComma: "all"
 }
