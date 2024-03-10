@@ -15,7 +15,7 @@ const Square = ({ coord }) => {
     'Square',
     `xy-${coord}`,
     `c-${alert && showForbidden ? alert : content}`,
-    { Selected: selected?.coord === coord },
+    { Selected: selected?.coord === coord }
   );
   return (
     <div

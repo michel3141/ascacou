@@ -18,23 +18,17 @@ if (isDevMode) {
   window.slices = slices;
   window.showActions = () => {
     for (const sliceName in slices) {
-      if (Object.values(slices[sliceName].actions).length) {
-        console.log(sliceName);
-        for (const [name, action] of Object.entries(slices[sliceName].actions)) {
-          console.log(
-            `   ${name}${action.toString().endsWith(name) ? '' : '*' + action.toString()}`,
-          );
-        }
+      console.log(sliceName);
+      for (const action in slices[sliceName].actions) {
+        console.log(`   ${action}`);
       }
     }
   };
   window.showSelectors = () => {
     for (const sliceName in slices) {
-      if (Object.values(slices[sliceName].selectors).length) {
-        console.log(sliceName);
-        for (const selector in slices[sliceName].selectors) {
-          console.log(`   ${selector.slice(6)}`);
-        }
+      console.log(sliceName);
+      for (const selector in slices[sliceName].selectors) {
+        console.log(`   ${selector.slice(6)}`);
       }
     }
   };

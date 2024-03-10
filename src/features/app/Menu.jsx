@@ -2,9 +2,18 @@ import React from 'react';
 import { useLongPress } from '/lib/longPress';
 import { Toolbar, IconButton, Typography, Drawer } from '@mui/material';
 
-export default function Menu ({ drawers = [], actions, titre }) {
+export default function Menu({ drawers = [], actions, titre }) {
   const hideDrawer = (d) => d.onToggle && d.onToggle(false);
   const showDrawer = (d) => d.onToggle && d.onToggle(true);
+
+  actions.forEach(
+    (action) =>
+      (action.mouseEvents = useLongPress({
+        onClick: action.cmd,
+        onLongPress: action.long,
+        ms: 1500,
+      }))
+  );
 
   return (
     <Toolbar color='transparent'>
@@ -13,14 +22,19 @@ export default function Menu ({ drawers = [], actions, titre }) {
             <MenuIcon
           </IconIconButton>
           */}
-      {actions
-        .filter((action) => !action.disabled)
-        .map((action) => (
-          <MenuItem
-            key={action.cmd}
-            {...{ action }}
-          />
-        ))}
+      {actions.map(
+        (a) =>
+          !a.disabled && (
+            <IconButton
+              {...a.mouseEvents}
+              key={a.cmd}
+              color='inherit'
+              title={a.title}
+            >
+              {a.lbl}
+            </IconButton>
+          )
+      )}
       <Typography variant='h2'>{titre || ''}</Typography>
 
       {drawers.map(
@@ -36,7 +50,7 @@ export default function Menu ({ drawers = [], actions, titre }) {
             >
               {d.lbl}
             </IconButton>
-          ),
+          )
       )}
 
       {drawers.map(
@@ -50,26 +64,8 @@ export default function Menu ({ drawers = [], actions, titre }) {
             >
               {d.action}
             </Drawer>
-          ),
+          )
       )}
     </Toolbar>
   );
 }
-
-const MenuItem = ({ action }) => {
-  const { cmd, long, title, lbl } = action;
-  const mouseEvents = useLongPress({
-    onClick: cmd,
-    onLongPress: long,
-    ms: 1500,
-  });
-  return (
-    <IconButton
-      {...mouseEvents}
-      color='inherit'
-      title={title}
-    >
-      {lbl}
-    </IconButton>
-  );
-};

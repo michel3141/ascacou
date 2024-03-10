@@ -17,7 +17,7 @@ export const reducers = Object.entries(slices).reduce(
     ...acc,
     [name]: slice.default,
   }),
-  {},
+  {}
 );
 
 export const useThemeSlice = () => useSlice(theme);

@@ -6,17 +6,17 @@
 */
 
 class Classes {
-  constructor () {
+  constructor() {
     this.classes = this.parse_args(arguments);
   }
 
-  push () {
+  push() {
     const newClasses = this.parse_args(arguments);
     this.classes = { ...this.classes, ...newClasses };
     return this;
   }
 
-  extend () {
+  extend() {
     const newClasses = this.parse_args(arguments);
     return new Classes({ ...this.classes, ...newClasses });
   }
@@ -55,7 +55,7 @@ class Classes {
   };
 }
 
-function mkClasses (...args) {
+function mkClasses(...args) {
   const instance = new Classes(...args);
   return instance.toString();
 }

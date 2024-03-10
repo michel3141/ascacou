@@ -6,7 +6,7 @@ const Ascacou = lazy(() => import('/features/ascacou/Ascacou'));
 const AppBar = lazy(() => import('./Bar'));
 // import Solver from 'ascacou-solver-wasm'
 
-export default function App (props) {
+export default function App(props) {
   /*
     show_blocked,
     show_forbidden,
@@ -20,7 +20,7 @@ export default function App (props) {
     boot();
     newGame(props);
     toggleShowConfig(true);
-  }, [props, boot, newGame, toggleShowConfig]);
+  }, [props]);
 
   return (
     <div className='App'>
