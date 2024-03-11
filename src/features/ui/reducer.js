@@ -62,12 +62,14 @@ export const reducer = createReducer(initialState, {
     state.appState = READY;
     state.drawer = payload.id ? CONFIG : null;
   },
+/*
   [findGame.fulfilled]: (state, { payload }) => {
     state.drawer = null;
   },
   [startGame.fulfilled]: (state, { payload }) => {
     state.drawer = null;
   },
+*/
   [create.fulfilled]: (state, { payload }) => {
     state.appState = READY;
     state.drawer = CONFIG;
