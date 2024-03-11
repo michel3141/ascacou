@@ -11,7 +11,7 @@ import { name, INIT, READY, LOADING, FAILED, VICTORY, CONFIG } from './constants
 import { closeDrawers, toggleDrawer } from './actions';
 import { create, find } from '~/features/user/actions';
 import { findByName, startGame, endGame } from '~/features/app/actions';
-import { find as findGame } from '~/features/game/actions';
+// import { find as findGame } from '~/features/game/actions';
 
 /* ************************ */
 
@@ -62,7 +62,7 @@ export const reducer = createReducer(initialState, {
     state.appState = READY;
     state.drawer = payload.id ? CONFIG : null;
   },
-/*
+  /*
   [findGame.fulfilled]: (state, { payload }) => {
     state.drawer = null;
   },
