@@ -13,7 +13,7 @@ import { selectApp } from './selectors';
 import { selectEndpoints } from '~/features/connection/selectors';
 import { selectIsMyTurn } from '~/features/user/selectors';
 import { selectSelected } from '~/features/selection/selectors';
-import { selectSquareByCoord, selectGame } from '~/features/game/selectors';
+import { selectIsRunning, selectSquareByCoord, selectGame } from '~/features/game/selectors';
 
 /*
  * imports
@@ -45,6 +45,10 @@ const thunks = createThunks({
     if (!isMyTurn) {
       throw new Error('not my turn');
     }
+    const isRunning = selectIsRunning(getState());
+    if (!isRunning) {
+      throw new Error('not running');
+    }
 
     // on ne peut jouer que sur une case vide
     if (coord !== NO_COORD) {
@@ -63,6 +67,10 @@ const thunks = createThunks({
     const isMyTurn = selectIsMyTurn(getState());
     if (!isMyTurn) {
       throw new Error('not my turn');
+    }
+    const isRunning = selectIsRunning(getState());
+    if (!isRunning) {
+      throw new Error('not running');
     }
     if (color === selectSelected(getState()).color) {
       color = EMPTY;
