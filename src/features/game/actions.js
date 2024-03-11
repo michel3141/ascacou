@@ -109,7 +109,7 @@ const thunks = createThunks({
           break;
       }
     });
-    dispatch(update({ firstToMove, cards }));
+    return dispatch(update({ firstToMove, cards }));
   },
 });
 

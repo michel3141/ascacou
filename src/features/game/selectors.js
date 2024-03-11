@@ -105,7 +105,8 @@ const squares = createSelectors({
   current_player_pos: [
     (state) => selectMoveCount(state),
     (state) => state[name].firstToMove,
-    (moveCount, firstToMove) => (moveCount % 2 === 0 && firstToMove === FIRST ? FIRST : SECOND),
+    (state) => (state[name].firstToMove === FIRST ? SECOND : FIRST),
+    (moveCount, firstToMove, secondToMove) => (moveCount % 2 === 0 ? firstToMove : secondToMove),
   ],
   square_by_coord: [
     (state, coord) => selectSquares(state),
