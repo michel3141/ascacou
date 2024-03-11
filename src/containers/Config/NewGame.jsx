@@ -45,27 +45,31 @@ const Revenge = () => {
         label='Recommencer'
         action={reset}
       />
-      <MyButton
-        noConfirmation={true}
-        label='Revanche'
-        action={async () => {
-          toggleShowConfig(false);
-          await swap();
-          await swapCards();
-          await reset();
-        }}
-      />
+      <div title='En cours de développement'>
+        <MyButton
+          disabled={true}
+          noConfirmation={true}
+          label='Revanche'
+          action={async () => {
+            toggleShowConfig(false);
+            await swap();
+            await swapCards();
+            await reset();
+          }}
+        />
+      </div>
     </>
   );
 };
 
-const MyButton = ({ action, label, noConfirmation, variant = 'contained' }) => {
+const MyButton = ({ action, label, noConfirmation, variant = 'contained', ...others }) => {
   const [request, setRequest] = useState(noConfirmation);
   return (
     <Button
       variant={request ? variant : 'outlined'}
       color='primary'
       onClick={() => (request ? action() : setRequest(true))}
+      {...others}
     >
       {request && !noConfirmation ? 'Confirmez' : label}
     </Button>
