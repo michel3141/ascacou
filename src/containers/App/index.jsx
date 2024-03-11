@@ -7,6 +7,7 @@ import './App.scss';
 import { useFullscreen } from 'fullscreen-slice';
 import mkClasses from '~/lib/mkClasses';
 import { decode } from '~/app/aaa';
+import AscacouEditor from '~/containers/AscacouEditor';
 
 const Ascacou = lazy(() => import('~/containers/Ascacou'));
 const AppBar = lazy(() => import('~/containers/Appbar'));
@@ -24,6 +25,7 @@ export default function AppUi({ url, apiPath, name }) {
   const { loadGame } = useApp();
   const appState = useAppState();
   const appError = useAppError();
+  const { pathname } = window.location;
   useEffect(() => {
     if (!gameId || appState !== READY) {
       return;
@@ -43,9 +45,13 @@ export default function AppUi({ url, apiPath, name }) {
 
   return (
     <div className='App'>
-      <Suspense fallback={'...'}>
-        <Routing {...{ appState, appError, name }} />
-      </Suspense>
+      {pathname === '/edit' ? (
+        <AscacouEditor />
+      ) : (
+        <Suspense fallback={'...'}>
+          <Routing {...{ appState, appError, name }} />
+        </Suspense>
+      )}
     </div>
   );
 }
