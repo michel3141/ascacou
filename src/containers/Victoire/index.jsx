@@ -1,8 +1,8 @@
-import { Grid, Button } from '@mui/material';
+import { Grid } from '@mui/material';
 import Board from '~/containers/Board';
 import Cards from '~/containers/Cards';
 import './Victoire.scss';
-import { useUi } from '~/features/ui';
+import { Revenge } from '~/containers/Ascacou/Buttons';
 import { useGame } from '~/features/game';
 import { usePlayers } from '~/features/players';
 import { FIRST, SECOND } from '~/features/players/constants';
@@ -11,7 +11,6 @@ import { useUser } from '~/features/user';
 export default function Victoire() {
   const { useScore } = useGame();
   const { usePlayerByPos } = usePlayers();
-  const { toggleShowConfig } = useUi();
   const score = useScore();
   const winnerPos = score[FIRST] >= score[SECOND] ? FIRST : SECOND;
   const looserPos = score[FIRST] > score[SECOND] ? SECOND : FIRST;
@@ -53,12 +52,7 @@ export default function Victoire() {
           item
           xs
         >
-          <Button
-            variant='contained'
-            onClick={() => toggleShowConfig()}
-          >
-            Nouvelle partie
-          </Button>
+          <Revenge />
         </Grid>
       </Grid>
     </div>

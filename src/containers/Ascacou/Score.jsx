@@ -1,10 +1,8 @@
-import { Button } from '@mui/material';
-import { useUi } from '~/features/ui';
+import { Revenge } from '~/containers/Ascacou/Buttons';
 import { useGame } from '~/features/game';
 
 const Score = ({ LEFT, RIGHT }) => {
   const { useScore, useIsRunning } = useGame();
-  const { toggleShowConfig } = useUi();
   const score = useScore();
   const isRunning = useIsRunning();
 
@@ -13,14 +11,7 @@ const Score = ({ LEFT, RIGHT }) => {
       <h2>
         {score[LEFT]} à {score[RIGHT]}
       </h2>
-      {!isRunning && (
-        <Button
-          variant='contained'
-          onClick={() => toggleShowConfig()}
-        >
-          Nouvelle partie
-        </Button>
-      )}
+      {!isRunning && <Revenge />}
     </div>
   );
 };

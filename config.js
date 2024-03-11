@@ -5,6 +5,6 @@ export const config = {
   apiPath: '/api/v1',
   name: 'ascacou',
 };
-export default function getConfig (mode) {
+export default function getConfig(mode) {
   return config;
 }

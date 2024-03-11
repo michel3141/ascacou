@@ -8,7 +8,7 @@ import { name, INIT, READY, LOADING, FAILED, VICTORY, CONFIG } from './constants
 /*
  * actions
  */
-import { toggleDrawer } from './actions';
+import { closeDrawers, toggleDrawer } from './actions';
 import { create, find } from '~/features/user/actions';
 import { findByName, startGame, endGame } from '~/features/app/actions';
 import { find as findGame } from '~/features/game/actions';
@@ -29,6 +29,9 @@ export const reducer = createReducer(initialState, {
     state.drawer = VICTORY;
   },
 
+  [closeDrawers]: (state) => {
+    state.drawer = null;
+  },
   [toggleDrawer]: (state, { payload }) => {
     const { drawer, visible } = payload;
     const opened = state.drawer === drawer;
