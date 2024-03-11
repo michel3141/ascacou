@@ -7,7 +7,7 @@ import defaultConnection from './Api/Connection';
  */
 const sync = false;
 const methods = {
-  updateAttributes: function ({ params, cards, moves }, updateOpts) {
+  updateAttributes: function ({ params, cards, moves, firstToMove }, updateOpts) {
     // généralisation de updateAttributes ...
     // qui s'étend aux relationships
     // updateOpts peut avoir {isPersisted}
@@ -58,6 +58,9 @@ const methods = {
         const param = this.params.find((x) => x.name === attributes.name);
         param?.updateAttributes(attributes, updateOpts);
       });
+    }
+    if (firstToMove) {
+      this.firstToMove = firstToMove;
     }
     return this;
   },

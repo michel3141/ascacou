@@ -8,7 +8,7 @@ import { name, FIRST, SECOND } from './constants';
 /*
  * actions
  */
-import { updatePlayer, onSwap } from './actions';
+import { updatePlayer } from './actions';
 import { playerIn, playerOut } from '~/features/game/actions';
 
 /* ************************ */
@@ -28,12 +28,6 @@ export const reducer = createReducer(initialState, {
   [playerOut]: (state, { payload }) => {
     const { position } = payload; // TODO on pourrait vérifier userId
     state[position] = { id: null, name: '' };
-  },
-  [onSwap]: (state, { payload }) => {
-    const first = state[FIRST];
-    const second = state[SECOND];
-    state[FIRST] = second;
-    state[SECOND] = first;
   },
   [updatePlayer]: (state, { payload }) => {
     const { id, name } = payload;

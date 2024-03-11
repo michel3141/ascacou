@@ -36,6 +36,7 @@ export const GameModel = {
 
   attrs: {
     id: attr({}),
+    firstToMove: attr({}),
     app: belongsTo(),
     moves: hasMany(),
     cards: hasMany(),

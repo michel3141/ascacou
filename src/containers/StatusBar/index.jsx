@@ -4,7 +4,6 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import './StatusBar.scss';
 import Share from '~/containers/Ascacou/Share';
 import { useGame } from '~/features/game';
-import { usePlayers } from '~/features/players';
 import { useUser } from '~/features/user';
 
 const StatusBar = () => {
@@ -59,16 +58,15 @@ const Undo = () => {
 };
 
 const LaisseLaMain = () => {
-  const { useIsFirstTurn } = useGame();
+  const { useIsFirstTurn, swapPlayers } = useGame();
   const isFirstTurn = useIsFirstTurn();
   const { useIsMyTurn } = useUser();
   const isMyTurn = useIsMyTurn();
-  const { swap } = usePlayers();
   return (
     isMyTurn &&
     isFirstTurn && (
       <IconButton
-        onClick={swap}
+        onClick={swapPlayers}
         color='inherit'
         title='Laisser la main'
         size='small'

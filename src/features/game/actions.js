@@ -59,6 +59,7 @@ const thunks = createThunks({
     const cards = newDeal(dealMethod);
 
     const game = mkGame({ app, cards, params, moves: [] }, selectEndpoints(getState()));
+    game.firstToMove = FIRST;
     return game.commit({ with: gameInc });
   },
 
@@ -89,6 +90,11 @@ const thunks = createThunks({
     selectGame(getState()).updateAttributes(attributes).commit({
       with: gameInc,
     }),
+  swapPlayers: (_, { dispatch, getState }) => {
+    const game = selectGame(getState());
+    const firstToMove = game.firstToMove === FIRST ? SECOND : FIRST;
+    return dispatch(update({ firstToMove }));
+  },
   swapCards: (_, { dispatch, getState }) => {
     const { cards } = selectGame(getState());
     cards.forEach((card) => {
@@ -109,4 +115,4 @@ const thunks = createThunks({
 // ---- actions ---------
 export const { disconnect, playerIn, playerOut, undo, reset } = actions;
 // ---- thunks ---------
-export const { create, find, updateAttributes, update, swapCards } = thunks;
+export const { create, find, updateAttributes, update, swapPlayers, swapCards } = thunks;

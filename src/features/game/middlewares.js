@@ -18,10 +18,8 @@ import {
   playerOut,
   undo,
   reset,
-  swapCards,
 } from './actions';
 import { leave, find as findUser, create as createUser } from '~/features/user/actions';
-import { onSwap, swap } from '~/features/players/actions';
 import {
   validMove,
   nextPlayer,
@@ -184,7 +182,6 @@ addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getSta
         this.users();
       },
       on_users: (users) => users.forEach((user) => dispatch(playerIn(user))),
-      on_swap: (action) => dispatch(onSwap()),
       on_leave: (user) => dispatch(playerOut(user)),
       on_disconnected: () => dispatch(disconnect()),
     },
@@ -205,22 +202,6 @@ addListener(update.fulfilled, ({ payload }, { dispatch, getState }) => {
   });
 });
 
-addListener(swap, ({ payload }, { dispatch, getState }) => {
-  const sender = selectUserId(getState());
-  const channel = selectChannel(getState());
-
-  if (channel) {
-    channel.swap({
-      sender,
-    });
-  } else {
-    dispatch(onSwap());
-  }
-});
-
-addListener(onSwap, ({ payload }, { dispatch, getState }) => {
-  dispatch(swapCards());
-});
 addListener(updateAttributes.fulfilled, ({ payload }, { dispatch, getState, getOriginalState }) => {
   // gère la disparation de la selection quand l'adversaire undo
   // gère l'appaition de la séléction du dernier coup chez l'adversaire
