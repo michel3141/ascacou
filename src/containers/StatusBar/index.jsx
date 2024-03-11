@@ -1,6 +1,5 @@
 import { IconButton } from '@mui/material';
 import ReplayIcon from '@mui/icons-material/Replay';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
 import './StatusBar.scss';
 import Share from '~/containers/Ascacou/Share';
 import { useGame } from '~/features/game';
@@ -30,7 +29,6 @@ const CurrentTable = () => {
       )}
       <Separator />
       <Undo />
-      <LaisseLaMain />
     </>
   );
 };
@@ -57,23 +55,4 @@ const Undo = () => {
   );
 };
 
-const LaisseLaMain = () => {
-  const { useIsFirstTurn, swapPlayers } = useGame();
-  const isFirstTurn = useIsFirstTurn();
-  const { useIsMyTurn } = useUser();
-  const isMyTurn = useIsMyTurn();
-  return (
-    isMyTurn &&
-    isFirstTurn && (
-      <IconButton
-        onClick={swapPlayers}
-        color='inherit'
-        title='Laisser la main'
-        size='small'
-      >
-        <AutorenewIcon />
-      </IconButton>
-    )
-  );
-};
 export default StatusBar;

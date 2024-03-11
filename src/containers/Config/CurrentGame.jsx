@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import { LaisserLaMain } from '~/containers/Ascacou/Buttons';
 import { useGame } from '~/features/game';
 import { useApp } from '~/features/app';
 
@@ -10,6 +11,7 @@ const Config = () => {
     <>
       <Title />
       <Params />
+      <LaisserLaMain />
       <Divider />
     </>
   );

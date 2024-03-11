@@ -3,6 +3,24 @@ import { Button } from '@mui/material';
 
 import { useGame } from '~/features/game';
 import { useUi } from '~/features/ui';
+import { useUser } from '~/features/user';
+
+export const LaisserLaMain = () => {
+  const { useIsFirstTurn, swapPlayers } = useGame();
+  const isFirstTurn = useIsFirstTurn();
+  const { useIsMyTurn } = useUser();
+  const isMyTurn = useIsMyTurn();
+  return (
+    isFirstTurn &&
+    isMyTurn && (
+      <MyButton
+        noConfirmation={true}
+        label='Laisser la main'
+        action={swapPlayers}
+      />
+    )
+  );
+};
 
 export const ResetGame = () => {
   const { reset } = useGame();
