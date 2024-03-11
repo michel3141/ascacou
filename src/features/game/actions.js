@@ -95,8 +95,10 @@ const thunks = createThunks({
     const firstToMove = game.firstToMove === FIRST ? SECOND : FIRST;
     return dispatch(update({ firstToMove }));
   },
-  swapCards: (_, { dispatch, getState }) => {
-    const { cards } = selectGame(getState());
+  revenge: (_, { dispatch, getState }) => {
+    const game = selectGame(getState());
+    const firstToMove = game.firstToMove === FIRST ? SECOND : FIRST;
+    const { cards } = game;
     cards.forEach((card) => {
       switch (card.hand) {
         case FIRST:
@@ -107,7 +109,7 @@ const thunks = createThunks({
           break;
       }
     });
-    dispatch(update({ cards }));
+    dispatch(update({ firstToMove, cards }));
   },
 });
 
@@ -115,4 +117,4 @@ const thunks = createThunks({
 // ---- actions ---------
 export const { disconnect, playerIn, playerOut, undo, reset } = actions;
 // ---- thunks ---------
-export const { create, find, updateAttributes, update, swapPlayers, swapCards } = thunks;
+export const { create, find, updateAttributes, update, swapPlayers, revenge } = thunks;

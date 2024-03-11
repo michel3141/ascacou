@@ -16,6 +16,7 @@ import {
   disconnect,
   playerIn,
   playerOut,
+  revenge,
   undo,
   reset,
 } from './actions';
@@ -123,7 +124,7 @@ addListener(validMove, async ({ payload }, { dispatch, getState }) => {
   dispatch(nextPlayer());
 });
 
-addListener([undo, reset], async ({ type }, { dispatch, getState }) => {
+addListener([undo, reset, revenge.fulfilled], async ({ type }, { dispatch, getState }) => {
   if (!selectCanUndo(getState())) {
     throw new Error('cant undo');
   }
@@ -175,7 +176,6 @@ addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getSta
     {
       update: perform(),
       users: perform(),
-      swap: perform(),
       leave: perform(),
       on_update: (action) => action.sender !== userId && dispatch(updateAttributes(action.game)),
       on_connected: function () {

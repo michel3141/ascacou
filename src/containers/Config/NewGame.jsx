@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 
 import { useGame } from '~/features/game';
-import { usePlayers } from '~/features/players';
 import { useUi } from '~/features/ui';
 
 import { Divider } from './Common';
@@ -34,8 +33,7 @@ const ResetGame = () => {
 };
 
 const Revenge = () => {
-  const { reset, swapCards } = useGame();
-  const { swap } = usePlayers();
+  const { reset, revenge } = useGame();
   const { toggleShowConfig } = useUi();
   return (
     <>
@@ -47,14 +45,11 @@ const Revenge = () => {
       />
       <div title='En cours de développement'>
         <MyButton
-          disabled={true}
           noConfirmation={true}
           label='Revanche'
           action={async () => {
             toggleShowConfig(false);
-            await swap();
-            await swapCards();
-            await reset();
+            revenge();
           }}
         />
       </div>
