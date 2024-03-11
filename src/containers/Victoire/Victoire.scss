@@ -1,10 +1,9 @@
 .Victoire {
   width: 50vw;
-  & h1 {
-    text-align: center;
-  }
+  text-align: center;
 
   & .MuiPaper-root {
+    /* plus d'influence depuis que victoire vient du haut */
     padding: 7px;
     height: 100%; /* <= bien ici pour l'image de fond */
   }
