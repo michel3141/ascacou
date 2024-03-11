@@ -60,10 +60,11 @@ export const Revenge = () => {
 
 export const MyButton = ({ action, label, noConfirmation, variant = 'contained', ...others }) => {
   const [request, setRequest] = useState(noConfirmation);
+  variant = request ? variant : 'outlined';
   return (
     <Button
-      variant={request ? variant : 'outlined'}
-      color='primary'
+      variant={variant}
+      color={variant === 'contained' ? 'primary' : 'secondary'}
       onClick={() => (request ? action() : setRequest(true))}
       {...others}
     >

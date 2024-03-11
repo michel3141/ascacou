@@ -8,7 +8,7 @@ const Close = () => {
     <>
       <Button
         variant='text'
-        color='primary'
+        color='secondary'
         onClick={() => toggleShowConfig()}
       >
         Retour au plateau

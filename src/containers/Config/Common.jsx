@@ -104,7 +104,7 @@ const DealMethod = ({ param }) => {
               variant={
                 isFirstTurn ? (item.value === value ? 'contained' : 'outlined') : 'contained'
               }
-              color='primary'
+              color={item.value === value ? 'primary' : 'secondary'}
               onClick={() => deal(item.value)}
               disabled={!isFirstTurn}
             >
