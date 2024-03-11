@@ -10,7 +10,8 @@
         "preview": "vite preview",
         "p": "prettier -w './**/*.{js,jsx,css,scss,ts,mjs,cjs,json}'",
         "e": "pnpm eslint --report-unused-disable-directives --max-warnings 0 './**/*.{js,jsx,,mjs,cjs}'",
-        "ef": "pnpm eslint --fix './**/*.{js,jsx,,mjs,cjs}'"
+        "ef": "pnpm eslint --fix './**/*.{js,jsx,,mjs,cjs}'",
+        "rtk": "pnpm rtk-export -w src/features/*/*.js"
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
