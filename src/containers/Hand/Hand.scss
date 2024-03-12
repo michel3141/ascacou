@@ -1,8 +1,20 @@
+#Ascacou.Portrait .Hand legend {
+  margin: 0 auto;
+}
+
 .Hand {
   & fieldset {
     border: solid var(--main-color) 1px;
     text-align: center;
     padding: 0px;
+    &.FIRST legend {
+      margin-right: 10px;
+      margin-left: auto;
+    }
+    &.SECOND legend {
+      margin-left: auto;
+      margin-left: 10px;
+    }
     &.mon-tour {
       background-color: var(--foreground-color-opacity-40);
       & legend {
@@ -15,7 +27,7 @@
     &.pas-mon-tour {
       background-color: var(--background-color-opacity-40);
       & legend {
-        color: var(--main-color);
+        color: var(--main-color-lighten-60);
         background-color: var(--background-color-opacity-60);
         /*  display:none;*/
       }

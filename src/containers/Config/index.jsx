@@ -55,10 +55,10 @@ function Welcome() {
     <div className='Welcome'>
       <p>Pour commencer à jouer, vous pouvez</p>
       <ul>
-        <li>Soit rejoindre la table de jeu où votre adversaire vous attend</li>
-        <JoinTable />
         <li>Soit créer une nouvelle table de jeu</li>
         <CreateTable />
+        <li>Soit rejoindre la table de jeu où votre adversaire vous attend</li>
+        <JoinTable />
       </ul>
     </div>
   );
@@ -84,30 +84,34 @@ const JoinTable = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <TextField
-        style={{ marginTop: 10 }}
-        label='Nom de la table de jeu'
-        placeholder='Nom de la table'
-        value={gameName}
-        onChange={(e) => setGameName(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            if (e.shiftKey) {
-              login({ numeric: true });
-            } else {
-              login();
+      <div>
+        <TextField
+          style={{ marginTop: 10 }}
+          label='Nom de la table de jeu'
+          placeholder='Nom de la table'
+          value={gameName}
+          onChange={(e) => setGameName(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              if (e.shiftKey) {
+                login({ numeric: true });
+              } else {
+                login();
+              }
             }
-          }
-        }}
-      />
-      <Button
-        onClick={login}
-        variant='contained'
-        title='Rejoindre la table'
-        disabled={!gameId}
-      >
-        Rejoindre
-      </Button>
+          }}
+        />
+      </div>
+      <div>
+        <Button
+          onClick={login}
+          variant='contained'
+          title='Rejoindre la table'
+          disabled={!gameId}
+        >
+          Rejoindre
+        </Button>
+      </div>
     </div>
   );
 };

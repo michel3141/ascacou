@@ -30,9 +30,11 @@ const Game = () => {
     const { offsetHeight, offsetWidth } = ref.current;
     setAspect(offsetWidth / offsetHeight);
   }, [ref, windowAspect]);
+  const className = aspect > 1.23 ? 'Landscape' : 'Portrait';
   return (
     <div
       id='Ascacou'
+      {...{ className }}
       {...{ ref }}
     >
       {aspect > 1.23 ? (

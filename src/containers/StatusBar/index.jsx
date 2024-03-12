@@ -22,11 +22,9 @@ const CurrentTable = () => {
   }
   return (
     <>
-      {opponent.id ? (
-        <div className='Partie'>partie contre {opponent.name}</div>
-      ) : (
-        <Share prefix='Ma table: ' />
-      )}
+      <div className='Partie'>
+        {opponent.id ? `partie contre ${opponent.name}` : <Share prefix='Ma table: ' />}
+      </div>
       <Separator />
       <Undo />
     </>

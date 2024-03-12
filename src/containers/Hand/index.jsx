@@ -16,7 +16,7 @@ export default function Hand({ pos }) {
   const orientation = useOrientation();
 
   const monTour = pos === useCurrentPlayerPos();
-  const className = mkClasses({
+  const className = mkClasses(pos, {
     'mon-tour': monTour,
     'pas-mon-tour': !monTour,
   });
