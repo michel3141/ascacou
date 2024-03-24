@@ -8,6 +8,7 @@ import { useFullscreen } from 'fullscreen-slice';
 import mkClasses from '~/lib/mkClasses';
 import { decode } from '~/app/aaa';
 import AscacouEditor from '~/containers/AscacouEditor';
+import BottomBar from '~/containers/StatusBar/BottomBar';
 
 const Ascacou = lazy(() => import('~/containers/Ascacou'));
 const AppBar = lazy(() => import('~/containers/Appbar'));
@@ -50,6 +51,7 @@ export default function AppUi({ url, apiPath, name }) {
       ) : (
         <Suspense fallback={'...'}>
           <Routing {...{ appState, appError, name }} />
+          <BottomBar />
         </Suspense>
       )}
     </div>

@@ -5,6 +5,7 @@ import User from './User';
 import CurrentGame from './CurrentGame';
 import NewGame from './NewGame';
 import Close from './Close';
+import { Divider } from './Common';
 
 import { useState, useEffect } from 'react';
 import { Grid, Button, TextField } from '@mui/material';
@@ -32,7 +33,18 @@ export default function CurrentGamePanel() {
             <Close />
           </>
         ) : (
-          <Welcome />
+          <>
+            <Welcome />
+            <Divider />
+            <p style={{ textAlign: 'center' }}>
+              Jeu créé par Marc Buonomo
+              <br />
+              marcbuonomo26@gmail.com
+            </p>
+            <p style={{ textAlign: 'center' }}>
+              App en ligne par <a href='https://github.com/michel3141'>MicheL</a>
+            </p>
+          </>
         )}
       </Grid>
     </div>
@@ -40,9 +52,12 @@ export default function CurrentGamePanel() {
 }
 
 const Icon = () => (
-  <p style={{ textAlign: 'center' }}>
-    <img src={icon} />
-  </p>
+  <>
+    <p style={{ textAlign: 'center' }}>
+      <img src={icon} />
+    </p>
+    <Divider />
+  </>
 );
 
 function Welcome() {

@@ -6,6 +6,16 @@
   display: flex;
   align-items: center;
 
+  &.bottom {
+    position: absolute;
+    bottom: 0px;
+    div {
+      width: 100%;
+      color: var(--foreground-color);
+      text-align: right;
+      padding-right: 10px;
+    }
+  }
   & .Partie {
     margin-left: 10px;
     display: inline-block;

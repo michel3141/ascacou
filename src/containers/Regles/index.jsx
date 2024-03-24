@@ -55,7 +55,7 @@ export default function Regles() {
         marcbuonomo26@gmail.com
       </p>
       <p style={{ textAlign: 'center' }}>
-        Site version {pjs.version} par <a href='https://github.com/michel3141'>{pjs.author}</a>
+        App en ligne par <a href='https://github.com/michel3141'>{pjs.author}</a>
       </p>
 
       <hr />
