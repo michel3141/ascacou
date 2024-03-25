@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -73,14 +73,15 @@ export default function Regles() {
         marcbuonomo26@gmail.com
       </p>
       <p style={{ textAlign: 'center' }}>
-        App en ligne par <a href='https://github.com/michel3141'>{pjs.author}</a>
+        App en ligne par{' '}
+        <a href='https://github.com/michel3141'>{pjs.author}</a>
       </p>
 
       <hr />
       <h1>Règles d&apos;ascacou</h1>
       <p>
-        Ascacou est un jeu de société stratégique qui se joue à deux joueurs. Voici les éléments
-        principaux et les règles du jeu :
+        Ascacou est un jeu de société stratégique qui se joue à deux joueurs.
+        Voici les éléments principaux et les règles du jeu :
       </p>
       <h2 id='contenu'>
         Contenu du jeu
@@ -102,8 +103,9 @@ export default function Regles() {
         </a>
       </h2>
       <p>
-        Le joueur qui reproduit le plus grand nombre de cartes-motifs de son jeu remporte la partie.
-        La partie se termine lorsque aucun pion ne peut être posé sur le plateau.
+        Le joueur qui reproduit le plus grand nombre de cartes-motifs de son jeu
+        remporte la partie. La partie se termine lorsque aucun pion ne peut être
+        posé sur le plateau.
       </p>
 
       <h2 id='préparation'>
@@ -114,12 +116,12 @@ export default function Regles() {
       </h2>
       <ul>
         <li>
-          Répartissez les 16 cartes-motifs entre les joueurs de manière aléatoire ou selon leur
-          convenance.
+          Répartissez les 16 cartes-motifs entre les joueurs de manière
+          aléatoire ou selon leur convenance.
         </li>
         <li>
-          Les cartes doivent être visibles de tous et orientées de la même façon que le plateau
-          grâce à l&apos;inscription &quot;Ascacou&quot;.
+          Les cartes doivent être visibles de tous et orientées de la même façon
+          que le plateau grâce à l&apos;inscription &quot;Ascacou&quot;.
         </li>
         <li>Le premier joueur est tiré au sort.</li>
       </ul>
@@ -130,13 +132,20 @@ export default function Regles() {
           <PublishRounded />
         </a>
       </h2>
-      <p> À son tour, chaque joueur place un pion de sa couleur sur le plateau.</p>
       <p>
         {' '}
-        La seule contrainte est qu&apos;une carte-motif ne peut être présente qu&apos;une seule fois
-        sur le plateau.
+        À son tour, chaque joueur place un pion de sa couleur sur le plateau.
       </p>
-      <p> Si un joueur reproduit une carte-motif, il la met de côté et marque un point.</p>
+      <p>
+        {' '}
+        La seule contrainte est qu&apos;une carte-motif ne peut être présente
+        qu&apos;une seule fois sur le plateau.
+      </p>
+      <p>
+        {' '}
+        Si un joueur reproduit une carte-motif, il la met de côté et marque un
+        point.
+      </p>
       <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
           <tr className='odd'>
@@ -160,13 +169,13 @@ export default function Regles() {
       </table>
       <p>
         {' '}
-        Toute carte-motif reproduite marque un point, même si c&apos;est une reproduction de la
-        carte de l&apos;adversaire.
+        Toute carte-motif reproduite marque un point, même si c&apos;est une
+        reproduction de la carte de l&apos;adversaire.
       </p>
       <p>
         {' '}
-        Plusieurs cartes-motifs (maximum 4) peuvent être reproduites en même temps avec un seul pion
-        joué.
+        Plusieurs cartes-motifs (maximum 4) peuvent être reproduites en même
+        temps avec un seul pion joué.
       </p>
       <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
@@ -178,7 +187,10 @@ export default function Regles() {
               />
             </td>
             <td>
-              <p>En jouant un pion noir entre les deux pions blancs, on reproduit les cartes :</p>
+              <p>
+                En jouant un pion noir entre les deux pions blancs, on reproduit
+                les cartes :
+              </p>
               <p>
                 <img
                   className='Carte'
@@ -199,7 +211,10 @@ export default function Regles() {
               />
             </td>
             <td>
-              <p>On ne peut pas jouer un pion blanc entre les deux pions blancs sinon la carte</p>
+              <p>
+                On ne peut pas jouer un pion blanc entre les deux pions blancs
+                sinon la carte
+              </p>
               <p>
                 <img
                   className='Carte'
@@ -218,9 +233,20 @@ export default function Regles() {
           <PublishRounded />
         </a>
       </h2>
-      <p> Une carte-motif ne peut être reproduite qu&apos;une seule fois sur le plateau.</p>
-      <p> Les positions où une carte-motif a déjà été reproduite deviennent interdites.</p>
-      <p> Les pions neutres sont utilisés pour indiquer les positions interdites.</p>
+      <p>
+        {' '}
+        Une carte-motif ne peut être reproduite qu&apos;une seule fois sur le
+        plateau.
+      </p>
+      <p>
+        {' '}
+        Les positions où une carte-motif a déjà été reproduite deviennent
+        interdites.
+      </p>
+      <p>
+        {' '}
+        Les pions neutres sont utilisés pour indiquer les positions interdites.
+      </p>
       <table style={{ textAlign: 'center', width: '100%' }}>
         <tbody>
           <tr className='odd'>
@@ -255,18 +281,20 @@ export default function Regles() {
       </h2>
       <ul>
         <li>
-          <strong>Sans blocage</strong> : Les joueurs peuvent placer des pions sans contraintes. Si
-          une carte est reproduite plusieurs fois, elle ne compte qu&apos;un seul point.
+          <strong>Sans blocage</strong> : Les joueurs peuvent placer des pions
+          sans contraintes. Si une carte est reproduite plusieurs fois, elle ne
+          compte qu&apos;un seul point.
         </li>
         <li>
-          <strong>Pion imposé</strong> : Le joueur tiré au sort pour commencer choisit également la
-          couleur du pion (noir ou blanc) que son adversaire devra jouer après son propre coup.
+          <strong>Pion imposé</strong> : Le joueur tiré au sort pour commencer
+          choisit également la couleur du pion (noir ou blanc) que son
+          adversaire devra jouer après son propre coup.
         </li>
       </ul>
       <p>
-        Ascacou offre ainsi différentes stratégies et variantes, ajoutant de la profondeur au jeu et
-        permettant aux joueurs de développer leur propre approche pour maximiser la reproduction des
-        cartes motifs.
+        Ascacou offre ainsi différentes stratégies et variantes, ajoutant de la
+        profondeur au jeu et permettant aux joueurs de développer leur propre
+        approche pour maximiser la reproduction des cartes motifs.
       </p>
       <p style={{ textAlign: 'right' }}>
         <a

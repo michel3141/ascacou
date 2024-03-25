@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -41,11 +41,15 @@ function shuffle(a) {
 }
 
 const complement = (a) =>
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].filter((value) => !a.includes(value));
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].filter(
+    (value) => !a.includes(value),
+  );
 
 const dealMethods = {
   get random() {
-    const hand1 = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]).slice(0, 8);
+    const hand1 = shuffle([
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+    ]).slice(0, 8);
     const hand2 = complement(hand1);
     return [hand1, hand2];
   },
@@ -95,7 +99,8 @@ export const coords = [
 ];
 
 export const newDeal = (dealMethod) => {
-  const [hand1, hand2] = dealMethod in dealMethods ? dealMethods[dealMethod] : [[], []];
+  const [hand1, hand2] =
+    dealMethod in dealMethods ? dealMethods[dealMethod] : [[], []];
   return [
     hand1.map((value) => ({ value, hand: FIRST })),
     hand2.map((value) => ({ value, hand: SECOND })),

@@ -13,7 +13,8 @@
     border: solid 3px var(--foreground-color);
     /*  opacity: 0.8; */
     /*    border-radius: 0 0 20px 0; */
-    box-shadow: inset 0 0 calc(var(--card-size)) var(--foreground-color-opacity-40);
+    box-shadow: inset 0 0 calc(var(--card-size))
+      var(--foreground-color-opacity-40);
   }
 
   &.m-0 {

@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -89,15 +89,20 @@ const cards = createSelectors({
     (state, pos) => state[name].cards,
     (state, pos) => pos,
     (activeCards, cards, pos) =>
-      cards.filter((card) => card.hand === pos).filter((card) => activeCards.includes(card.value))
-        .length,
+      cards
+        .filter((card) => card.hand === pos)
+        .filter((card) => activeCards.includes(card.value)).length,
   ],
 });
 
-const getParamValue = (params, name) => params.find((param) => param.name === name)?.value;
+const getParamValue = (params, name) =>
+  params.find((param) => param.name === name)?.value;
 const params = createSelectors({
   params: (state) => state[name]?.params,
-  show_blocked: [(state) => selectParams(state), (params) => getParamValue(params, 'show_blocked')],
+  show_blocked: [
+    (state) => selectParams(state),
+    (params) => getParamValue(params, 'show_blocked'),
+  ],
   show_forbidden: [
     (state) => selectParams(state),
     (params) => getParamValue(params, 'show_forbidden'),
@@ -112,19 +117,26 @@ const squares = createSelectors({
   squares: [
     (state) => state[name].moves,
     (moves) => {
-      const hashed = moves.reduce((acc, move) => ({ ...acc, [move.coord]: move.attributes }), {});
+      const hashed = moves.reduce(
+        (acc, move) => ({ ...acc, [move.coord]: move.attributes }),
+        {},
+      );
       return coords.map((coord) => hashed[coord] || { coord, content: EMPTY });
     },
   ],
   moves: (state) => state[name].moves,
   move_count: [(state) => selectMoves(state), (moves) => moves.length],
   can_undo: [(state) => selectMoveCount(state), (moveCount) => moveCount > 0],
-  is_first_turn: [(state) => selectMoveCount(state), (moveCount) => moveCount === 0],
+  is_first_turn: [
+    (state) => selectMoveCount(state),
+    (moveCount) => moveCount === 0,
+  ],
   current_player_pos: [
     (state) => selectMoveCount(state),
     (state) => state[name].firstToMove,
     (state) => (state[name].firstToMove === FIRST ? SECOND : FIRST),
-    (moveCount, firstToMove, secondToMove) => (moveCount % 2 === 0 ? firstToMove : secondToMove),
+    (moveCount, firstToMove, secondToMove) =>
+      moveCount % 2 === 0 ? firstToMove : secondToMove,
   ],
   square_by_coord: [
     (state, coord) => selectSquares(state),
@@ -133,7 +145,14 @@ const squares = createSelectors({
     (state) => selectAllowMultipleCards(state),
     (state, coord) => selectShowForbidden(state),
     (state, coord) => selectShowBlocked(state),
-    (squares, coord, alertSquare, allowMultipleCards, showForbidden, showBlocked) => {
+    (
+      squares,
+      coord,
+      alertSquare,
+      allowMultipleCards,
+      showForbidden,
+      showBlocked,
+    ) => {
       const square = squares.find((square) => square.coord === coord);
       if (!allowMultipleCards) {
         if (alertSquare && showForbidden) {
@@ -158,7 +177,9 @@ const squares = createSelectors({
       .filter((square) => square.content === EMPTY)
       .filter(
         (square) =>
-          allowMultipleCards || canPlay(squares, square, WHITE) || canPlay(squares, square, BLACK),
+          allowMultipleCards ||
+          canPlay(squares, square, WHITE) ||
+          canPlay(squares, square, BLACK),
       ).length;
   },
 });
@@ -248,10 +269,15 @@ const stats = createSelectors({
 // ---- selectors ---------
 export const { selectId, selectGame, selectActiveCards } = actives;
 // ---- selectors ---------
-export const { selectCardsByPlayerPos, selectCountActiveCardsByPlayerPos } = cards;
+export const { selectCardsByPlayerPos, selectCountActiveCardsByPlayerPos } =
+  cards;
 // ---- selectors ---------
-export const { selectParams, selectShowBlocked, selectShowForbidden, selectAllowMultipleCards } =
-  params;
+export const {
+  selectParams,
+  selectShowBlocked,
+  selectShowForbidden,
+  selectAllowMultipleCards,
+} = params;
 // ---- selectors ---------
 export const {
   selectSquares,

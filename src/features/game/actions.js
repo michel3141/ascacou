@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -73,10 +73,15 @@ const thunks = createThunks({
   create: (app, { getState, dispatch }) => {
     const { defaultParams: params } = app;
 
-    const dealMethod = params.find((param) => param.name === 'deal_method').value;
+    const dealMethod = params.find(
+      (param) => param.name === 'deal_method',
+    ).value;
     const cards = newDeal(dealMethod);
 
-    const game = mkGame({ app, cards, params, moves: [] }, selectEndpoints(getState()));
+    const game = mkGame(
+      { app, cards, params, moves: [] },
+      selectEndpoints(getState()),
+    );
     game.firstToMove = FIRST;
     return game.commit({ with: gameInc });
   },
@@ -135,4 +140,5 @@ const thunks = createThunks({
 // ---- actions ---------
 export const { disconnect, playerIn, playerOut, undo, reset } = actions;
 // ---- thunks ---------
-export const { create, find, updateAttributes, update, swapPlayers, revenge } = thunks;
+export const { create, find, updateAttributes, update, swapPlayers, revenge } =
+  thunks;

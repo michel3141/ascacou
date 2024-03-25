@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -38,7 +38,11 @@ import {
   undo,
   reset,
 } from './actions';
-import { leave, find as findUser, create as createUser } from '~/features/user/actions';
+import {
+  leave,
+  find as findUser,
+  create as createUser,
+} from '~/features/user/actions';
 import {
   validMove,
   nextPlayer,
@@ -96,7 +100,9 @@ addListener(loadGame.pending, ({ payload }, { getState, dispatch }) => {
 });
 // GRAPH app:loadGame > game:2
 // GRAPH game:2 < game:find
-addListener(loadGame.fulfilled, ({ payload }, { dispatch }) => dispatch(find(payload)));
+addListener(loadGame.fulfilled, ({ payload }, { dispatch }) =>
+  dispatch(find(payload)),
+);
 
 // GRAPH app:start > game:3
 // GRAPH game:3 < game:create
@@ -112,7 +118,9 @@ addListener(restart, ({ payload }, { dispatch }) => {
   const { params } = payload || {};
   if (params) {
     state.params = params;
-    const dealMethod = params.find((param) => param.name === 'deal_method')?.value;
+    const dealMethod = params.find(
+      (param) => param.name === 'deal_method',
+    )?.value;
     if (dealMethod) state.cards = newDeal(dealMethod);
   }
 
@@ -121,16 +129,20 @@ addListener(restart, ({ payload }, { dispatch }) => {
 
 // GRAPH game:find > game:5
 // GRAPH game:create > game:5
-addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getState }) =>
-  persist({ gameId: payload.id }),
+addListener(
+  [find.fulfilled, create.fulfilled],
+  ({ payload }, { dispatch, getState }) => persist({ gameId: payload.id }),
 );
 
 // GRAPH user:find > game:6
 // GRAPH user:leave > game:6
-addListener([leave.fulfilled, find.rejected], ({ payload }, { dispatch, getState }) => {
-  history.pushState(null, '', location.href.split('?')[0]);
-  persist({ gameId: null });
-});
+addListener(
+  [leave.fulfilled, find.rejected],
+  ({ payload }, { dispatch, getState }) => {
+    history.pushState(null, '', location.href.split('?')[0]);
+    persist({ gameId: null });
+  },
+);
 
 // GRAPH app:validMove > game:7
 // GRAPH game:7 < game:update
@@ -142,26 +154,34 @@ addListener(validMove, async ({ payload }, { dispatch, getState }) => {
   dispatch(nextPlayer());
 });
 
-addListener([undo, reset, revenge.fulfilled], async ({ type }, { dispatch, getState }) => {
-  if (!selectCanUndo(getState())) {
-    throw new Error('cant undo');
-  }
-  dispatch(unselectAll());
-  await dispatch(update({ moves: { action: type === undo.type ? 'pop' : 'empty' } }));
-  dispatch(nextPlayer());
-});
+addListener(
+  [undo, reset, revenge.fulfilled],
+  async ({ type }, { dispatch, getState }) => {
+    if (!selectCanUndo(getState())) {
+      throw new Error('cant undo');
+    }
+    dispatch(unselectAll());
+    await dispatch(
+      update({ moves: { action: type === undo.type ? 'pop' : 'empty' } }),
+    );
+    dispatch(nextPlayer());
+  },
+);
 
 // GRAPH app:updateParam > game:8
 // GRAPH game:8 < game:update
 // GRAPH game:8 > game:selectShowBlocked
-addListener([updateParam.fulfilled], async ({ payload }, { getState, dispatch }) => {
-  /*
-   * updateParam est fulfilled avant même
-   * que game ait commencé l'update :-/
-   */
-  const param = payload;
-  await dispatch(update({ params: [param] }));
-});
+addListener(
+  [updateParam.fulfilled],
+  async ({ payload }, { getState, dispatch }) => {
+    /*
+     * updateParam est fulfilled avant même
+     * que game ait commencé l'update :-/
+     */
+    const param = payload;
+    await dispatch(update({ params: [param] }));
+  },
+);
 
 // GRAPH game:leave > channel:1
 // GRAPH channel:1 > channel:selectChannel
@@ -183,28 +203,32 @@ addListener(leave.fulfilled, ({ payload }, { dispatch, getOriginalState }) => {
 // GRAPH channel:2 < channel:playerIn
 // GRAPH channel:2 < channel:playerOut
 // GRAPH channel:2 < channel:disconnect
-addListener([find.fulfilled, create.fulfilled], ({ payload }, { dispatch, getState }) => {
-  const consumer = selectChannelConsumer(getState());
-  const userId = selectUserId(getState());
-  const identifier = selectChannelIdentifier(getState());
-  subscribe(
-    // subscribe is cached
-    consumer,
-    identifier,
-    {
-      update: perform(),
-      users: perform(),
-      leave: perform(),
-      on_update: (action) => action.sender !== userId && dispatch(updateAttributes(action.game)),
-      on_connected: function () {
-        this.users();
+addListener(
+  [find.fulfilled, create.fulfilled],
+  ({ payload }, { dispatch, getState }) => {
+    const consumer = selectChannelConsumer(getState());
+    const userId = selectUserId(getState());
+    const identifier = selectChannelIdentifier(getState());
+    subscribe(
+      // subscribe is cached
+      consumer,
+      identifier,
+      {
+        update: perform(),
+        users: perform(),
+        leave: perform(),
+        on_update: (action) =>
+          action.sender !== userId && dispatch(updateAttributes(action.game)),
+        on_connected: function () {
+          this.users();
+        },
+        on_users: (users) => users.forEach((user) => dispatch(playerIn(user))),
+        on_leave: (user) => dispatch(playerOut(user)),
+        on_disconnected: () => dispatch(disconnect()),
       },
-      on_users: (users) => users.forEach((user) => dispatch(playerIn(user))),
-      on_leave: (user) => dispatch(playerOut(user)),
-      on_disconnected: () => dispatch(disconnect()),
-    },
-  );
-});
+    );
+  },
+);
 
 // GRAPH game:update > channel:3
 // GRAPH channel:3 > user:selectId
@@ -220,19 +244,22 @@ addListener(update.fulfilled, ({ payload }, { dispatch, getState }) => {
   });
 });
 
-addListener(updateAttributes.fulfilled, ({ payload }, { dispatch, getState, getOriginalState }) => {
-  // gère la disparation de la selection quand l'adversaire undo
-  // gère l'appaition de la séléction du dernier coup chez l'adversaire
-  const prevMoves = selectGame(getOriginalState()).moves;
-  const currMoves = selectGame(getState()).moves;
-  if (prevMoves.length > currMoves.length) {
-    // const removeSelect = prevMoves.at(-1);
-    dispatch(unselectAll());
-  }
-  if (currMoves.length > prevMoves.length) {
-    const addSelect = currMoves.at(-1);
-    dispatch(lastMove(addSelect));
-  }
-  dispatch(toggleShowVictoire(false));
-  dispatch(nextPlayer());
-});
+addListener(
+  updateAttributes.fulfilled,
+  ({ payload }, { dispatch, getState, getOriginalState }) => {
+    // gère la disparation de la selection quand l'adversaire undo
+    // gère l'appaition de la séléction du dernier coup chez l'adversaire
+    const prevMoves = selectGame(getOriginalState()).moves;
+    const currMoves = selectGame(getState()).moves;
+    if (prevMoves.length > currMoves.length) {
+      // const removeSelect = prevMoves.at(-1);
+      dispatch(unselectAll());
+    }
+    if (currMoves.length > prevMoves.length) {
+      const addSelect = currMoves.at(-1);
+      dispatch(lastMove(addSelect));
+    }
+    dispatch(toggleShowVictoire(false));
+    dispatch(nextPlayer());
+  },
+);

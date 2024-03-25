@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -82,7 +82,16 @@ pSBC.pSBCr = (d) => {
     x.a = a ? parseFloat(a) : -1;
   } else {
     if (n === 8 || n === 6 || n < 4) return null;
-    if (n < 6) d = '#' + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (n > 4 ? d[4] + d[4] : '');
+    if (n < 6)
+      d =
+        '#' +
+        d[1] +
+        d[1] +
+        d[2] +
+        d[2] +
+        d[3] +
+        d[3] +
+        (n > 4 ? d[4] + d[4] : '');
     d = i(d.slice(1), 16);
     if (n === 9 || n === 5) {
       x.r = (d >> 24) & 255;
@@ -105,7 +114,15 @@ pSBC.pSBCw = (x, { rgb = false, transparency = false } = {}) => {
   const f = transparency;
   if (rgb) {
     return (
-      'rgb' + (f ? 'a(' : '(') + r + ',' + g + ',' + b + (f ? ',' + m(a * 1000) / 1000 : '') + ')'
+      'rgb' +
+      (f ? 'a(' : '(') +
+      r +
+      ',' +
+      g +
+      ',' +
+      b +
+      (f ? ',' + m(a * 1000) / 1000 : '') +
+      ')'
     );
   } else {
     return (

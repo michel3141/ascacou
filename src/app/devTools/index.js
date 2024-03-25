@@ -1,17 +1,17 @@
 /**
  *     ascacou - A 1 vs 1 strategy game ( created by Marc Buonomo )
  *     Copyright (C) 2024  michel3141
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -76,7 +76,9 @@ if (isDevMode) {
   };
 
   window.showSelectors = () => {
-    for (const [sliceId, selectorSymbols] of Object.entries(symbols.selectors)) {
+    for (const [sliceId, selectorSymbols] of Object.entries(
+      symbols.selectors,
+    )) {
       if (selectorSymbols.size) {
         // pas length sur un set
         console.log(sliceId);
@@ -151,7 +153,9 @@ if (isDevMode) {
         if (reserved.includes(method)) continue;
         console.log(
           `    ${method}`,
-          typeof value === 'function' ? `(${getArgs(value).join(', ')})` : `: ${value}`,
+          typeof value === 'function'
+            ? `(${getArgs(value).join(', ')})`
+            : `: ${value}`,
         );
       }
     }
